@@ -26,7 +26,8 @@
 <script src="js/sb-admin-2.min.js"></script>
 
 <!-- 네이버 로그인 api -->
-<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
 <title>SOL.GG - 로그인</title>
 </head>
@@ -69,13 +70,18 @@
                     <a href="index.html" class="btn btn-google btn-user btn-block">
                       <i class="fab fa-google fa-fw"></i> Login with Google
                     </a>
-                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                    <!-- facebook 로그인 api -->
+                    <!-- <a href="index.html" class="btn btn-facebook btn-user btn-block">
                       <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
-                    </a>
-                    <!-- 네이버 아이디로 로그인 div -->
-                    <a class="btn btn-naver btn-user btn-block" id="naverIdLogin">
-                    	<i class="fab fa-facebook-f fa-fw"></i> Login with Naver
-                    </a>
+                    </a> -->
+                    
+                    <!-- 네이버 아이디로 로그인 api -->
+                    <div id="naver_id_login" style="display: none;"></div>
+                    <!-- 네아로 이미지 div -->
+                    <div class="btn btn-naver btn-user btn-block" onclick="document.getElementById('naver_id_login_anchor').click();">
+                    	<span style="font-style: Sans-Serif; font-weight: 1000; font-size: 16px;">N</span> Login with Naver
+                    </div>
+                    
                   </form>
                   <hr>
                   <div class="text-center">
@@ -95,22 +101,17 @@
     </div>
 
   </div>
-  
-<!-- 네이버 아이디로 로그인 초기화 스크립트 -->
-<script type="text/javascript">
-	var naverLogin = new naver.LoginWithNaverId(
-		{
-			clientId: "E4Kacvcpgf0DGI3fXor2",
-			callbackUrl: "http://localhost:9090/sol.gg/callback.jsp",
-			isPopup: false, /* 팝업을 통한 연동처리 여부 */
-			//loginButton: {color: "green", type: 3, height: 60} /* 로그인 버튼의 타입을 지정 */
-		}
-	);
-	
-	/* 설정정보를 초기화하고 연동을 준비 */
-	naverLogin.init();
 
-	
+<!-- 네이버 아이디 로그인 스크립트 -->
+<script type="text/javascript">
+  	var naver_id_login = new naver_id_login("E4Kacvcpgf0DGI3fXor2", "http://localhost:9090/sol/callback.jsp");
+  	var state = naver_id_login.getUniqState();
+  	naver_id_login.setButton("white", 2,40);
+  	naver_id_login.setDomain("http://localhost:9090/sol/login.jsp");
+  	naver_id_login.setState(state);
+  	naver_id_login.setPopup();
+  	naver_id_login.init_naver_id_login();
 </script>
+
 </body>
 </html>
