@@ -41,4 +41,15 @@ public class HomeController {
 		return "dashboard";
 	}
 	
+	// 네이버 로그인 api callback
+	@RequestMapping(value="callback")
+	public String callback() {
+		return "callback";
+	}
+	
+	// 로그인 후 dashboard 이동
+	@RequestMapping(value="dashboard")
+	public String dashboard() {
+		return "dashboard";
+	}
 }

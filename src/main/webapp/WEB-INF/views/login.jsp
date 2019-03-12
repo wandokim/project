@@ -187,10 +187,10 @@
 
 <!-- 네이버 아이디 로그인 스크립트 -->
 <script type="text/javascript">
-  	var naver_id_login = new naver_id_login("E4Kacvcpgf0DGI3fXor2", "http://localhost:9090/sol/callback.jsp");
+  	var naver_id_login = new naver_id_login("E4Kacvcpgf0DGI3fXor2", "http://localhost:9090/wjjst/callback");
   	var state = naver_id_login.getUniqState();
   	naver_id_login.setButton("white", 2,40);
-  	naver_id_login.setDomain("http://localhost:9090/sol/login.jsp");
+  	naver_id_login.setDomain("http://localhost:9090/wjjst/login.gg");
   	naver_id_login.setState(state);
   	naver_id_login.setPopup();
   	naver_id_login.init_naver_id_login();
