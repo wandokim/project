@@ -12,7 +12,22 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+<script type="text/javascript">
 
+	function searching(){
+		var id = document.getElementById('search_id').value;
+	
+		document.frm.action="dashboard?search_id="+id;
+		document.frm.method="get";
+		document.frm.submit();
+	}
+	
+	function Enter_Check(){
+		if(event.keyCode == 13){
+			searching();  // 실행할 이벤트
+		}
+	}
+</script>
 </head>
 <body>
 	<!-- Topbar -->
@@ -161,13 +176,13 @@
 	<!-- 검색창 -->
 	<div class="container">
 		<div>
-			<form>
+			<form name="frm">
 				<div class="form-row">
 					<div class="col-12 col-md-9 mb-2 mb-md-0">
-						<input type="text" class="form-control form-control-lg" placeholder="게임 닉네임을 입력해주세요">
+						<input type="text" id="search_id" class="form-control form-control-lg" placeholder="게임 닉네임을 입력해주세요" onkeydown="Enter_Check()">
 					</div>
 					<div class="col-12 col-md-3">
-						<button type="submit" class="btn btn-block btn-lg btn-primary">Search</button>
+						<button type="submit" class="btn btn-block btn-lg btn-primary" onclick="searching()">Search</button>
 					</div>
 				</div>
 			</form>

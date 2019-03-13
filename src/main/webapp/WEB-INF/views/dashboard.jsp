@@ -17,9 +17,19 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
+	<%
+		request.setCharacterEncoding("UTF-8");
+		String name = request.getParameter("search_id");
+	%>
+
+<script type="text/javascript">
+	console.log(<%=name %>);
+</script>
 
 </head>
 <body id="page-top">
+
+
 
   <!-- Page Wrapper -->
   <div id="wrapper">
