@@ -1,25 +1,55 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+<title>register.jsp</title>
 
-  <title>SB Admin 2 - Register</title>
-
-  <!-- Custom fonts for this template-->
+	<!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  
+  <style type="text/css">
+  #checkPwd{
+  	color : red;
+  	font-size: 12px;
+  	padding-left: 50px;
+  }
+  
+  
+  </style>
+  
+  <script type="text/javascript">
+  	var checkFirst = false;
+  	var lastKeyword = '';
+  	var loopSendKeyword = false;
+  	
+  	function checkPwd(){
+  		var f1 = document.forms[0];
+  		var pw1 = f1.pwd.value;
+  		var pw2 = f1.pwd_check.value;
+  		if(pw1!=pw2){
+  			document.getElementById('checkPwd').style.color = "red";
+  			document.getElementById('checkPwd').innerHTML = "동일한 암호를 입력하세요";
+  		}else{
+  		document.getElementById('checkPwd').style.color = "black";
+  		document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다.";
+  	
+  		}
+  	}
+  
+  </script>
+  
 
 </head>
-
 <body class="bg-gradient-primary">
 
   <div class="container">
@@ -37,35 +67,36 @@
               <form class="user">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="First Name">
+                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="닉네임">
                   </div>
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Last Name">
+                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="아이디">
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email Address">
+                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="이메일">
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                    <input type="password" class="form-control form-control-user" name="pwd" id="exampleInputPassword" placeholder="Password">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                    <input type="password" class="form-control form-control-user" name="pwd_check" id="exampleRepeatPassword" placeholder="Repeat Password" onkeyup="checkPwd()">
+                    <div id="checkPwd"></div>
                   </div>
                 </div>
                 <a href="login.html" class="btn btn-primary btn-user btn-block">
                   Register Account
                 </a>
                 <hr>
-                <a href="index.html" class="btn btn-google btn-user btn-block">
+                <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                   <i class="fab fa-google fa-fw"></i> Register with Google
                 </a>
                 <a href="index.html" class="btn btn-facebook btn-user btn-block">
                   <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                </a>
+                </a> -->
               </form>
-              <hr>
+              
               <div class="text-center">
                 <a class="small" href="forgot-password.html">Forgot Password?</a>
               </div>
