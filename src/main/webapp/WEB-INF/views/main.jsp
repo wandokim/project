@@ -12,6 +12,7 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+
 </head>
 <body>
 	<!-- Topbar -->
@@ -24,6 +25,31 @@
 			</li>
 		</ul>
 		
+		
+		<%
+		// 로그인 여부
+		if( session.getAttribute("id") == null)
+		{
+		%>
+		
+		<ul class="navbar-nav ml-auto">
+			<li>
+				<a href="login">
+					<div>로그인</div>
+				</a>
+			</li>
+			<li>
+				<a href="register">
+					<div>회원가입</div>
+				</a>
+			</li>
+		</ul>
+		
+		<%
+        }
+        else
+        {
+		%>
 		<!-- Topbar Navbar -->
 		<ul class="navbar-nav ml-auto">
 			<!-- Nav Item - Messages -->
@@ -122,8 +148,11 @@
 		        </a>
 		      </div>
 		    </li>
-		
 		</ul>
+		
+		<%
+		}
+		%>
 	
 	</nav>
 	<!-- End of Topbar -->

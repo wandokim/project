@@ -36,7 +36,17 @@ public class HomeController {
 		return "main";
 	}
 	
-	@RequestMapping(value="login.gg")
+	@RequestMapping(value="login")
+	public String login() {
+		return "login";
+	}
+	
+	@RequestMapping(value="register")
+	public String register() {
+		return "register";
+	}
+	
+	@RequestMapping(value="dashboard")
 	public String dash() {
 		return "dashboard";
 	}
@@ -47,9 +57,4 @@ public class HomeController {
 		return "callback";
 	}
 	
-	// 로그인 후 dashboard 이동
-	@RequestMapping(value="dashboard")
-	public String dashboard() {
-		return "dashboard";
-	}
 }
