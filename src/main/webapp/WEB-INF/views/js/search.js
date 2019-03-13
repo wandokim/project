@@ -12,3 +12,13 @@ function Enter_Check(){
 		searching();
 	}
 }
+
+// 로그인 페이지로 이동
+function login(){
+	location.href = "login";
+}
+
+// 회원가입 페이지로 이동
+function register(){
+	location.href = "register";
+}

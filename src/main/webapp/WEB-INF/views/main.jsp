@@ -33,14 +33,10 @@
 		
 		<ul class="navbar-nav ml-auto">
 			<li>
-				<a href="login">
-					<div>로그인</div>
-				</a>
+				<input class="btn btn-info pull-left" type="button" value="로그인" onclick="login()">
 			</li>
 			<li>
-				<a href="register">
-					<div>회원가입</div>
-				</a>
+				<input class="btn btn-primary" type="button" value="회원가입" onclick="register()">
 			</li>
 		</ul>
 		
