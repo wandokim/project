@@ -23,7 +23,7 @@
 	%>
 
 <script type="text/javascript">
-	console.log(<%=name %>);
+	console.log("<%=name %>");
 </script>
 
 </head>
