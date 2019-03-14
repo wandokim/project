@@ -12,6 +12,9 @@
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+<!-- 커스텀 css-->
+<link href="css/custom.css" rel="stylesheet">
+
 </head>
 <body>
 	<!-- Topbar -->
@@ -20,7 +23,7 @@
 		<!-- Nav logo -->
 		<ul class="navbar-nav">
 			<li class="nav-item">
-				<img src="./img/sol_log.PNG" alt="sol.gg로고" style="height: 60px;"/>
+				<img src="./img/sol_log.PNG" alt="sol.gg로고" style="height: 60px;" id="sol_img"/>
 			</li>
 		</ul>
 		
@@ -33,10 +36,10 @@
 		
 		<ul class="navbar-nav ml-auto">
 			<li>
-				<input class="btn btn-info pull-left" type="button" value="로그인" onclick="login()">
+				<input class="btn btn-default" type="button" value="로그인" onclick="login()">
 			</li>
 			<li>
-				<input class="btn btn-primary" type="button" value="회원가입" onclick="register()">
+				<input class="btn btn-default" type="button" value="회원가입" onclick="register()">
 			</li>
 		</ul>
 		
@@ -159,7 +162,10 @@
 			<form name="frm">
 				<div class="form-row">
 					<div class="col-12 col-md-9 mb-2 mb-md-0">
-						<input type="text" id="search_id" class="form-control form-control-lg" placeholder="게임 닉네임을 입력해주세요" onkeydown="JavaScript:Enter_Check()">
+						<input type="text" id="search_nic" class="form-control form-control-lg" placeholder="게임 닉네임을 입력해주세요">
+						
+						<!-- form 안에 input:text 하나 있으면 submit으로 자동 전환되어 안보이는 input 태그 하나 더 추가 -->
+						<input type="text" style="display: none;" />
 					</div>
 					<div class="col-12 col-md-3">
 						<button type="button" class="btn btn-block btn-lg btn-primary" onclick="searching()">Search</button>
@@ -179,7 +185,7 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
   
-  <!-- 검색 js -->
+  <!-- search js -->
   <script src="js/search.js"></script>
 
 </body>

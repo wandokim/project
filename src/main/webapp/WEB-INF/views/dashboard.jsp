@@ -1,3 +1,10 @@
+<%@page import="sol.desk.wjjst.SplitKey"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="sol.desk.wjjst.SplitStr"%>
+<%@page import="sol.desk.wjjst.Rankinfo"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="sol.desk.wjjst.FindID"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,11 +26,70 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 	<%
 		request.setCharacterEncoding("UTF-8");
-		String name = request.getParameter("search_id");
+		String nic = request.getParameter("search_nic");
+		
+		String id = "id 값 없음";
+		String level = "level 값 없음";
+		String tier = "tier 값 없음";
+		String leaguePoints = "leaguePoints 값 없음";
+		String wins = "wins 값 없음";
+		String losses = "losses 값 없음";
+		String icon_id = "icon_id 값 없음";
+		
+		
+		if(nic != "" || nic != null){
+			
+			SplitStr str = new SplitStr();
+			FindID fid = new FindID();
+			SplitKey b = new SplitKey();
+			
+			String id_lolApiJson = fid.find_id(nic);
+			String[] id_info = str.split(id_lolApiJson);
+			HashMap<String, String> hm = b.key(id_info);
+			
+			id = hm.get("id");
+			
+			Rankinfo rinfo = new Rankinfo();
+			String rank_lolApiJson = rinfo.contents(id);
+			String[] rank_info = str.split(rank_lolApiJson);
+			HashMap<String, String> hm2 = b.key(rank_info);
+			
+			level = hm2.get("level");
+			tier = hm2.get("tier");
+			
+			
+			if(){
+				
+				
+				
+			}else{
+	%>
+				<script type="text/javascript">
+					alert("해당 닉네임으로 LOL API 에 접근을 실패하였습니다.");
+					location.href = "main";
+				</script>
+	<%
+			}
+		}else{
+			
+	%>
+			<script type="text/javascript">
+				alert("닉네임을 감지 하지 못했습니다");
+				location.href = "main";
+			</script>
+	<%
+		}
 	%>
 
 <script type="text/javascript">
-	console.log("<%=name %>");
+	console.log("닉네임 = <%=nic %>");
+	console.log("아이콘 아이디 = <%=icon_id %>");
+	console.log("id = <%=id %>");
+	console.log("레벨 = <%=level %>");
+	console.log("티어 = <%=tier %>");
+	console.log("리그포인트 = <%=leaguePoints %>");
+	console.log("승 = <%=wins %>");
+	console.log("패 = <%=losses %>");
 </script>
 
 </head>
@@ -680,6 +746,9 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
+  
+  <!-- search js -->
+  <script src="js/search.js"></script>
 
 </body>
 </html>
