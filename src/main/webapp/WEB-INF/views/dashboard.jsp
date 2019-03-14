@@ -35,7 +35,7 @@
 		String wins = "wins 값 없음";
 		String losses = "losses 값 없음";
 		String icon_id = "icon_id 값 없음";
-		
+		String rank = "rank 값 없음";
 		
 		if(nic != "" || nic != null){
 			
@@ -43,33 +43,39 @@
 			FindID fid = new FindID();
 			SplitKey b = new SplitKey();
 			
+			// find_id
 			String id_lolApiJson = fid.find_id(nic);
 			String[] id_info = str.split(id_lolApiJson);
 			HashMap<String, String> hm = b.key(id_info);
 			
 			id = hm.get("id");
+			icon_id = hm.get("profileIconId");
+			level = hm.get("summonerLevel");
 			
 			Rankinfo rinfo = new Rankinfo();
-			String rank_lolApiJson = rinfo.contents(id);
-			String[] rank_info = str.split(rank_lolApiJson);
-			HashMap<String, String> hm2 = b.key(rank_info);
 			
-			level = hm2.get("level");
-			tier = hm2.get("tier");
-			
-			
-			if(){
+			// Rankinfo
+			/* String rank_lolApiJson = rinfo.contents(id);
+			if(rank_lolApiJson!=null || rank_lolApiJson==""){
+				String[] rank_info = str.split(rank_lolApiJson);
+				HashMap<String, String> hm2 = b.key(rank_info);
 				
+				tier = hm2.get("tier");
+				leaguePoints = hm2.get("leaguePoints");
+				wins = hm2.get("wins");
+				losses = hm2.get("losses");
+				rank = hm2.get("rank");
 				
-				
-			}else{
+			}else{ */
+				String xx = rinfo.contents(id);
 	%>
 				<script type="text/javascript">
-					alert("해당 닉네임으로 LOL API 에 접근을 실패하였습니다.");
-					location.href = "main";
+					alert("<%=xx %>");
+					//location.href = "main";
 				</script>
 	<%
-			}
+			//}
+			
 		}else{
 			
 	%>
@@ -90,6 +96,7 @@
 	console.log("리그포인트 = <%=leaguePoints %>");
 	console.log("승 = <%=wins %>");
 	console.log("패 = <%=losses %>");
+	console.log("rank = <%=rank %>");
 </script>
 
 </head>
