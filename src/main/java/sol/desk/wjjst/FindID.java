@@ -18,11 +18,13 @@ public class FindID {
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		String lolApiJson = in.readLine();	
 		System.out.println(lolApiJson);
-		
-		
-		
-		
+
 		return lolApiJson;
+	}
+	
+	public static void main(String[] args) throws IOException {
+		FindID fid = new FindID();
+		fid.find_id("건방진어린이");
 	}
  
 }

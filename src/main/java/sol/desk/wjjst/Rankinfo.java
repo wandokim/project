@@ -8,9 +8,9 @@ import java.net.URL;
 
 public class Rankinfo {
 	private final String User_AGENT = "Mozilla/5.0";
+	
 	public String contents(String id) throws IOException {
 		URL lolApisite = new URL("https://kr.api.riotgames.com/lol/league/v4/positions/by-summoner/"+id+"?api_key=RGAPI-42faecd8-589d-4bd7-87a2-f4492f960705");
-	
 		URL obj = lolApisite;
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		//optional default is GET
@@ -21,6 +21,18 @@ public class Rankinfo {
 		System.out.println(lolApiJson);
 		
 		return lolApiJson;
+	}
+	
+	public static void main(String[] args) throws IOException {
+		Rankinfo rfo = new Rankinfo();
+		// 건방진어린이 id
+		String x = rfo.contents("rzvoXDdTemWo7Orvywq2cacJr0-aAgXmAu03DmVBzuUWEA");
+		
+		if(x.equals("[]")) {
+			System.out.println("랭크전 기록이 없어");
+		}else {
+			System.out.println("랭크전 기록이 있어");
+		}
 	}
 	
 }

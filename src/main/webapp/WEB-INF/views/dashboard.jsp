@@ -44,9 +44,7 @@
 			SplitKey b = new SplitKey();
 			
 			// find_id
-			String id_lolApiJson = fid.find_id(nic);
-			String[] id_info = str.split(id_lolApiJson);
-			HashMap<String, String> hm = b.key(id_info);
+			HashMap<String, String> hm = b.key(str.split(fid.find_id(nic)));
 			
 			id = hm.get("id");
 			icon_id = hm.get("profileIconId");
@@ -55,8 +53,18 @@
 			Rankinfo rinfo = new Rankinfo();
 			
 			// Rankinfo
-			/* String rank_lolApiJson = rinfo.contents(id);
-			if(rank_lolApiJson!=null || rank_lolApiJson==""){
+			String rank_lolApiJson = rinfo.contents(id);
+			
+			// 랭크전 기록 boolean
+			if(rank_lolApiJson=="" || rank_lolApiJson==null || rank_lolApiJson.equals("[]")){
+				tier = "UNRANKED";
+	%>
+				<script type="text/javascript">
+					alert("해당 유저는 랭크 기록이 없습니다.");
+				</script>
+	<%
+				
+			}else{
 				String[] rank_info = str.split(rank_lolApiJson);
 				HashMap<String, String> hm2 = b.key(rank_info);
 				
@@ -65,17 +73,7 @@
 				wins = hm2.get("wins");
 				losses = hm2.get("losses");
 				rank = hm2.get("rank");
-				
-			}else{ */
-				String xx = rinfo.contents(id);
-	%>
-				<script type="text/javascript">
-					alert("<%=xx %>");
-					//location.href = "main";
-				</script>
-	<%
-			//}
-			
+			}
 		}else{
 			
 	%>
