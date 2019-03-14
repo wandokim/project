@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace=" ">
+  	<select id="selectAllUser" resultType="dto">
+  		select * from user_info
+  	</select>
+  	
+  	<select id="selectOneUser" parameterType="String" resultType="dto">
+  		select * from user_info where id = #{id}
+  	</select>
+  	
+  	<insert id="insertUser" parameterType="dto">
+  		insert into user_info
+  		values(#{user_no},#{nicname},#{id},#{email},#{join_date},#{rout})
+  	</insert>
+  	
+  	<update id="updateUser" parameterType="dto">
+  		update user_info set
+  		nicname = #{nicname}, email = #{email}
+  		where id = #{id}
+  		
+  	</update>
+  	
+  	<delete id="deleteUser" parameterType="String">
+  		delete from user_info where id = #{id}
+  	</delete>
+  	
+  </mapper>

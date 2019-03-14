@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  <configuration>
+  	<typeAliases>		<!-- 자바 파일을 찾아갈 때 -->
+  		<typeAlias type="sol.desk.wjjst.dto.UserDto" alias="dto"/>
+  	</typeAliases>
+  	
+  	<mappers>			<!-- 자바 파일이 아닌 파일을 찾아갈 때 -->
+  		<mapper resource="sol/desk/wjjst/resources/testMapper.xml"/>  	
+  	</mappers>
+  </configuration>
