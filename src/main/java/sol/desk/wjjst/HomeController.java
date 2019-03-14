@@ -62,4 +62,9 @@ public class HomeController {
 		return "callback";
 	}
 	
+	@RequestMapping(value="loginOk")
+	public String loginOk() {
+		return "loginOk";
+	}
+	
 }

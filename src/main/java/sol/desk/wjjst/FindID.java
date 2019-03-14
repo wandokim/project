@@ -22,6 +22,18 @@ public class FindID {
 		return lolApiJson;
 	}
 	
+	/*
+	 * [FindID key 값]
+	 * 
+	 * id - 유저 고유 값
+	 * accountId
+	 * puuid
+	 * name - 게임 닉네임
+	 * profileIconId - 프로필 섬네일
+	 * revisionDate
+	 * summonerLevel - 유저 레벨
+	 */
+	
 	public static void main(String[] args) throws IOException {
 		FindID fid = new FindID();
 		fid.find_id("건방진어린이");
