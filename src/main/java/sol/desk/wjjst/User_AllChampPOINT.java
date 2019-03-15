@@ -10,7 +10,8 @@ public class User_AllChampPOINT {
 private final String User_AGENT = "Mozilla/5.0";
 	
 	public String user_allchamppoint(String id) throws IOException {
-		URL lolApisite = new URL("https://kr.api.riotgames.com/lol/champion-mastery/v4/scores/by-summoner/"+id+"?api_key=RGAPI-5eb7bc0e-9610-4135-842c-f0c766107349");
+		KeyValue key = new KeyValue();
+		URL lolApisite = new URL("https://kr.api.riotgames.com/lol/champion-mastery/v4/scores/by-summoner/"+id+"?api_key="+key.keyvalue());
 		URL obj = lolApisite;
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		//optional default is GET

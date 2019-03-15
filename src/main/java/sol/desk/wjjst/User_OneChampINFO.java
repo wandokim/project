@@ -10,7 +10,8 @@ public class User_OneChampINFO {
 private final String User_AGENT = "Mozilla/5.0";
 	
 	public String user_onechampinfo(String id,int champno) throws IOException {
-		URL lolApisite = new URL("https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/"+id+"/by-champion/"+champno+"?api_key=RGAPI-5eb7bc0e-9610-4135-842c-f0c766107349");
+		KeyValue key = new KeyValue();
+		URL lolApisite = new URL("https://kr.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/"+id+"/by-champion/"+champno+"?api_key="+key.keyvalue());
 		URL obj = lolApisite;
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		//optional default is GET

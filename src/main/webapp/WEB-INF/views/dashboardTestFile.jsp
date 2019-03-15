@@ -114,7 +114,7 @@
 	console.log("패 = <%=losses %>");
 	console.log("rank = <%=rank %>");
 	
-	console.log("-----------");
+	console.log(nic+"에 따른 챔피언 숙련도");
 	console.log("챔피언 = <%= championId%>");
 	console.log("챔피언 레벨 = <%=championLevel%>");
 	console.log("챔피언포인트 = <%= championPoints%>");

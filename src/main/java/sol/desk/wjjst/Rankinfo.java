@@ -19,7 +19,7 @@ public class Rankinfo {
 		con.getResponseCode();
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		String lolApiJson = in.readLine();	
-		System.out.println(lolApiJson);
+		//System.out.println(lolApiJson);
 		
 		return lolApiJson;
 	}
@@ -27,12 +27,12 @@ public class Rankinfo {
 	public static void main(String[] args) throws IOException {
 		Rankinfo rfo = new Rankinfo();
 		// 건방진어린이 id
-		String x = rfo.contents("rzvoXDdTemWo7Orvywq2cacJr0-aAgXmAu03DmVBzuUWEA");
+		String x = rfo.contents("OG0Du0hiN3pkMVA6Z8BSvkl76N1heoOYabbD6EFRhJqiKw");
 		
 		if(x.equals("[]")) {
 			System.out.println("랭크전 기록이 없어");
 		}else {
-			System.out.println("랭크전 기록이 있어");
+			System.out.println("랭크전 기록이 있어"+x);
 		}
 	}
 	
