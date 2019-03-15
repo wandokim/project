@@ -1,13 +1,12 @@
 // dashboard로 search_id 파라미터 값 보내기
 function searching(){
-	var nic = document.getElementById('search_nic').value;
-
-	console.log(nic);
+	var nic = document.getElementById('search_nic').value;	
+	console.log(nic);	
 	if(nic == "" || nic == null){
 		alert("닉네임을 입력하세요");
-	}else{
-		location.href = "dashboard?search_nic="+nic;
-	}
+	}else{		
+		location.href = "dashboard?search_nic="+nic;		
+	}	
 }
 
 // 엔터키 활용 검색창(id=search_nic)

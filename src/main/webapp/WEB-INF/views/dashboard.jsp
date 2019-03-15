@@ -26,7 +26,8 @@
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
 	<%
 		request.setCharacterEncoding("UTF-8");
-		String nic = request.getParameter("search_nic");
+		String nic = request.getParameter("search_nic");	
+		
 		
 		String id = "id 값 없음";
 		String level = "level 값 없음";
@@ -109,11 +110,12 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="main">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+       	 <img src="./img/sol_log.PNG" alt="sol.gg로고" style="height: 50px;" id="sol_img"/>
+         <!--  <i class="fas fa-laugh-wink"></i> -->
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">SOL.GG <sup>^^</sup></div>
       </a>
 
       <!-- Divider -->
@@ -121,7 +123,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+          <a class="nav-link" href="index.html">        
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -189,7 +191,7 @@
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
             <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
+            <!-- <a class="collapse-item" href="blank.html">Blank Page</a> -->
           </div>
         </div>
       </li>
@@ -236,11 +238,13 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="게임 닉네임을 입력해주세요" aria-label="Search" aria-describedby="basic-addon2" id="search_nic">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+              
+                <button class="btn btn-primary" id="search_nic" type="button" onclick="searching()">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
+                
               </div>
             </div>
           </form>
@@ -257,11 +261,13 @@
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="게임 닉네임을 입력해주세요" aria-label="Search" aria-describedby="basic-addon2" id="search_nic">
                     <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
+                    
+                      <button class="btn btn-primary" type="button" onclick="ss()">
                         <i class="fas fa-search fa-sm"></i>
                       </button>
+                      
                     </div>
                   </div>
                 </form>
@@ -377,10 +383,25 @@
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                          
+            
+             	<%				
+					if( session.getAttribute("id") == null)
+					{
+				%>   
+				<!-- class="btn btn-default" -->          	
+					<input class="btn btn-default" type="button" value="로그인" onclick="login()" >			
+				
+					<input class="btn btn-default" type="button" value="회원가입" onclick="register()">
+				<%
+				
+					}else{
+             	%>
+             	 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><!-- 로그인되었을때 값넣어줌 -->Valerie Luna</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
+				
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="#">
@@ -406,21 +427,28 @@
           </ul>
 
         </nav>
-        <!-- End of Topbar -->
-
+        <%} %>
+        
+       
+        
+        
+        
+        
+        <!-- End of Topbar -->		
         <!-- Begin Page Content -->
+       <!-- 
+       
         <div class="container-fluid">
-
-          <!-- Page Heading -->
+          Page Heading
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
             <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
-          <!-- Content Row -->
+          Content Row
           <div class="row">
 
-            <!-- Earnings (Monthly) Card Example -->
+            Earnings (Monthly) Card Example
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
@@ -437,7 +465,7 @@
               </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
+            Earnings (Monthly) Card Example
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
                 <div class="card-body">
@@ -454,7 +482,7 @@
               </div>
             </div>
 
-            <!-- Earnings (Monthly) Card Example -->
+            Earnings (Monthly) Card Example
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
@@ -480,7 +508,7 @@
               </div>
             </div>
 
-            <!-- Pending Requests Card Example -->
+            Pending Requests Card Example
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
                 <div class="card-body">
@@ -498,14 +526,14 @@
             </div>
           </div>
 
-          <!-- Content Row -->
+          Content Row
 
           <div class="row">
 
-            <!-- Area Chart -->
+            Area Chart
             <div class="col-xl-8 col-lg-7">
               <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
+                Card Header - Dropdown
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
                   <div class="dropdown no-arrow">
@@ -521,7 +549,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- Card Body -->
+                Card Body
                 <div class="card-body">
                   <div class="chart-area">
                     <canvas id="myAreaChart"></canvas>
@@ -530,10 +558,10 @@
               </div>
             </div>
 
-            <!-- Pie Chart -->
+            Pie Chart
             <div class="col-xl-4 col-lg-5">
               <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
+                Card Header - Dropdown
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                   <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
                   <div class="dropdown no-arrow">
@@ -549,7 +577,7 @@
                     </div>
                   </div>
                 </div>
-                <!-- Card Body -->
+                Card Body
                 <div class="card-body">
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="myPieChart"></canvas>
@@ -570,13 +598,13 @@
             </div>
           </div>
 
-          <!-- Content Row -->
+          Content Row
           <div class="row">
 
-            <!-- Content Column -->
+            Content Column
             <div class="col-lg-6 mb-4">
 
-              <!-- Project Card Example -->
+              Project Card Example
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
@@ -605,7 +633,7 @@
                 </div>
               </div>
 
-              <!-- Color System -->
+              Color System
               <div class="row">
                 <div class="col-lg-6 mb-4">
                   <div class="card bg-primary text-white shadow">
@@ -661,7 +689,7 @@
 
             <div class="col-lg-6 mb-4">
 
-              <!-- Illustrations -->
+              Illustrations
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
@@ -675,7 +703,7 @@
                 </div>
               </div>
 
-              <!-- Approach -->
+              Approach
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
@@ -690,12 +718,12 @@
           </div>
 
         </div>
-        <!-- /.container-fluid -->
+        /.container-fluid
 
       </div>
-      <!-- End of Main Content -->
+      End of Main Content
 
-      <!-- Footer -->
+      Footer
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
@@ -703,18 +731,18 @@
           </div>
         </div>
       </footer>
-      <!-- End of Footer -->
+      End of Footer
 
     </div>
-    <!-- End of Content Wrapper -->
+    End of Content Wrapper
 
   </div>
-  <!-- End of Page Wrapper -->
+  End of Page Wrapper
 
-  <!-- Scroll to Top Button-->
+  Scroll to Top Button
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
-  </a>
+  </a> -->
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

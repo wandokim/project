@@ -10,7 +10,8 @@ public class ChallengerINFO {
 private final String User_AGENT = "Mozilla/5.0";
 	
 	public String challengerinfo() throws IOException {
-		URL lolApisite = new URL("https://kr.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5?api_key=RGAPI-5eb7bc0e-9610-4135-842c-f0c766107349");
+		KeyValue key = new KeyValue();
+		URL lolApisite = new URL("https://kr.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/RANKED_SOLO_5x5?api_key="+key.keyvalue());
 		URL obj = lolApisite;
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		//optional default is GET
