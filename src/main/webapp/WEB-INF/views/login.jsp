@@ -1,3 +1,4 @@
+<%@page import="sol.desk.wjjst.RandomChamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -14,6 +15,9 @@
 
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+<!-- 커스텀 css-->
+<link href="css/custom.css" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
@@ -58,21 +62,28 @@
 
 <title>SOL.GG - 로그인</title>
 </head>
-<body class="bg-gradient-primary">
+<body>
 
   <div class="container">
 
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-      <div class="col-xl-10 col-lg-12 col-md-9">
+      <div class="col-xl-10 col-lg-12 col-md-9" >
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card o-hidden border-0 shadow-lg my-5" style="border: solid 1px black;">
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-              <div class="col-lg-6">
+              <div class="col-lg-5 d-none d-lg-block">
+              
+              	<%
+              		RandomChamp rc = new RandomChamp();
+              		String champ = rc.randomChap();
+              	%>
+              	<img src="./img/loading/<%=champ %>_0.jpg" alt="login_img" style="display: block;margin: 15px auto; height: 95%;border-radius: 10px;" />
+              </div>
+              <div class="col-lg-7">
                 <div class="p-5">
                   <div class="text-center">
                     <a href="main" style="text-decoration: none;"><h1 class="h4 text-gray-900 mb-4">Welcome to <img src="./img/sol_log.png" alt="sol_logo" style="height: 70px;"/></h1></a>

@@ -3,3 +3,11 @@
 #sol_img {
 	cursor: pointer;
 }
+
+.login_img {
+	background-position: center;
+	background-size: cover;
+	display: block;
+	margin: auto;
+	height: 100%;
+}
