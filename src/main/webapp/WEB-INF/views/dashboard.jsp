@@ -117,6 +117,7 @@
 	console.log("챔피언 = <%=championId %>");
 	console.log("챔피언 레벨 = <%=championLevel %>");
 	console.log("챔피언포인트 = <%=championPoints %>");
+	console.log("./img/emblems/<%=tier %>.png");
 </script>
 
 </head>
@@ -147,16 +148,40 @@
           </div>
 
           <!-- Content Row -->
-          <div class="row">
-          	row 1 정보입력
-          </div>
-          
-
-          <!-- Content Row -->
-          <div class="row">
-			row 2 정보입력
-          </div>
-
+        <div class="row">
+          	<div id="card-body">
+          		<span><img src="./img/profileicon/<%=icon_id %>.png" style="background-image: url(./img/profileicon/0.png)" width="100" height="100"/></span>
+          		<div id="level_font">레벨<%=level %></div>
+          	</div>
+         
+          	<div id="info1">
+          		<span id="nic_font"><%=nic %></span>
+          		<input type="button" value="전적 갱신" />
+          	</div>
+        </div>
+        <br />
+        <div class="row"> 	
+          	<div id="info2">
+          		<%
+          			int win = Integer.parseInt(wins);
+          			int lose = Integer.parseInt(losses);
+          			int t1 = win*100;
+          			int t2 = win+lose;
+          			long total = t1/t2;
+          			
+          		%>
+          		<img src="./img/emblems1/<%=tier %>.png" alt="error" width="100" height="100"/>
+          	</div>
+          	<div id="info2">
+          		<span>솔로랭크</span>
+          		<div id="tier_font"><%=tier %></div>
+          		<div id="leaguepoint_font"><%=leaguePoints %> LP</div>
+          		<span><%=wins %>승</span>
+          		<span><%=losses %>패</span>
+          		<span>승률 : <%=total %>% </span>
+          	</div>
+         </div> 
+         
         </div>
         <!-- /.container-fluid -->
 
