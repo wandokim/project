@@ -75,7 +75,7 @@
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">Welcome to SOL.GG!</h1>
+                    <a href="main" style="text-decoration: none;"><h1 class="h4 text-gray-900 mb-4">Welcome to <img src="./img/sol_log.png" alt="sol_logo" style="height: 70px;"/></h1></a>
                   </div>
                   <form class="user" name="frm">
                     <div class="form-group">
