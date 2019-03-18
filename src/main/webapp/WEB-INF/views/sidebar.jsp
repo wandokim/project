@@ -13,15 +13,6 @@
   </a>
 
   <!-- Divider -->
-  <!-- <hr class="sidebar-divider my-0"> -->
-
-  <!-- Nav Item - Dashboard -->
-  <!-- <li class="nav-item active">
-      <a class="nav-link" href="dashboard?search_nic=">        
-      <span>Dashboard</span></a>
-  </li> -->
-
-  <!-- Divider -->
   <hr class="sidebar-divider">
 
   <!-- Heading -->
