@@ -7,7 +7,7 @@
 	<!-- Nav logo -->
 	<ul class="navbar-nav">
 		<li class="nav-item">
-			<img src="./img/sol_log.PNG" alt="sol.gg로고" style="height: 60px;" id="sol_img"/>
+			<img src="./img/sol_log.png" alt="sol.gg로고" style="height: 60px;" id="sol_img"/>
 		</li>
 	</ul>
 	

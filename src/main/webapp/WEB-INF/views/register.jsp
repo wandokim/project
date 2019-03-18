@@ -1,3 +1,4 @@
+<%@page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -17,13 +18,15 @@
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
   
+  <!-- 커스텀 css-->
+  <link href="css/custom.css" rel="stylesheet">
+  
   <style type="text/css">
   #checkPwd{
   	color : red;
   	font-size: 12px;
   	padding-left: 50px;
   }
-  
   
   </style>
   
@@ -50,61 +53,74 @@
   
 
 </head>
-<body class="bg-gradient-primary">
+<body>
 
+  <!-- Topbar -->
+        <jsp:include page="main_topbar.jsp" flush="true"/>
+        <!-- End of Topbar -->
   <div class="container">
+  
 
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
-          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-          <div class="col-lg-7">
-            <div class="p-5">
-              <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
-              </div>
-              <form class="user">
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="닉네임">
-                  </div>
-                  <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="아이디">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="이메일">
-                </div>
-                <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" name="pwd" id="exampleInputPassword" placeholder="Password">
-                  </div>
-                  <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" name="pwd_check" id="exampleRepeatPassword" placeholder="Repeat Password" onkeyup="checkPwd()">
-                    <div id="checkPwd"></div>
-                  </div>
-                </div>
-                <a href="login.html" class="btn btn-primary btn-user btn-block">
-                  Register Account
-                </a>
-                <hr>
-                <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
-                  <i class="fab fa-google fa-fw"></i> Register with Google
-                </a>
-                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                  <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                </a> -->
-              </form>
-              
-              <div class="text-center">
-                <a class="small" href="forgot-password.html">Forgot Password?</a>
-              </div>
-              <div class="text-center">
-                <a class="small" href="login.html">Already have an account? Login!</a>
-              </div>
-            </div>
+        <%
+        	Random rnd = new Random();
+        	int num = rnd.nextInt(10)+1;
+        %>
+        
+          <div class="col-lg-7 d-none d-lg-block">
+          	<img src="./img/reg_background/full<%=num %>.jpg" alt="reg_backgound_img" />
           </div>
+			<div class="col-lg-5">
+				<div class="p-5" style="text-align: center;">
+	            	<div style="background-color: white;border-radius: 20px; padding: 15px; opacity: 0.95">
+	              <div class="text-center">
+	                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+	              </div>
+	              <form class="user">
+	                <div class="form-group row">
+	                  <div class="col-sm-6 mb-3 mb-sm-0">
+	                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="닉네임">
+	                  </div>
+	                  <div class="col-sm-6">
+	                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="아이디">
+	                  </div>
+	                </div>
+	                <div class="form-group">
+	                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="이메일">
+	                </div>
+	                <div class="form-group row">
+	                  <div class="col-sm-6 mb-3 mb-sm-0">
+	                    <input type="password" class="form-control form-control-user" name="pwd" id="exampleInputPassword" placeholder="Password">
+	                  </div>
+	                  <div class="col-sm-6">
+	                    <input type="password" class="form-control form-control-user" name="pwd_check" id="exampleRepeatPassword" placeholder="Repeat Password" onkeyup="checkPwd()">
+	                    <div id="checkPwd"></div>
+	                  </div>
+	                </div>
+	                <a href="login.html" class="btn btn-primary btn-user btn-block">
+	                  Register Account
+	                </a>
+	                <hr>
+	                <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
+	                  <i class="fab fa-google fa-fw"></i> Register with Google
+	                </a>
+	                <a href="index.html" class="btn btn-facebook btn-user btn-block">
+	                  <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+	                </a> -->
+	              </form>
+	              
+	              <div class="text-center">
+	                <a class="small" href="forgot-password.html">Forgot Password?</a>
+	              </div>
+	              <div class="text-center">
+	                <a class="small" href="login.html">Already have an account? Login!</a>
+	              </div>
+	            </div>
+	          </div>
+			</div>
         </div>
       </div>
     </div>
@@ -120,6 +136,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+  
+  <!-- search js -->
+  <script src="js/search.js"></script>
 
 </body>
 
