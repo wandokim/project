@@ -1,4 +1,4 @@
-package sol.desk.wjjst;
+package sol.desk.wjjst.control;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -67,4 +67,8 @@ public class HomeController {
 		return "loginOk";
 	}
 	
+	@RequestMapping(value="test")
+	public String test() {
+		return "dashboardTestFile";
+	}
 }
