@@ -115,9 +115,9 @@
 	console.log("rank = <%=rank %>");
 	
 	console.log("-----------");
-	console.log("챔피언 = <%= championId%>");
-	console.log("챔피언 레벨 = <%=championLevel%>");
-	console.log("챔피언포인트 = <%= championPoints%>");
+	console.log("챔피언 = <%=championId %>");
+	console.log("챔피언 레벨 = <%=championLevel %>");
+	console.log("챔피언포인트 = <%=championPoints %>");
 </script>
 
 </head>
