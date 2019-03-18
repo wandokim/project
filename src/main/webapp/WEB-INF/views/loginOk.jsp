@@ -9,8 +9,10 @@
 	
 	// 로그인 DAO
 	
-	// 세션에 담기
+	// 세션에 담기 - 임시
+	session.setAttribute("id", "완도킴");
 	
 	// redirect
+	response.sendRedirect("main");
 
 %>

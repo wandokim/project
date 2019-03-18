@@ -62,9 +62,16 @@ public class HomeController {
 		return "callback";
 	}
 	
+	// SOL 로그인 확인
 	@RequestMapping(value="loginOk")
 	public String loginOk() {
 		return "loginOk";
+	}
+	
+	// 로그아웃
+	@RequestMapping(value="logoutOk")
+	public String logoutOk() {
+		return "logoutOk";
 	}
 	
 	@RequestMapping(value="test")
