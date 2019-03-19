@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import sol.desk.wjjst.dto.ImgDTO;
+import sol.desk.wjjst.dto.DTO;
 
-public class ImgDAOImpl implements ImgDAO {
+public class ImgDAOImpl implements DAO {
 	
 	SqlSession ss;
 	
@@ -15,13 +15,13 @@ public class ImgDAOImpl implements ImgDAO {
 	}
 
 	@Override
-	public void insert(ImgDTO dto) {
+	public void insert(DTO dto) {
 		ss.insert("insertImg", dto);
 		
 	}
 
 	@Override
-	public void update(ImgDTO dto) {
+	public void update(DTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -33,13 +33,13 @@ public class ImgDAOImpl implements ImgDAO {
 	}
 
 	@Override
-	public ImgDTO getData(int b_no) {
+	public DTO getData(int b_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ImgDTO> getList() {
+	public List<DTO> getList() {
 		return ss.selectList("selectAllImg");
 	}
 	

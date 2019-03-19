@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import sol.desk.wjjst.dto.PwDTO;
-import sol.desk.wjjst.dto.UserDTO;
+import sol.desk.wjjst.dto.DTO;
 
-public class PwDAOImpl implements PwDAO {
+public class PwDAOImpl implements DAO {
 
 SqlSession ss;
 	
@@ -16,13 +15,13 @@ SqlSession ss;
 	}
 	
 	@Override
-	public void insert(PwDTO dto) {
+	public void insert(DTO dto) {
 		ss.insert("insertPw", dto);
 		
 	}
 
 	@Override
-	public void update(PwDTO dto) {
+	public void update(DTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -34,13 +33,13 @@ SqlSession ss;
 	}
 
 	@Override
-	public PwDTO getData(int user_no) {
+	public DTO getData(int user_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public List<PwDTO> getList() {
+	public List<DTO> getList() {
 		return ss.selectList("selectAllPw");
 	}
 	

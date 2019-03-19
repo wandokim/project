@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import sol.desk.wjjst.dto.ComDTO;
-import sol.desk.wjjst.dto.UserDTO;
+import sol.desk.wjjst.dto.DTO;
 
-public class ComDAOImpl implements ComDAO {
+public class ComDAOImpl implements DAO {
 
 	SqlSession ss;
 	
@@ -16,13 +15,13 @@ public class ComDAOImpl implements ComDAO {
 	}
 	
 	@Override
-	public void insert(ComDTO dto) {
+	public void insert(DTO dto) {
 		ss.insert("insertCom", dto);
 		
 	}
 
 	@Override
-	public void update(ComDTO dto) {
+	public void update(DTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -34,13 +33,13 @@ public class ComDAOImpl implements ComDAO {
 	}
 
 	@Override
-	public ComDTO getData(int com_no) {
+	public DTO getData(int com_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<ComDTO> getList() {
+	public List<DTO> getList() {
 		return ss.selectList("selectAllCom");
 	}
 

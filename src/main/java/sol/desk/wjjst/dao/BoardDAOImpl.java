@@ -6,10 +6,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import sol.desk.wjjst.dto.BoardDTO;
+import sol.desk.wjjst.dto.DTO;
 import sol.desk.wjjst.dto.UserDTO;
 
 @Repository
-public class BoardDAOImpl implements BoardDAO {
+public class BoardDAOImpl implements DAO {
 
 	SqlSession ss;
 	
@@ -18,13 +19,13 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 	
 	@Override
-	public void insert(BoardDTO dto) {
+	public void insert(DTO dto) {
 		ss.insert("insertBoard", dto);
 		
 	}
 
 	@Override
-	public void update(BoardDTO dto) {
+	public void update(DTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -42,7 +43,7 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 	@Override
-	public List<BoardDTO> getList() {
+	public List<DTO> getList() {
 		return ss.selectList("selectAllBoard");
 	}
 	

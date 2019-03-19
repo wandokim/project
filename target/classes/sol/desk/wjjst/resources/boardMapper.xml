@@ -4,20 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper>
-	<select id="selectAllBoard" resultType="dto">
+	<select id="selectAllBoard" resultType="BoardDto">
   		select * from board
   	</select>
   	
-  	<select id="selectOneBoard" parameterType="String" resultType="dto">
+  	<select id="selectOneBoard" parameterType="String" resultType="BoardDto">
   		select * from board where writer = #{writer}
   	</select>
 
-	<insert id="insertBoard" parameterType="dto">
+	<insert id="insertBoard" parameterType="BoardDto">
 		insert into board 
-		values(#{b_no},#{user_no},#{title},#{write_date},#{writer},#{contents},#{like},#{hits})
+		values(#{b_no},#{user_no},#{title},sysdate,#{writer},#{contents},#{like},#{hits})
 	</insert>
 	
-	<update id="updateBoard" parameterType="dto">
+	<update id="updateBoard" parameterType="BoardDto">
   		update user_info set
   		nicname = #{nicname}, email = #{email}
   		where id = #{id}

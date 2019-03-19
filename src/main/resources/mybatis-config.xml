@@ -4,10 +4,30 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
   <configuration>
   	<typeAliases>		<!-- 자바 파일을 찾아갈 때 -->
-  		<typeAlias type="sol.desk.wjjst.dto.UserDto" alias="dto"/>
+  		<!-- UserDto -->
+  		<typeAlias type="sol.desk.wjjst.dto.UserDTO" alias="UserDto"/>
+  		
+  		<!-- BoardDto -->
+  		<typeAlias type="sol.desk.wjjst.dto.BoardDTO" alias="BoardDto"/>
+  		
+  		<!-- ComDto -->
+  		<typeAlias type="sol.desk.wjjst.dto.ComDTO" alias="ComDto"/>
+  		
+  		<!-- FriDto -->
+  		<typeAlias type="sol.desk.wjjst.dto.FriDTO" alias="FriDto"/>
+  		
+  		<!-- ImgDto -->
+  		<typeAlias type="sol.desk.wjjst.dto.ImgDTO" alias="ImgDto"/>
+  		
+  		<!-- MsgDto -->
+  		<typeAlias type="sol.desk.wjjst.dto.MsgDTO" alias="MsgDto"/>
+  		
+  		<!-- PwDto -->
+  		<typeAlias type="sol.desk.wjjst.dto.PwDTO" alias="PwDto"/>
+  		
   	</typeAliases>
   	
   	<mappers>			<!-- 자바 파일이 아닌 파일을 찾아갈 때 -->
-  		<mapper resource="sol/desk/wjjst/resources/testMapper.xml"/>  	
+  		<mapper resource="sol/desk/wjjst/resources/boardMapper.xml"/>  	
   	</mappers>
   </configuration>

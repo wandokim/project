@@ -189,13 +189,7 @@
       <!-- End of Main Content -->
 
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; <span style="font-weight: bold;">SOL.GG 2019</span>. Search Your Champion.</span>
-          </div>
-        </div>
-      </footer>
+		<jsp:include page="footer.jsp" flush="true"/>
       <!-- End of Footer -->
 
     </div>

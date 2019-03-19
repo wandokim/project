@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import sol.desk.wjjst.dto.FriDTO;
+import sol.desk.wjjst.dto.DTO;
 
-public class FriDAOImpl implements FriDAO {
+public class FriDAOImpl implements DAO {
 	SqlSession ss;
 	
 	public void setSs(SqlSession ss) {
@@ -14,13 +14,13 @@ public class FriDAOImpl implements FriDAO {
 	}
 
 	@Override
-	public void insert(FriDTO dto) {
+	public void insert(DTO dto) {
 		ss.insert("insertFri", dto);
 		
 	}
 
 	@Override
-	public void update(FriDTO dto) {
+	public void update(DTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -32,13 +32,13 @@ public class FriDAOImpl implements FriDAO {
 	}
 
 	@Override
-	public FriDTO getData(int f_no) {
+	public DTO getData(int f_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<FriDTO> getList() {
+	public List<DTO> getList() {
 		return ss.selectList("selectAllFri");
 	}
 	

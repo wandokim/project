@@ -1,6 +1,6 @@
 package sol.desk.wjjst.dto;
 
-public class ImgDTO {
+public class ImgDTO implements DTO{
 	private int b_no;
 	private String image;
 	

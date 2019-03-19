@@ -3,12 +3,10 @@ package sol.desk.wjjst.dao;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
-import org.springframework.stereotype.Repository;
 
-import sol.desk.wjjst.dto.UserDTO;
+import sol.desk.wjjst.dto.DTO;
 
-@Repository
-public class UserDaoImpl implements UserDAO {
+public class UserDaoImpl implements DAO {
 
 	SqlSession ss;
 	
@@ -17,13 +15,13 @@ public class UserDaoImpl implements UserDAO {
 	}
 	
 	@Override
-	public void insert(UserDTO dto) {
+	public void insert(DTO dto) {
 		ss.insert("insertUser", dto);
 		
 	}
 
 	@Override
-	public void update(UserDTO dto) {
+	public void update(DTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -35,13 +33,13 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public UserDTO getData(int user_no) {
+	public DTO getData(int user_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
 	@Override
-	public List<UserDTO> getList() {
+	public List<DTO> getList() {
 		return ss.selectList("selectAllUser");
 	}
 	

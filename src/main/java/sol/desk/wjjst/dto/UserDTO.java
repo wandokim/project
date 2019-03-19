@@ -1,6 +1,6 @@
 package sol.desk.wjjst.dto;
 
-public class UserDTO {
+public class UserDTO implements DTO{
 	private int user_no;
 	private String nicname;
 	private String id;

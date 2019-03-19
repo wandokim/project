@@ -58,6 +58,8 @@
   <!-- Topbar -->
         <jsp:include page="main_topbar.jsp" flush="true"/>
         <!-- End of Topbar -->
+        <!-- Test -->
+<form action="register" method="post">
   <div class="container">
   
 
@@ -69,7 +71,6 @@
         	Random rnd = new Random();
         	int num = rnd.nextInt(10)+1;
         %>
-        
           <div class="col-lg-7 d-none d-lg-block">
           	<img src="./img/reg_background/full<%=num %>.jpg" alt="reg_backgound_img" />
           </div>
@@ -82,34 +83,26 @@
 	              <form class="user">
 	                <div class="form-group row">
 	                  <div class="col-sm-6 mb-3 mb-sm-0">
-	                    <input type="text" class="form-control form-control-user" id="exampleFirstName" placeholder="닉네임">
+	                    <input type="text" class="form-control form-control-user" name="nicname" placeholder="닉네임">
 	                  </div>
 	                  <div class="col-sm-6">
-	                    <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="아이디">
+	                    <input type="text" class="form-control form-control-user" name="id" placeholder="아이디">
 	                  </div>
 	                </div>
 	                <div class="form-group">
-	                  <input type="email" class="form-control form-control-user" id="exampleInputEmail" placeholder="이메일">
+	                  <input type="email" class="form-control form-control-user" name="email" placeholder="이메일">
 	                </div>
 	                <div class="form-group row">
 	                  <div class="col-sm-6 mb-3 mb-sm-0">
-	                    <input type="password" class="form-control form-control-user" name="pwd" id="exampleInputPassword" placeholder="Password">
+	                    <input type="password" class="form-control form-control-user" name="pwd" placeholder="Password">
 	                  </div>
 	                  <div class="col-sm-6">
-	                    <input type="password" class="form-control form-control-user" name="pwd_check" id="exampleRepeatPassword" placeholder="Repeat Password" onkeyup="checkPwd()">
+	                    <input type="password" class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()">
 	                    <div id="checkPwd"></div>
 	                  </div>
 	                </div>
-	                <a href="login.html" class="btn btn-primary btn-user btn-block">
-	                  Register Account
-	                </a>
+	                <input type="submit" href="registeOk" class="btn btn-primary btn-user btn-block" value="Register Account">
 	                <hr>
-	                <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
-	                  <i class="fab fa-google fa-fw"></i> Register with Google
-	                </a>
-	                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-	                  <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-	                </a> -->
 	              </form>
 	              
 	              <div class="text-center">
@@ -126,7 +119,7 @@
     </div>
 
   </div>
-
+</form>
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

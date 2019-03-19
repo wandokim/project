@@ -1,6 +1,6 @@
 package sol.desk.wjjst.dto;
 
-public class FriDTO {
+public class FriDTO implements DTO{
 	private int f_no;
 	private int user_no;
 	private int friend_no;

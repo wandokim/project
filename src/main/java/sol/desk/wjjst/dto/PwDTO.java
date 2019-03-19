@@ -1,6 +1,6 @@
 package sol.desk.wjjst.dto;
 
-public class PwDTO {
+public class PwDTO implements DTO{
 	private int user_no;
 	private String password;
 	

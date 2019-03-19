@@ -1,6 +1,6 @@
 package sol.desk.wjjst.dto;
 
-public class BoardDTO {
+public class BoardDTO implements DTO{
 	private int b_no;
 	private int user_no;
 	private String title;

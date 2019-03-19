@@ -4,12 +4,19 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import sol.desk.wjjst.dao.DAO;
+import sol.desk.wjjst.dao.UserDaoImpl;
+import sol.desk.wjjst.dto.UserDTO;
 
 /**
  * Handles requests for the application home page.
@@ -18,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	@Inject
+	UserDaoImpl userDao;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -46,11 +56,11 @@ public class HomeController {
 		return "login";
 	}
 	
-	@RequestMapping(value="register")
+/*	@RequestMapping(value="register")
 	public String register() {
 		return "register";
 	}
-	
+	*/
 	@RequestMapping(value="dashboard")
 	public String dash() {
 		return "dashboard";
@@ -83,4 +93,22 @@ public class HomeController {
 	public String RankINFO() {
 		return "RankINFO";
 	}
+	
+	@RequestMapping(value="registeOk")
+	public String registeOk(@ModelAttribute UserDTO dto) {
+		userDao.insert(dto);
+		return "registeOk";
+	}
+	
+	@RequestMapping(value="register", method=RequestMethod.POST)
+	public String register(UserDTO dto, Model model) {
+		System.out.println("post방식임");
+		
+		userDao.insert(dto);
+		model.addAttribute("result", "성공");
+		
+		return "succes";
+	}
+	
+	
 }

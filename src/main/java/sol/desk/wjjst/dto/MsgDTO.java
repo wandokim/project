@@ -1,6 +1,6 @@
 package sol.desk.wjjst.dto;
 
-public class MsgDTO {
+public class MsgDTO implements DTO{
 	private int m_no;
 	private int user_no;
 	private int rec_no;
