@@ -78,4 +78,9 @@ public class HomeController {
 	public String test() {
 		return "dashboardTestFile";
 	}
+	
+	@RequestMapping(value="RankINFO")
+	public String RankINFO() {
+		return "RankINFO";
+	}
 }
