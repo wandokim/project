@@ -7,12 +7,11 @@ public class UserDTO implements DTO{
 	private String email;
 	private String join_date;
 	private int rout;
-	
+	private int grade;
 	
 	public UserDTO() {}
 	
-	
-	public UserDTO(int user_no, String nicname, String id, String email, String join_date, int rout) {
+	public UserDTO(int user_no, String nicname, String id, String email, String join_date, int rout, int grade) {
 		super();
 		this.user_no = user_no;
 		this.nicname = nicname;
@@ -20,7 +19,18 @@ public class UserDTO implements DTO{
 		this.email = email;
 		this.join_date = join_date;
 		this.rout = rout;
+		this.grade = grade;
 	}
+	
+	public UserDTO(String nicname, String id, String email, int rout, int grade) {
+		super();
+		this.nicname = nicname;
+		this.id = id;
+		this.email = email;
+		this.rout = rout;
+		this.grade = grade;
+	}
+
 	public int getUser_no() {
 		return user_no;
 	}
@@ -57,6 +67,11 @@ public class UserDTO implements DTO{
 	public void setRout(int rout) {
 		this.rout = rout;
 	}
-	
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
 	
 }

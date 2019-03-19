@@ -4,20 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace=" ">
-  	<select id="selectAllUser" resultType="dto">
+  	<select id="selectAllUser" resultType="UserDto">
   		select * from user_info
   	</select>
   	
-  	<select id="selectOneUser" parameterType="String" resultType="dto">
+  	<select id="selectOneUser" parameterType="String" resultType="UserDto">
   		select * from user_info where id = #{id}
   	</select>
   	
-  	<insert id="insertUser" parameterType="dto">
-  		insert into user_info
-  		values(#{user_no},#{nicname},#{id},#{email},#{join_date},#{rout})
+  	<insert id="insertUser" parameterType="UserDto" >
+  		insert into user_info(nicname,id,email,join_date,rout,grade)
+  		values(#{nicname},#{id},#{email},now(),#{rout},#{grade})
   	</insert>
   	
-  	<update id="updateUser" parameterType="dto">
+  	<update id="updateUser" parameterType="UserDto">
   		update user_info set
   		nicname = #{nicname}, email = #{email}
   		where id = #{id}

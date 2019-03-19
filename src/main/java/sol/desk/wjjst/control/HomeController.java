@@ -1,18 +1,14 @@
 package sol.desk.wjjst.control;
 
-import java.text.DateFormat;
-import java.util.Date;
 import java.util.Locale;
-
-import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import sol.desk.wjjst.dao.DAO;
 import sol.desk.wjjst.dao.UserDaoImpl;
@@ -25,10 +21,7 @@ import sol.desk.wjjst.dto.UserDTO;
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
+	
 	@RequestMapping(value = "/")
 	public String home(Locale locale, Model model) {
 		/*
@@ -55,10 +48,11 @@ public class HomeController {
 		return "login";
 	}
 
-	/*
-	 * @RequestMapping(value="register") public String register() { return
-	 * "register"; }
-	 */
+	@RequestMapping(value="register")
+	public String register() {
+		return "register";
+	}
+	 
 	@RequestMapping(value = "dashboard")
 	public String dash() {
 		return "dashboard";
@@ -93,19 +87,14 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "registeOk")
-	public String registeOk(@ModelAttribute UserDTO dto) {
-		//userDao.insert(dto);
-		return "registeOk";
-	}
-
-	@RequestMapping(value = "register", method = RequestMethod.POST)
-	public String register(UserDTO dto, Model model) {
-		System.out.println("post방식임");
-
-		//userDao.insert(dto);
-		model.addAttribute("result", "성공");
-
-		return "succes";
+	public String registeOk(@RequestParam("id") String id, @RequestParam("nicname") String nicname,
+			@RequestParam("pwd") String pwd,@RequestParam("email") String email) {
+		
+		UserDaoImpl dao = new UserDaoImpl();
+		UserDTO userDto = new UserDTO(nicname, id, email, 1, 2);
+		
+		dao.insert(userDto);
+		return "main";
 	}
 
 }

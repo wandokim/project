@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 <title>register.jsp</title>
 
 <!-- Custom fonts for this template-->
@@ -48,6 +48,7 @@
   	
   		}
   	}
+
   
 </script>
   
@@ -59,8 +60,6 @@
 	<jsp:include page="main_topbar.jsp" flush="true"/>
 	<!-- End of Topbar -->
 	
-        <!-- Test -->
-<form action="register" method="post">
   <div class="container">
   
 
@@ -81,7 +80,7 @@
 	              <div class="text-center">
 	                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
 	              </div>
-	              <form class="user">
+	              <form class="user" name="frm" action="registeOk">
 	                <div class="form-group row">
 	                  <div class="col-sm-6 mb-3 mb-sm-0">
 	                    <input type="text" class="form-control form-control-user" name="nicname" placeholder="닉네임">
@@ -120,7 +119,7 @@
     </div>
 
   </div>
-</form>
+
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

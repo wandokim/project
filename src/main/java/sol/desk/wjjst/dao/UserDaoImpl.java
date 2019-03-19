@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import sol.desk.wjjst.dto.DTO;
+import sol.desk.wjjst.dto.UserDTO;
 
-public class UserDaoImpl implements DAO {
+public class UserDaoImpl {
 
 	SqlSession ss;
 	
@@ -14,32 +14,31 @@ public class UserDaoImpl implements DAO {
 		this.ss = ss;
 	}
 	
-	@Override
-	public void insert(DTO dto) {
+
+	public void insert(UserDTO dto) {
 		ss.insert("insertUser", dto);
-		
 	}
 
-	@Override
-	public void update(DTO dto) {
+
+	public void update(UserDTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
+
 	public void delete(int user_no) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public DTO getData(int user_no) {
+
+	public UserDTO getData(int user_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	@Override
-	public List<DTO> getList() {
+
+	public List<UserDTO> getList() {
 		return ss.selectList("selectAllUser");
 	}
 	
