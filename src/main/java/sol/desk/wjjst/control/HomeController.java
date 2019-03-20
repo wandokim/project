@@ -76,25 +76,9 @@ public class HomeController {
 		return "logoutOk";
 	}
 
-	@RequestMapping(value = "test")
-	public String test() {
-		return "dashboardTestFile";
-	}
-
 	@RequestMapping(value = "RankINFO")
 	public String RankINFO() {
 		return "RankINFO";
-	}
-
-	@RequestMapping(value = "registeOk")
-	public String registeOk(@RequestParam("id") String id, @RequestParam("nicname") String nicname,
-			@RequestParam("pwd") String pwd,@RequestParam("email") String email) {
-		
-		UserDaoImpl dao = new UserDaoImpl();
-		UserDTO userDto = new UserDTO(nicname, id, email, 1, 2);
-		
-		dao.insert(userDto);
-		return "main";
 	}
 
 	@RequestMapping(value = "Profile")
