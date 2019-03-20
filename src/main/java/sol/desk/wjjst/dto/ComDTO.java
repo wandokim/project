@@ -1,6 +1,6 @@
 package sol.desk.wjjst.dto;
 
-public class ComDTO implements DTO{
+public class ComDTO{
 	private int com_no;
 	private int b_no;
 	private String contents;

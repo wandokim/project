@@ -101,7 +101,7 @@
 	                    <div id="checkPwd"></div>
 	                  </div>
 	                </div>
-	                <input type="submit" href="registeOk" class="btn btn-primary btn-user btn-block" value="Register Account">
+	                <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
 	                <hr>
 	              </form>
 	              

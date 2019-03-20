@@ -4,41 +4,37 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
-import sol.desk.wjjst.dto.DTO;
+import sol.desk.wjjst.dto.MsgDTO;
 
-public class MsgDAOImpl implements DAO {
+
+public class MsgDAOImpl {
 	SqlSession ss;
 	
 	public void setSs(SqlSession ss) {
 		this.ss = ss;
 	}
 
-	@Override
-	public void insert(DTO dto) {
+	public void insert(MsgDTO dto) {
 		ss.insert("insertMsg", dto);
 		
 	}
 
-	@Override
-	public void update(DTO dto) {
+	public void update(MsgDTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void delete(int m_no) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
-	public DTO getData(int m_no) {
+	public MsgDTO getData(int m_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<DTO> getList() {
+	public List<MsgDTO> getList() {
 		return ss.selectList("selectAllMsg");
 	}
 	

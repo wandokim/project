@@ -13,8 +13,8 @@
   	</select>
   	
   	<insert id="insertUser" parameterType="UserDto" >
-  		insert into user_info(nicname,id,email,join_date,rout,grade)
-  		values(#{nicname},#{id},#{email},now(),#{rout},#{grade})
+  		insert into user_info
+  		values(0,#{nicname},#{id},#{email},now(),#{rout},#{grade})
   	</insert>
   	
   	<update id="updateUser" parameterType="UserDto">

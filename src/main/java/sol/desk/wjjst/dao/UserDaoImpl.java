@@ -9,8 +9,8 @@ import org.springframework.stereotype.Repository;
 import sol.desk.wjjst.dto.UserDTO;
 
 @Repository
-public class UserDaoImpl {
-
+public class UserDaoImpl implements UserDAO{
+	
 	@Autowired
 	SqlSession ss;
 	
@@ -43,6 +43,7 @@ public class UserDaoImpl {
 	
 
 	public List<UserDTO> getList() {
+		
 		return ss.selectList("selectAllUser");
 	}
 	

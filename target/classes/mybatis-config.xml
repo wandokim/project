@@ -24,7 +24,5 @@
   		
   		<!-- PwDto -->
   		<typeAlias type="sol.desk.wjjst.dto.PwDTO" alias="PwDto"/>
-  		
   	</typeAliases>
-  	
   </configuration>
