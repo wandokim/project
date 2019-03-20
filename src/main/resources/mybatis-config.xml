@@ -27,7 +27,4 @@
   		
   	</typeAliases>
   	
-  	<mappers>			<!-- 자바 파일이 아닌 파일을 찾아갈 때 -->
-  		<mapper resource="sol/desk/wjjst/resources/userMapper.xml"/>  	
-  	</mappers>
   </configuration>
