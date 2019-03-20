@@ -4,8 +4,6 @@ import java.util.List;
 
 import sol.desk.wjjst.dto.BoardDTO;
 
-
-
 public interface BoardDAO {
 	public void insert(BoardDTO dto);
 	public void update(BoardDTO dto);

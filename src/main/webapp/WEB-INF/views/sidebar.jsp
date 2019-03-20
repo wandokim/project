@@ -7,7 +7,7 @@
   <!-- Sidebar - Brand -->
   <a class="sidebar-brand d-flex align-items-center justify-content-center" href="main">
     <div class="sidebar-brand-icon">
-   	 <img src="./img/sol_log.png" alt="sol.gg로고" style="height: 50px;" id="sol_img"/>
+   	 <img src="./img/sol_logo.png" alt="sol.gg로고" style="height: 50px;" id="sol_img"/>
     </div>
     <div class="sidebar-brand-text mx-3">SOL</div>
   </a>

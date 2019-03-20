@@ -30,6 +30,9 @@
   
 </style>
   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- password 일치여부 보여주기 -->
 <script type="text/javascript">
   	var checkFirst = false;
   	var lastKeyword = '';
@@ -45,13 +48,55 @@
   		}else{
   		document.getElementById('checkPwd').style.color = "black";
   		document.getElementById('checkPwd').innerHTML = "암호가 확인 되었습니다.";
-  	
   		}
   	}
-
-  
 </script>
-  
+
+<!-- div 효과 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".row").hide();
+	    $(".row").slideDown("slow");
+	});
+</script>
+
+<!-- 유효성 검사 -->
+<script type="text/javascript">
+$(function(){
+	var f1 = document.forms[0];
+	var id = f1.id.value;
+	var nicname = f1.nicname.value;
+	var email = f1.email.value;
+	var pw1 = f1.pwd.value;
+ 	var pw2 = f1.pwd_check.value;
+
+	$("#register").click(function(){
+		if(id==null || id==""){
+			alert("ID를 입력해주세요");
+			f1.id.focus();
+		}else if(nicname==null || nicname==""){
+			alert("닉네임을 입력해주세요");
+			f1.nicname.focus();
+		}else if(email==null || email==""){
+			alert("이메일을 입력해주세요");
+			f1.email.focus();
+		}else if(pw1==null || pw1==""){
+			alert("비밀번호를 입력해주세요");
+			f1.pwd.focus();
+		}else if(pw2==null || pw2==""){
+			alert("비밀번호 확인을 입력해주세요");
+			f1.pwd_check.focus();
+		}else if(pw1 != pw2){
+			alert("비밀번호가 같지 않습니다\n다시 시도해주세요");
+			f1.pwd.focus();
+		}else{
+			document.frm.action = "registeOk";
+			document.frm.method = "post";
+			document.frm.submit();
+		}
+	});
+});
+</script>
 
 </head>
 <body>
@@ -83,10 +128,10 @@
 	              <form class="user" name="frm" action="registeOk">
 	                <div class="form-group row">
 	                  <div class="col-sm-6 mb-3 mb-sm-0">
-	                    <input type="text" class="form-control form-control-user" name="nicname" placeholder="닉네임">
+	                    <input type="text" class="form-control form-control-user" name="id" placeholder="아이디">
 	                  </div>
 	                  <div class="col-sm-6">
-	                    <input type="text" class="form-control form-control-user" name="id" placeholder="아이디">
+	                    <input type="text" class="form-control form-control-user" name="nicname" placeholder="닉네임">
 	                  </div>
 	                </div>
 	                <div class="form-group">
@@ -98,18 +143,18 @@
 	                  </div>
 	                  <div class="col-sm-6">
 	                    <input type="password" class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()">
-	                    <div id="checkPwd"></div>
+	                    <div id="checkPwd" style="padding: 10px 0 0 0"></div>
 	                  </div>
 	                </div>
-	                <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
+	                <input type="button" class="btn btn-primary btn-user btn-block" value="Register Account" id="register">
 	                <hr>
 	              </form>
 	              
 	              <div class="text-center">
-	                <a class="small" href="forgot-password.html">Forgot Password?</a>
+	                <a class="small" href="#">Forgot Password?</a>
 	              </div>
 	              <div class="text-center">
-	                <a class="small" href="login.html">Already have an account? Login!</a>
+	                <a class="small" href="login">Already have an account? Login!</a>
 	              </div>
 	            </div>
 	          </div>

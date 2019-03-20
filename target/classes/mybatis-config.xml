@@ -11,10 +11,10 @@
   		<typeAlias type="sol.desk.wjjst.dto.BoardDTO" alias="BoardDto"/>
   		
   		<!-- ComDto -->
-  		<typeAlias type="sol.desk.wjjst.dto.ComDTO" alias="ComDto"/>
+  		<typeAlias type="sol.desk.wjjst.dto.CommentsDTO" alias="ComDto"/>
   		
   		<!-- FriDto -->
-  		<typeAlias type="sol.desk.wjjst.dto.FriDTO" alias="FriDto"/>
+  		<typeAlias type="sol.desk.wjjst.dto.FriendDTO" alias="FriDto"/>
   		
   		<!-- ImgDto -->
   		<typeAlias type="sol.desk.wjjst.dto.ImgDTO" alias="ImgDto"/>
