@@ -24,6 +24,16 @@ public class BoardDTO{
 		this.like = like;
 		this.hits = hits;
 	}
+	
+	public BoardDTO(String title,String writer, String contents, int like,
+			int hits) {
+		super();
+		this.title = title;
+		this.writer = writer;
+		this.contents = contents;
+		this.like = like;
+		this.hits = hits;
+	}
 
 	public int getB_no() {
 		return b_no;

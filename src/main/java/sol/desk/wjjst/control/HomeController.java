@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import sol.desk.wjjst.dao.DAO;
 import sol.desk.wjjst.dao.UserDaoImpl;
 import sol.desk.wjjst.dto.UserDTO;
 

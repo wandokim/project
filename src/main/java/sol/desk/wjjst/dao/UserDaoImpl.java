@@ -25,7 +25,7 @@ public class UserDaoImpl implements UserDAO{
 
 
 	public void update(UserDTO dto) {
-		// TODO Auto-generated method stub
+		ss.update("updateUser", dto);
 		
 	}
 

@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace=" ">
+  <!-- user_info -->
   	<select id="selectAllUser" resultType="UserDto">
   		select * from user_info
   	</select>
@@ -28,4 +29,33 @@
   		delete from user_info where id = #{id}
   	</delete>
   	
+ <!-- board -->
+ 	<select id="selectAllBoard" resultType="BoardDto">
+  		select * from board
+  	</select>
+  	
+  	<select id="selectOneBoard" parameterType="String" resultType="BoardDto">
+  		select * from board where writer = #{writer}
+  	</select>
+  	
+  	<insert id="insertBoard" parameterType="BoardDto" >
+  		insert into board
+  		values(0,#{title},now(),#{writer},#{contents},#{like},#{hits})
+  	</insert>
+  	
+  	<update id="updateBoard" parameterType="BoardDto">
+  		update board set
+  		title = #{title}, contents = #{contents}
+  		where b_no = #{b_no}
+  	</update>
+  
+  	<delete id="deleteBoard" parameterType="int">
+  		delete from board where b_no = #{b_no}
+  	</delete>
+ 
+ 
+ 
+ 
   </mapper>
+  
+  
