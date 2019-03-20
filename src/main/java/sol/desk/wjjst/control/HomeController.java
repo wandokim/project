@@ -97,4 +97,8 @@ public class HomeController {
 		return "main";
 	}
 
+	@RequestMapping(value = "Profile")
+	public String Profile() {
+		return "Profile";
+	}
 }

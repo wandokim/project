@@ -77,8 +77,7 @@
 		String losses ="";
 		
 		ChallengerINFO c = new ChallengerINFO();
-		System.out.println(c.challengerinfo());
-		System.out.println("---------------");
+		System.out.println(c.challengerinfo());		
 		SplitStr str = new SplitStr();	
 		
 		List<String> result = new ArrayList<String>();
@@ -130,16 +129,21 @@
 		for(int i=0; i<wando.length; i++) {
 			System.out.println(wando[i]);
 		}
-		String[] f;
+		String[] f;		
 		for(int i=0; i<wando.length; i++) {
 			f = wando[i].split(",");
+			int total = (Integer.parseInt(f[2])+Integer.parseInt(f[3]))/(Integer.parseInt(f[2]))*100;			
+			
+			
 	%>
+	
+	
 			<tr>
                 <td><%=i+1 %></td>
                 <td><%=f[0] %></td>
                 <td>Challenger</td>
                 <td><%=Integer.parseInt(f[1])%></td>
-                <td><%=f[2] %>승 <%=f[3] %>패</td>
+                <td><%=f[2] %>승 <%=f[3] %>패 <%=total %>승률</td>
                 <td>챔피언 숙련도</td>
             </tr>
 	<%
@@ -202,7 +206,7 @@
   <script src="js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script> 	
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->

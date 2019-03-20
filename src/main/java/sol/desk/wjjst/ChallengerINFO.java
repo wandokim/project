@@ -6,8 +6,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ChallengerINFO {
 private final String User_AGENT = "Mozilla/5.0";
@@ -30,9 +32,14 @@ private final String User_AGENT = "Mozilla/5.0";
 	
 	public static void main(String[] args) throws Exception {
 		ChallengerINFO c = new ChallengerINFO();
-		System.out.println(c.challengerinfo());
-		System.out.println("---------------");
+		System.out.println(c.challengerinfo());		
 		SplitStr str = new SplitStr();	
+		
+		String tier ="CHALLENGER";
+		String leaguePoints = "";
+		String summonerName = "";
+		String wins ="";
+		String losses ="";
 		
 		List<String> result = new ArrayList<String>();
 		
@@ -40,10 +47,10 @@ private final String User_AGENT = "Mozilla/5.0";
 		
 		String[] cham = str.split(c.challengerinfo());
 		for(int i=0; i<300; i++){
-			String summonerName = cham[5+(10*i)];
-			String leaguePoints = cham[(5+(10*i))+1];
-			String wins = cham[(5+(10*i))+3];
-			String losses = cham[(5+(10*i))+4];					
+			summonerName = cham[5+(10*i)];
+			leaguePoints = cham[(5+(10*i))+1];
+			wins = cham[(5+(10*i))+3];
+			losses = cham[(5+(10*i))+4];					
 			 
 			result.add(summonerName); 
 			result.add(leaguePoints);
@@ -60,9 +67,7 @@ private final String User_AGENT = "Mozilla/5.0";
 		}
 				
 		String[] r_result1 = (String[]) kim.toArray(new String[kim.size()]);	
-		for(int i=0; i<100; i++) {
-			System.out.println(r_result1[i]);
-		}
+		
 		
 		
 		List list = new ArrayList();
@@ -77,16 +82,33 @@ private final String User_AGENT = "Mozilla/5.0";
 			list.add(x);
 		}
 
-		System.out.println(list);
-		String[] wando = (String[]) list.toArray(new String[list.size()]);
-		System.out.println("---------");
-		for(int i=0; i<wando.length; i++) {
-			System.out.println(wando[i]);
-		}
+		
+		String[] wando = (String[]) list.toArray(new String[list.size()]);		
+		
+		String[] f;		
+		String[] ff;
+		List f1 = new ArrayList();
 		
 		for(int i=0; i<wando.length; i++) {
-			String[] f = wando[i].split(",");			
+			f = wando[i].split(",");
+			int total = (Integer.parseInt(f[2])+Integer.parseInt(f[3]))/(Integer.parseInt(f[2]))*100;
+			f1.add(f[1]);			
+			//System.out.println(f[1]);	
+			
+		}		
+		
+		String[] kkk = (String[]) f1.toArray(new String[f1.size()]);		
+		int[] exampleNo = new int[kkk.length];		
+		for(int i = 0; i<wando.length; i++){
+		     exampleNo[i] = Integer.parseInt(kkk[i]);
 		}
+		
+		Arrays.sort(exampleNo);
+		
+		
+		
+		
+		
 		
 	}
 }
