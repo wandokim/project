@@ -30,7 +30,7 @@
       <div class="bg-white py-2 collapse-inner rounded">
         <h6 class="collapse-header">Summoner / Champions</h6>
         <a class="collapse-item" href="main">Home</a>
-        <a class="collapse-item" href="#">챔피언 분석</a>
+        <a class="collapse-item" href="lotation">챔피언 분석</a>
         <a class="collapse-item" href="RankINFO">랭킹 정보</a>
       </div>
     </div>

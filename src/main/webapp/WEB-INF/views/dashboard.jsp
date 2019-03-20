@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="sol.desk.wjjst.User_AllChampINFO"%>
 <%@page import="sol.desk.wjjst.SplitKey"%>
 <%@page import="java.util.HashMap"%>
@@ -36,11 +37,18 @@
 		String wins = "wins 값 없음";
 		String losses = "losses 값 없음";
 		String icon_id = "icon_id 값 없음";
-		String rank = "rank 값 없음";
+		String rank = "rank 값 없음";		
+		int total =0;
 		
-		String championId ="값없음";
-		String championLevel="값없음";
-		String championPoints="값없음";
+		String champ1_id="값없음";
+		String champ1_level="값없음";
+		String champ1_point="값없음";
+		String champ2_id="값없음";
+		String champ2_level="값없음";
+		String champ2_point="값없음";
+		String champ3_id="값없음";
+		String champ3_level="값없음";
+		String champ3_point="값없음";
 		
 		if(nic != "" || nic != null){
 			
@@ -63,6 +71,8 @@
 			// User_AllChampINFO
 			String user_allchampinfo = cinfo.user_allchampinfo(id);
 			
+			
+			
 			// 랭크전 기록 boolean
 			if(rank_lolApiJson=="" || rank_lolApiJson==null || rank_lolApiJson.equals("[]")){
 				tier = "UNRANKED";
@@ -81,15 +91,35 @@
 				leaguePoints = hm2.get("leaguePoints");
 				wins = hm2.get("wins");
 				losses = hm2.get("losses");
-				rank = hm2.get("rank");
+				rank = hm2.get("rank");			
+				total = (Integer.parseInt(wins)*100)/(Integer.parseInt(wins)+Integer.parseInt(losses));
 				
 				//User_AllChampINFO
-				String[] user_acinfo = str.split(user_allchampinfo);
-				HashMap<String,String> hm3 = b.key(user_acinfo);
+				String[] wan = str.split(user_allchampinfo);				
+				List list = new ArrayList();
+				list.add(wan[0]);
+				list.add(wan[1]);
+				list.add(wan[2]);
+				list.add(wan[9]);
+				list.add(wan[10]);
+				list.add(wan[11]);
+				list.add(wan[18]);
+				list.add(wan[19]);
+				list.add(wan[20]);
 				
-				championId = hm3.get("championId");
-				championLevel = hm3.get("championLevel");
-				championPoints = hm3.get("championPoints");
+				String[] result = (String[]) list.toArray(new String[list.size()]);		
+				
+				champ1_id = result[0].substring(result[0].indexOf(":")+1, result[0].length());
+				champ1_level = result[1].substring(result[1].indexOf(":")+1, result[1].length());
+				champ1_point = result[2].substring(result[2].indexOf(":")+1, result[2].length());
+				
+				champ2_id = result[3].substring(result[3].indexOf(":")+1, result[3].length());
+				champ2_level = result[4].substring(result[4].indexOf(":")+1, result[4].length());
+				champ2_point = result[5].substring(result[5].indexOf(":")+1, result[5].length());
+				
+				champ3_id = result[6].substring(result[6].indexOf(":")+1, result[6].length());
+				champ3_level = result[7].substring(result[7].indexOf(":")+1, result[7].length());
+				champ3_point = result[8].substring(result[8].indexOf(":")+1, result[8].length());				
 			}
 		}else{
 			
@@ -101,25 +131,6 @@
 	<%
 		}
 	%>
-
-<script type="text/javascript">
-	console.log("닉네임 = <%=nic %>");
-	console.log("아이콘 아이디 = <%=icon_id %>");
-	console.log("id = <%=id %>");
-	console.log("레벨 = <%=level %>");
-	console.log("티어 = <%=tier %>");
-	console.log("리그포인트 = <%=leaguePoints %>");
-	console.log("승 = <%=wins %>");
-	console.log("패 = <%=losses %>");
-	console.log("rank = <%=rank %>");
-	
-	console.log("-----------");
-	console.log("챔피언 = <%=championId %>");
-	console.log("챔피언 레벨 = <%=championLevel %>");
-	console.log("챔피언포인트 = <%=championPoints %>");
-	console.log("./img/emblems/<%=tier %>.png");
-</script>
-
 </head>
 <body id="page-top">
 
@@ -161,15 +172,7 @@
         </div>
         <br />
         <div class="row"> 	
-          	<div id="info2">
-          		<%
-          			int win = Integer.parseInt(wins);
-          			int lose = Integer.parseInt(losses);
-          			int t1 = win*100;
-          			int t2 = win+lose;
-          			long total = t1/t2;
-          			
-          		%>
+          	<div id="info2">          	
           		<img src="./img/emblems1/<%=tier %>.png" alt="error" width="100" height="100"/>
           	</div>
           	<div id="info2">
@@ -181,6 +184,20 @@
           		<span>승률 : <%=total %>% </span>
           	</div>
          </div> 
+         
+         <div>
+         	<img src="./img/champion_number/<%=champ1_id %>.png" alt="" />
+         	<span>숙련도 레벨 : <%=champ1_level %></span>
+         	<span>숙련도 레벨 포인트 : <%=champ1_point %></span>
+         	<img src="./img/champion_number/<%=champ2_id %>.png" alt="" />
+         	<span>숙련도 레벨 : <%=champ2_level %></span>
+         	<span>숙련도 레벨 포인트 : <%=champ2_point %></span>
+         	<img src="./img/champion_number/<%=champ3_id %>.png" alt="" />
+         	<span>숙련도 레벨 : <%=champ3_level %></span>
+         	<span>숙련도 레벨 포인트 : <%=champ3_point %></span>
+         </div>
+         
+         
          
         </div>
         <!-- /.container-fluid -->

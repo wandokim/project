@@ -1,3 +1,4 @@
+<%@page import="sol.desk.wjjst.MasterInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.Arrays"%>
@@ -76,15 +77,15 @@
 		String wins ="";
 		String losses ="";
 		
-		ChallengerINFO c = new ChallengerINFO();
-		System.out.println(c.challengerinfo());		
+		MasterInfo c = new MasterInfo();
+		System.out.println(c.masterinfo());		
 		SplitStr str = new SplitStr();	
 		
 		List<String> result = new ArrayList<String>();
 		
 		
 		
-		String[] cham = str.split(c.challengerinfo());
+		String[] cham = str.split(c.masterinfo());
 		for(int i=0; i<300; i++){
 			summonerName = cham[5+(10*i)];
 			leaguePoints = cham[(5+(10*i))+1];
@@ -132,16 +133,16 @@
 		String[] f;		
 		for(int i=0; i<wando.length; i++) {
 			f = wando[i].split(",");
-			int total = (Integer.parseInt(f[2])+Integer.parseInt(f[3]))/(Integer.parseInt(f[2]))*100;			
+			int total = (Integer.parseInt(f[2]))*100/(Integer.parseInt(f[2])+Integer.parseInt(f[3]));			
 			
 			
 	%>
 	
 	
 			<tr>
-                <td><%=i+1 %></td>
+                <td>LP가 높으면 순위가 높습니다.</td>
                 <td><%=f[0] %></td>
-                <td>Challenger</td>
+                <td>Master</td>
                 <td><%=Integer.parseInt(f[1])%></td>
                 <td><%=f[2] %>승 <%=f[3] %>패 <%=total %>승률</td>
                 <td>챔피언 숙련도</td>

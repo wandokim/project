@@ -28,5 +28,12 @@ private final String User_AGENT = "Mozilla/5.0";
 	public static void main(String[] args) throws IOException {
 		LotationChamp l = new LotationChamp();
 		System.out.println(l.lotationchamp());
+		
+		SplitStr s = new SplitStr();
+		
+		String[] wan = s.split(l.lotationchamp());
+		for(int i=0; i<wan.length;i++) {
+			System.out.println(wan[i]);
+		}
 	}
 }

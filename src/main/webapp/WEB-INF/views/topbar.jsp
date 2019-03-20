@@ -150,5 +150,7 @@
 
 	<!-- Logout Modal-->
 	<jsp:include page="logout_model.jsp" flush="true"/>
+	<!-- search js -->
+  <script src="js/search.js"></script>
 
 </nav>
