@@ -62,6 +62,20 @@ public class UserController {
 		//return "pwOk?user_no="+user_no+"&pwd="+pwd;
 		
 	}
+	@RequestMapping(value = "ModifyOk")
+	public String ModifyOk(@RequestParam("nicname") String nicname,@RequestParam("pwd") String pwd,@RequestParam("email") String email) {
+		UserDTO userDto = new UserDTO(nicname, pwd, email, 1, 2);
+		dao.update(userDto);
+		
+		int user_no = dao.userNo(nicname);
+		
+		
+		PwDTO pwdto = new PwDTO(user_no, pwd);
+		/*수정 더 해야함*/
+		
+		
+		return "Profile";
+	}
 	
 	
 }

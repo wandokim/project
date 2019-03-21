@@ -89,4 +89,8 @@ public class HomeController {
 	public String lotation() {
 		return "lotationChamp";
 	}
+	@RequestMapping(value = "Modify")
+	public String Modify() {
+		return "Modify";
+	}
 }
