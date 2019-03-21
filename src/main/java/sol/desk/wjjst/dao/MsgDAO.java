@@ -2,8 +2,11 @@ package sol.desk.wjjst.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import sol.desk.wjjst.dto.MsgDTO;
 
+@Component
 public interface MsgDAO {
 	public void insert(MsgDTO dto);
 	public void update(MsgDTO dto);

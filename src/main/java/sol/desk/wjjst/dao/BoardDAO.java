@@ -2,8 +2,11 @@ package sol.desk.wjjst.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import sol.desk.wjjst.dto.BoardDTO;
 
+@Component
 public interface BoardDAO {
 	public void insert(BoardDTO dto);
 	public void update(BoardDTO dto);

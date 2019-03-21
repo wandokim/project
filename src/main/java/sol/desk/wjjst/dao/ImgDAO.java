@@ -2,8 +2,11 @@ package sol.desk.wjjst.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
 import sol.desk.wjjst.dto.ImgDTO;
-import sol.desk.wjjst.dto.UserDTO;
+
+@Component
 public interface ImgDAO {
 	public void insert(ImgDTO dto);
 	public void update(ImgDTO dto);

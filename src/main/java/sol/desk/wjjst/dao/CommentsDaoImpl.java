@@ -18,26 +18,31 @@ public class CommentsDaoImpl implements CommentsDAO {
 		this.ss = ss;
 	}
 	
+	@Override
 	public void insert(CommentsDTO dto) {
 		ss.insert("insertCom", dto);
 		
 	}
 
+	@Override
 	public void update(CommentsDTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public void delete(int com_no) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public CommentsDTO getData(int com_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public List<CommentsDTO> getList() {
 		return ss.selectList("selectAllCom");
 	}

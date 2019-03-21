@@ -18,26 +18,31 @@ public class FriendDaoImpl implements FriendDAO{
 		this.ss = ss;
 	}
 
+	@Override
 	public void insert(FriendDTO dto) {
 		ss.insert("insertFri", dto);
 		
 	}
 
+	@Override
 	public void update(FriendDTO dto) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public void delete(int f_no) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	@Override
 	public FriendDTO getData(int f_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	@Override
 	public List<FriendDTO> getList() {
 		return ss.selectList("selectAllFri");
 	}

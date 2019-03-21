@@ -18,32 +18,31 @@ public class UserDaoImpl implements UserDAO{
 		this.ss = ss;
 	}
 	
-
+	@Override
 	public void insert(UserDTO dto) {
 		ss.insert("insertUser", dto);
 	}
 
-
+	@Override
 	public void update(UserDTO dto) {
 		ss.update("updateUser", dto);
 		
 	}
 
-
+	@Override
 	public void delete(int user_no) {
 		// TODO Auto-generated method stub
 		
 	}
 
-
+	@Override
 	public UserDTO getData(int user_no) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-
+	@Override
 	public List<UserDTO> getList() {
-		
 		return ss.selectList("selectAllUser");
 	}
 	

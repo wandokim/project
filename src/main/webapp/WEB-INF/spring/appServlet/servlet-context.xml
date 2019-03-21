@@ -11,6 +11,11 @@
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
+	
+	<!-- Autowired 연결 빈 -->
+	<beans:bean id="boardController" class="sol.desk.wjjst.control.BoardController">
+		<beans:qualifier value="boardController"/>
+	</beans:bean>
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
