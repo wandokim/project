@@ -9,15 +9,6 @@ function searching(){
 	}	
 }
 
-// 엔터키 활용 검색창(id=search_nic)
-$(document).ready(function(){
-	$("#search_nic").keypress(function (e) {
-		if (e.which == 13){
-			searching();  // 실행할 이벤트
-		}
-	});
-});
-
 // logo 클릭 시 main 이동 (id=sol_img)
 $("#sol_img").click(function(){
 	location.href = "main";

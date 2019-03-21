@@ -158,10 +158,11 @@
             <h1 class="h3 mb-0 text-gray-800">소환사 정보</h1>
           </div>
 
-          <!-- Content Row -->
-        <div class="row">
-          	<div id="card-body">
-          		<span><img src="./img/profileicon/<%=icon_id %>.png" style="background-image: url(./img/profileicon/0.png)" width="100" height="100"/></span>
+          
+          <!-- DIV1 -->
+        <div class="row" style="background-color: black;">
+          	<div id="card-body" style="margin: auto;">
+          		<img src="./img/profileicon/<%=icon_id %>.png" style="background-image: url(./img/profileicon/0.png)" width="100" height="100"/>
           		<div id="level_font">레벨<%=level %></div>
           	</div>
          
@@ -170,33 +171,67 @@
           		<input type="button" value="전적 갱신" />
           	</div>
         </div>
-        <br />
-        <div class="row"> 	
-          	<div id="info2">          	
-          		<img src="./img/emblems1/<%=tier %>.png" alt="error" width="100" height="100"/>
+        
+		<!-- DIV2 -->
+        <div class="row" style="background-color: yellow;">
+        	<div style="margin: auto;">
+	          	<div id="info2">          	
+	          		<img src="./img/emblems1/<%=tier %>.png" alt="error" width="100" height="100"/>
+	          	</div>
+	          	<div id="info2">
+	          		<span>솔로랭크</span>
+	          		<div id="tier_font"><%=tier %></div>
+	          		<div id="leaguepoint_font"><%=leaguePoints %> LP</div>
+	          		<span><%=wins %>승</span>
+	          		<span><%=losses %>패</span>
+	          		<span>승률 : <%=total %>% </span>
+	          	</div>
           	</div>
-          	<div id="info2">
-          		<span>솔로랭크</span>
-          		<div id="tier_font"><%=tier %></div>
-          		<div id="leaguepoint_font"><%=leaguePoints %> LP</div>
-          		<span><%=wins %>승</span>
-          		<span><%=losses %>패</span>
-          		<span>승률 : <%=total %>% </span>
-          	</div>
-         </div> 
-         
-         <div>
-         	<img src="./img/champion_number/<%=champ1_id %>.png" alt="" />
-         	<span>숙련도 레벨 : <%=champ1_level %></span>
-         	<span>숙련도 레벨 포인트 : <%=champ1_point %></span>
-         	<img src="./img/champion_number/<%=champ2_id %>.png" alt="" />
-         	<span>숙련도 레벨 : <%=champ2_level %></span>
-         	<span>숙련도 레벨 포인트 : <%=champ2_point %></span>
-         	<img src="./img/champion_number/<%=champ3_id %>.png" alt="" />
-         	<span>숙련도 레벨 : <%=champ3_level %></span>
-         	<span>숙련도 레벨 포인트 : <%=champ3_point %></span>
          </div>
          
+         <!-- DIV예시 -->
+         <div class="row" style="background-color: green;">
+        	<div class="col-lg-6">
+        		<div class="card shadow mb-4">
+        			<div class="card-header py-3">
+        				<p>박스 머리부분</p>
+        			</div>
+        			<div class="card-body">
+        				<p>몸통 부분</p>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="col-lg-6">
+        		<div class="card shadow mb-4">
+        			<div class="card-header py-3">
+        				<p>머리</p>
+        			</div>
+        			<div class="card-body">
+        				<p>몸통</p>
+        			</div>
+        		</div>
+        	</div>
+         </div>
+         
+         <!-- DIV3 -->
+         <div class="row" style="background-color: blue;">
+	         <div style="margin: auto;">
+	         	<img src="./img/champion_number/<%=champ1_id %>.png" alt="" />
+	         	<span>숙련도 레벨 : <%=champ1_level %></span>
+	         	<span>숙련도 레벨 포인트 : <%=champ1_point %></span>
+	         	<img src="./img/champion_number/<%=champ2_id %>.png" alt="" />
+	         	<span>숙련도 레벨 : <%=champ2_level %></span>
+	         	<span>숙련도 레벨 포인트 : <%=champ2_point %></span>
+	         	<img src="./img/champion_number/<%=champ3_id %>.png" alt="" />
+	         	<span>숙련도 레벨 : <%=champ3_level %></span>
+	         	<span>숙련도 레벨 포인트 : <%=champ3_point %></span>
+         	</div>
+         </div>
+         
+         <!-- DIV4 -->
+         <div class="row" style="background-color: black;">
+         	<p>ddd</p>
+         </div>
          
          
         </div>
