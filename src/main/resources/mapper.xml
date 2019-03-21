@@ -90,6 +90,23 @@
  		delete from comments where com_no = #{com_no}
  	</delete>
   	
+ <!-- message --> 
+ 	<insert id="insertMsg" parameterType="MsgDto">
+ 		insert into message
+ 		values(0, #{user_no}, #{rec_no}, #{m_contents}, now(), #{m_read})
+ 	</insert>
+ 	
+ 	<update id="updateMsg" parameterType="MsgDto">
+ 		update message set
+ 		m_read = #{m_read}
+ 		where m_no = #{m_no}
+ 	</update>
+ 	
+ 	<delete id="deleteMsg" parameterType="int">
+ 		delete from message where m_no = #{m_no}
+ 	</delete>
+ 		
+  	
  	
   </mapper>
   
