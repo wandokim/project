@@ -8,15 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import sol.desk.wjjst.dao.MsgDAO;
+import sol.desk.wjjst.dao.MsgDaoImpl;
 
 @Controller
 public class MsgController {
 
-	MsgDAO dao;
+	MsgDaoImpl dao;
 
 	@Autowired
-	public void setDao(MsgDAO dao) {
+	public void setDao(MsgDaoImpl dao) {
 		this.dao = dao;
 	}
 	
