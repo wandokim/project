@@ -107,6 +107,16 @@
 				list.add(wan[19]);
 				list.add(wan[20]);
 				
+				list.add(wan[27]);
+				list.add(wan[29]);
+				list.add(wan[36]);
+				list.add(wan[37]);
+				list.add(wan[45]);
+				list.add(wan[46]);
+				
+				
+				System.out.print(wan[28]);
+				
 				String[] result = (String[]) list.toArray(new String[list.size()]);		
 				
 				champ1_id = result[0].substring(result[0].indexOf(":")+1, result[0].length());
@@ -155,42 +165,126 @@
         <div class="container-fluid">
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">소환사 정보</h1>
+            <h1 class="h3 mb-0 text-gray-800"> </h1>
           </div>
 
           
           <!-- DIV1 -->
         <div class="row" style="background-color: black;">
-          	<div id="card-body" style="margin: auto;">
-          		<img src="./img/profileicon/<%=icon_id %>.png" style="background-image: url(./img/profileicon/0.png)" width="100" height="100"/>
-          		<div id="level_font">레벨<%=level %></div>
-          	</div>
-         
-          	<div id="info1">
-          		<span id="nic_font"><%=nic %></span>
-          		<input type="button" value="전적 갱신" />
-          	</div>
+        	<div class="col-lg-8" style="margin: auto;">
+        		<div class="card shadow mb-4">
+        			<div class="card-header py-3">
+        				<p style="margin: 0; text-align: center;">소환사 정보</p>
+        			</div>
+        			<div class="card-body" style="text-align: center;">
+        				
+        					<img src="./img/profileicon/<%=icon_id %>.png" style="margin-bottom:40px; background-image: url(./img/profileicon/0.png)" width="100" height="100"/>
+        				
+        				<div style="display: inline-block;">
+		          			<div class="username" style="margin: 4px; text-align: center;"><span style="font-size: 40px; font-weight: bold;font-family: dotum;color: #333333;"><%=nic %></span></div>
+		          			<div style="margin:4px; text-align: center; font-size: 25px; font-style: italic; font-weight: bold;">레벨<%=level %></div>
+	          			</div>
+        			</div>
+        		</div>
+        	</div>
         </div>
         
 		<!-- DIV2 -->
         <div class="row" style="background-color: yellow;">
-        	<div style="margin: auto;">
-	          	<div id="info2">          	
-	          		<img src="./img/emblems1/<%=tier %>.png" alt="error" width="100" height="100"/>
-	          	</div>
-	          	<div id="info2">
-	          		<span>솔로랭크</span>
-	          		<div id="tier_font"><%=tier %></div>
-	          		<div id="leaguepoint_font"><%=leaguePoints %> LP</div>
-	          		<span><%=wins %>승</span>
-	          		<span><%=losses %>패</span>
-	          		<span>승률 : <%=total %>% </span>
-	          	</div>
-          	</div>
+        	<div class="col-lg-4" style="margin: auto;">
+        		<div class="card shadow mb-4">
+        			<div class="card-header py-3">
+        				<p style="margin: 0; text-align: center;">랭크 정보</p>
+        			</div>
+        			<div class="card-body" style="text-align: center; ">
+        				<img src="./img/emblems1/<%=tier %>.png" alt="error" width="120" height="120"/>
+        				<div style="display: inline-block;">
+	        				<span>솔로랭크</span>
+			          		<div id="tier_font"><%=tier %></div>
+			          		<div id="leaguepoint_font"><%=leaguePoints %> LP</div>
+			          		<span><%=wins %>승</span>
+			          		<input type="hidden" value="<%=wins %>" id="winCount"/>
+			          		<span><%=losses %>패</span>
+			          		<input type="hidden" value="<%=losses %>" id="loseCount"/>
+			          		<div>승률 : <%=total %>% </div>
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        	<div class="col-lg-4" style="margin: auto;">
+        		<div class="card shadow mb-4">
+        			<div class="card-header py-3">
+        				<p style="margin: 0;">승률</p>
+        			</div>
+        			<div class="card-body">
+        				<div class="chart-pie pt-4">
+                    		<canvas id="myPieChart"></canvas>
+                  		</div>
+        			</div>
+        		</div>
+        	</div>
          </div>
          
+         
+         <!-- DIV3 -->
+         <div class="row" style="background-color: blue;">
+         	<div class="col-lg-8" style="margin: auto;">
+        		<div class="card shadow mb-4" >
+        			<div class="card-header py-3">
+        				<p style="margin: 0; text-align: center;">챔프 숙련도 순위</p>
+        			</div>
+        			<div class="card-body" style="text-align: center;">
+        				<img src="./img/champion_number/<%=champ1_id %>.png" alt="" />
+        				<div style="display: inline-block;">
+        					<div > [1위] 이름</div>
+				         	<div >Level : <%=champ1_level %></div>
+				         	<div>Point : <%=champ1_point %></div>
+        				</div>
+			         	
+			         	<img src="./img/champion_number/<%=champ2_id %>.png" alt="" />
+			         	<div style="display: inline-block;">
+			         		<div> [2위] 이름</div>
+				         	<div>Level : <%=champ2_level %></div>
+				         	<div>Point : <%=champ2_point %></div>
+			         	</div>
+			         	
+			         	<img src="./img/champion_number/<%=champ3_id %>.png" alt="" />
+			         	<div style="display: inline-block;">
+			         		<div> [3위] 이름</div>
+			         		<div>Level : <%=champ3_level %></div>
+				         	<div>Point : <%=champ3_point %></div>
+			         	</div>
+			         	
+        			</div>
+        		</div>
+        	</div>
+         </div>
+         
+         <!-- DIV4 -->
+         <div class="row" style="background-color: black;">
+         	<div class="col-lg-8" style="margin: auto;">
+        		<div class="card shadow mb-4">
+        			<div class="card-header py-3">
+        				<p style="margin: 0; text-align: center;">챔프 숙련도 그래프</p>
+        			</div>
+        			<div class="card-body">
+        				<div class="chart-bar"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                    		<canvas id="myBarChart" width="453" height="320" class="chartjs-render-monitor" style="display: block; width: 453px; height: 320px;"></canvas>
+                  		</div>
+        			</div>
+        		</div>
+        	</div>
+         </div>
+         
+         
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
          <!-- DIV예시 -->
-         <div class="row" style="background-color: green;">
+        <!--  <div class="row" style="background-color: green;">
         	<div class="col-lg-6">
         		<div class="card shadow mb-4">
         			<div class="card-header py-3">
@@ -211,35 +305,8 @@
         			</div>
         		</div>
         	</div>
-         </div>
+         </div> -->
          
-         <!-- DIV3 -->
-         <div class="row" style="background-color: blue;">
-	         <div style="margin: auto;">
-	         	<img src="./img/champion_number/<%=champ1_id %>.png" alt="" />
-	         	<span>숙련도 레벨 : <%=champ1_level %></span>
-	         	<span>숙련도 레벨 포인트 : <%=champ1_point %></span>
-	         	<img src="./img/champion_number/<%=champ2_id %>.png" alt="" />
-	         	<span>숙련도 레벨 : <%=champ2_level %></span>
-	         	<span>숙련도 레벨 포인트 : <%=champ2_point %></span>
-	         	<img src="./img/champion_number/<%=champ3_id %>.png" alt="" />
-	         	<span>숙련도 레벨 : <%=champ3_level %></span>
-	         	<span>숙련도 레벨 포인트 : <%=champ3_point %></span>
-         	</div>
-         </div>
-         
-         <!-- DIV4 -->
-         <div class="row" style="background-color: black;">
-         	<p>ddd</p>
-         </div>
-         
-         
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
       <!-- Footer -->
 		<jsp:include page="footer.jsp" flush="true"/>
       <!-- End of Footer -->
@@ -265,6 +332,13 @@
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
   
+   <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo2.js"></script>
+  <script src="js/demo/chart-bar-demo.js"></script>
   <!-- search js -->
   <script src="js/search.js"></script>
 
