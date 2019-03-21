@@ -89,9 +89,4 @@ public class HomeController {
 	public String lotation() {
 		return "lotationChamp";
 	}
-	
-	@RequestMapping(value = "teemo")
-	public String teemo() {
-		return "teemo";
-	}
 }

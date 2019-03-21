@@ -20,19 +20,19 @@ public class CommentsDaoImpl implements CommentsDAO {
 	
 	@Override
 	public void insert(CommentsDTO dto) {
-		ss.insert("insertCom", dto);
+		ss.insert("insertComm", dto);
 		
 	}
 
 	@Override
 	public void update(CommentsDTO dto) {
-		// TODO Auto-generated method stub
+		ss.update("updateComm", dto);
 		
 	}
 
 	@Override
 	public void delete(int com_no) {
-		// TODO Auto-generated method stub
+		ss.delete("deleteComm", com_no);
 		
 	}
 

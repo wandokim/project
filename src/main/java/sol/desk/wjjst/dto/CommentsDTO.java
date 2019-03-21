@@ -3,16 +3,16 @@ package sol.desk.wjjst.dto;
 public class CommentsDTO{
 	private int com_no;
 	private int b_no;
-	private String contents;
+	private String c_contents;
 	private String c_date;
 	
 	public CommentsDTO() {}
 
-	public CommentsDTO(int com_no, int b_no, String contents, String c_date) {
+	public CommentsDTO(int com_no, int b_no, String c_contents, String c_date) {
 		super();
 		this.com_no = com_no;
 		this.b_no = b_no;
-		this.contents = contents;
+		this.c_contents =c_contents;
 		this.c_date = c_date;
 	}
 
@@ -32,12 +32,12 @@ public class CommentsDTO{
 		this.b_no = b_no;
 	}
 
-	public String getContents() {
-		return contents;
+	public String getC_contents() {
+		return c_contents;
 	}
 
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setC_contents(String c_contents) {
+		this.c_contents = c_contents;
 	}
 
 	public String getC_date() {
@@ -47,6 +47,7 @@ public class CommentsDTO{
 	public void setC_date(String c_date) {
 		this.c_date = c_date;
 	}
+
 	
 	
 }

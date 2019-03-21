@@ -25,13 +25,13 @@ public class BoardDaoImpl implements BoardDAO{
 
 	@Override
 	public void update(BoardDTO dto) {
-		// TODO Auto-generated method stub
+		ss.update("updateBoard", dto);
 		
 	}
 
 	@Override
 	public void delete(int b_no) {
-		// TODO Auto-generated method stub
+		ss.delete("deleteBoard", b_no);
 		
 	}
 

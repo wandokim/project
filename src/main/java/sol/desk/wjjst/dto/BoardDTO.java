@@ -6,9 +6,9 @@ public class BoardDTO{
 	private String title;
 	private String write_date;
 	private String writer;
-	private String contents;
-	private int like;
-	private int hits;
+	private String b_contents;
+	private int b_like;
+	private int b_hits;
 	
 	BoardDTO(){}
 
@@ -20,19 +20,19 @@ public class BoardDTO{
 		this.title = title;
 		this.write_date = write_date;
 		this.writer = writer;
-		this.contents = contents;
-		this.like = like;
-		this.hits = hits;
+		this.b_contents = b_contents;
+		this.b_like = b_like;
+		this.b_hits = b_hits;
 	}
 	
-	public BoardDTO(String title,String writer, String contents, int like,
-			int hits) {
+	public BoardDTO(String title,String writer, String b_contents, int b_like,
+			int b_hits) {
 		super();
 		this.title = title;
 		this.writer = writer;
-		this.contents = contents;
-		this.like = like;
-		this.hits = hits;
+		this.b_contents = b_contents;
+		this.b_like = b_like;
+		this.b_hits = b_hits;
 	}
 
 	public int getB_no() {
@@ -75,28 +75,28 @@ public class BoardDTO{
 		this.writer = writer;
 	}
 
-	public String getContents() {
-		return contents;
+	public String getb_Contents() {
+		return b_contents;
 	}
 
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setb_Contents(String b_contents) {
+		this.b_contents = b_contents;
 	}
 
-	public int getLike() {
-		return like;
+	public int getb_Like() {
+		return b_like;
 	}
 
-	public void setLike(int like) {
-		this.like = like;
+	public void setb_Like(int b_like) {
+		this.b_like = b_like;
 	}
 
-	public int getHits() {
-		return hits;
+	public int getb_Hits() {
+		return b_hits;
 	}
 
-	public void setHits(int hits) {
-		this.hits = hits;
+	public void setb_Hits(int b_hits) {
+		this.b_hits = b_hits;
 	}
 	
 	

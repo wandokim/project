@@ -20,19 +20,19 @@ public class PwDaoImpl implements PwDAO {
 	
 	@Override
 	public void insert(PwDTO dto) {
-		ss.insert("insertPw", dto);
+		ss.insert("insertPassword", dto);
 		
 	}
 
 	@Override
 	public void update(PwDTO dto) {
-		// TODO Auto-generated method stub
+		ss.update("updatePassword", dto);
 		
 	}
 
 	@Override
 	public void delete(int user_no) {
-		// TODO Auto-generated method stub
+		ss.delete("deletePassword", user_no);
 		
 	}
 

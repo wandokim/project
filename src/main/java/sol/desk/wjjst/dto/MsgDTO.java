@@ -4,18 +4,20 @@ public class MsgDTO{
 	private int m_no;
 	private int user_no;
 	private int rec_no;
-	private String contents;
+	private String m_contents;
 	private String write_date;
+	private int m_read;
 	
 	public MsgDTO() {}
 
-	public MsgDTO(int m_no, int user_no, int rec_no, String contents, String write_date) {
+	public MsgDTO(int m_no, int user_no, int rec_no, String m_contents, String write_date, int m_read) {
 		super();
 		this.m_no = m_no;
 		this.user_no = user_no;
 		this.rec_no = rec_no;
-		this.contents = contents;
+		this.m_contents = m_contents;
 		this.write_date = write_date;
+		this.m_read = m_read;
 	}
 
 	public int getM_no() {
@@ -42,12 +44,12 @@ public class MsgDTO{
 		this.rec_no = rec_no;
 	}
 
-	public String getContents() {
-		return contents;
+	public String getM_contents() {
+		return m_contents;
 	}
 
-	public void setContents(String contents) {
-		this.contents = contents;
+	public void setM_contents(String m_contents) {
+		this.m_contents = m_contents;
 	}
 
 	public String getWrite_date() {
@@ -57,6 +59,15 @@ public class MsgDTO{
 	public void setWrite_date(String write_date) {
 		this.write_date = write_date;
 	}
+
+	public int getM_read() {
+		return m_read;
+	}
+
+	public void setM_read(int m_read) {
+		this.m_read = m_read;
+	}
+
 	
 	
 }
