@@ -13,6 +13,11 @@
   		select * from user_info where id = #{id}
   	</select>
   	
+  	<select id="selectUserNo" parameterType="String" resultType="int">
+  		select user_no from user_info
+  		where id = #{id}
+  	</select>
+  	
   	<insert id="insertUser" parameterType="UserDto" >
   		insert into user_info
   		values(0,#{nicname},#{id},#{email},now(),#{rout},#{grade})
@@ -53,7 +58,11 @@
   		delete from board where b_no = #{b_no}
   	</delete>
  
- 
+ <!-- user_password -->
+ 	<insert id="insertPassword" parameterType="PwDto" >
+  		insert into board
+  		values(0,#{title},now(),#{writer},#{contents},#{like},#{hits})
+  	</insert>
  
  
   </mapper>

@@ -52,23 +52,14 @@
   	}
 </script>
 
-<!-- div 효과 -->
-<script type="text/javascript">
-	$(document).ready(function(){
-		$(".row").hide();
-	    $(".row").slideDown("slow");
-	});
-</script>
-
 <!-- 유효성 검사 -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(function(){
-	var f1 = document.forms[0];
-	var id = f1.id.value;
-	var nicname = f1.nicname.value;
-	var email = f1.email.value;
-	var pw1 = f1.pwd.value;
- 	var pw2 = f1.pwd_check.value;
+	var id = document.getElementById("id").value;
+	var nicname = document.getElementById("nicname").value;
+	var email = document.getElementById("email").value;
+	var pw1 = document.getElementById("pwd").value;
+ 	var pw2 = document.getElementById("pwd_check").value;
 
 	$("#register").click(function(){
 		if(id==null || id==""){
@@ -96,6 +87,14 @@ $(function(){
 		}
 	});
 });
+</script> -->
+
+<!-- div 효과 -->
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".row").hide();
+	    $(".row").slideDown("slow");
+	});
 </script>
 
 </head>
@@ -128,25 +127,25 @@ $(function(){
 	              <form class="user" name="frm" action="registeOk">
 	                <div class="form-group row">
 	                  <div class="col-sm-6 mb-3 mb-sm-0">
-	                    <input type="text" class="form-control form-control-user" name="id" placeholder="아이디">
+	                    <input type="text" class="form-control form-control-user" name="id" placeholder="아이디" id="id">
 	                  </div>
 	                  <div class="col-sm-6">
-	                    <input type="text" class="form-control form-control-user" name="nicname" placeholder="닉네임">
+	                    <input type="text" class="form-control form-control-user" name="nicname" placeholder="닉네임" id="nicname">
 	                  </div>
 	                </div>
 	                <div class="form-group">
-	                  <input type="email" class="form-control form-control-user" name="email" placeholder="이메일">
+	                  <input type="email" class="form-control form-control-user" name="email" placeholder="이메일" id="email">
 	                </div>
 	                <div class="form-group row">
 	                  <div class="col-sm-6 mb-3 mb-sm-0">
-	                    <input type="password" class="form-control form-control-user" name="pwd" placeholder="Password">
+	                    <input type="password" class="form-control form-control-user" name="pwd" placeholder="Password" id="pwd">
 	                  </div>
 	                  <div class="col-sm-6">
-	                    <input type="password" class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()">
+	                    <input type="password" class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()" id="pwd_check">
 	                    <div id="checkPwd" style="padding: 10px 0 0 0"></div>
 	                  </div>
 	                </div>
-	                <input type="button" class="btn btn-primary btn-user btn-block" value="Register Account" id="register">
+	                <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account" id="register">
 	                <hr>
 	              </form>
 	              

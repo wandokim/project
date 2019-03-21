@@ -24,6 +24,10 @@ public class UserDaoImpl implements UserDAO{
 	}
 
 	@Override
+	public int userNo(String id) {
+		return ss.selectOne("selectUserNo",id);
+	}
+	@Override
 	public void update(UserDTO dto) {
 		ss.update("updateUser", dto);
 		
