@@ -79,7 +79,7 @@
 				</a>
 	    
 				<!-- 모든 message 호출 -->
-				<a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+				<a class="dropdown-item text-center small text-gray-500" href="checkMsg">Read More Messages</a>
 			</div>
 		</li>
 	
@@ -101,9 +101,9 @@
 	          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
 				세팅
 	        </a>
-	        <a class="dropdown-item" href="#">
+	        <a class="dropdown-item" href="sendMsg">
 	          <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-	          Activity Log
+	          	메세지 전송
 	        </a>
 	        <div class="dropdown-divider"></div>
 	        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

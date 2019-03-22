@@ -111,12 +111,12 @@
  	<select id="selectMsg" resultType="MsgDto">
  		select * from message 
  		where m_read = 1
- 		order by write_date desc limit 5 
+ 		order by m_no desc limit 5 
  	</select>
  	
  	<select id="selectAllMsg" resultType="MsgDto">
  		select * from message
- 		order by write_date desc
+ 		order by m_no desc
  	</select>
  	
  	<select id="selectOneMsg" parameterType="int" resultType="MsgDto">

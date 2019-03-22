@@ -45,28 +45,36 @@
         
         <!-- Begin Page Content -->
         <div class="container-fluid">
-			<h2>'어떤 사람이 '나'한테 보낸 메세지 목록</h2>
+			<h2>상세메세지 페이지</h2>
 			<table border="1">
 			<tr>
 				
-				<th>메세지보낸사람</th>	
-				<th>로그인한사람</th>			
+				<th>보낸사람</th>
 				<th>제목</th>
+				<th>내용</th>
 				<th>보낸날짜</th>
-				<th>확인여부</th>
-				<th>상세확인</th>
+				<th>삭제</th>
+				<th>목록으로 돌아가기</th>				
 			</tr>
 			<c:forEach var="wando" items="${list }">
 				<tr>					
 					<td>${wando.user_no }</td>	
-					<td>${wando.rec_no }</td>				
-					<td>${wando.m_contents }</td><!-- 제목으로 바꿀곳 -->
+					<td>${wando.rec_no }</td>	<!-- 제목은 만들고 추가 -->			
+					<td>${wando.m_contents }</td>
 					<td>${wando.write_date }</td>
-					<td>${wando.m_read }</td>
-					<td><a href="detailMsg"><input type="button" value="상세확인" /></a></td>
+					<td><a href="deleteMsg"><input type="button" value="삭제" /></a></td>
+					<td><a href="checkMsg"><input type="button" value="목록으로 돌아가기" /></a></td>
 				</tr>	
 			</c:forEach>	
 		</table>
+         
+         <input type="button" value="답장" />
+         <div>
+         	받을사람<input type="text" name="" id="" /><br />
+         	제목 <input type="text" name="" id="" /><br />
+         	내용 <textarea name="" id="" cols="30" rows="10"></textarea><br />
+         	<input type="button" value="답장하기" />
+         </div>
          
         </div>
       </div>

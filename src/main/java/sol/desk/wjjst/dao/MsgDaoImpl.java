@@ -33,7 +33,7 @@ public class MsgDaoImpl implements MsgDAO {
 	@Override
 	public void delete(int m_no) {
 		// TODO Auto-generated method stub
-		
+		ss.delete("deleteMsg", m_no); 
 	}
 
 	@Override
@@ -45,6 +45,10 @@ public class MsgDaoImpl implements MsgDAO {
 	@Override
 	public List<MsgDTO> getList() {
 		return ss.selectList("selectAllMsg");
+	}
+	
+	public List<MsgDTO> limitMessage(){
+		return ss.selectList("selectMsg");
 	}
 	
 	

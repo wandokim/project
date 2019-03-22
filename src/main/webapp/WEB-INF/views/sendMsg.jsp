@@ -45,28 +45,11 @@
         
         <!-- Begin Page Content -->
         <div class="container-fluid">
-			<h2>'어떤 사람이 '나'한테 보낸 메세지 목록</h2>
-			<table border="1">
-			<tr>
-				
-				<th>메세지보낸사람</th>	
-				<th>로그인한사람</th>			
-				<th>제목</th>
-				<th>보낸날짜</th>
-				<th>확인여부</th>
-				<th>상세확인</th>
-			</tr>
-			<c:forEach var="wando" items="${list }">
-				<tr>					
-					<td>${wando.user_no }</td>	
-					<td>${wando.rec_no }</td>				
-					<td>${wando.m_contents }</td><!-- 제목으로 바꿀곳 -->
-					<td>${wando.write_date }</td>
-					<td>${wando.m_read }</td>
-					<td><a href="detailMsg"><input type="button" value="상세확인" /></a></td>
-				</tr>	
-			</c:forEach>	
-		</table>
+			보낼사람 닉네임<input type="text" name="" id="" /><br />
+			제목 <input type="text" name="" id="" /><br />
+			내용 <textarea name="" id="" cols="30" rows="10"></textarea><br />
+			
+			<input type="button" value="전송버튼" />
          
         </div>
       </div>

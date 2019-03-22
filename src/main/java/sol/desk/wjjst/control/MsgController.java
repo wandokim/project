@@ -21,11 +21,35 @@ public class MsgController {
 	}
 	
 	
-	@RequestMapping(value = "readMore")
-	public String main(Model model) {
+	@RequestMapping(value = "sendMsg")
+	public String main() {
+		
+		return "sendMsg";
+	}
+	
+	@RequestMapping(value = "checkMsg")
+	public String checkMsg(Model model) {
 		List list = dao.getList();
 		
 		model.addAttribute("list", list);
-		return "msg";
+		return "checkMsg";
 	}
+	
+	@RequestMapping(value = "detailMsg")
+	public String detailMsg(Model model) {
+		List list = dao.getList();
+		
+		model.addAttribute("list", list);
+		return "detailMsg";
+	}
+	
+	@RequestMapping(value = "deleteMsg")
+	public String deleteMsg(int m_no) {	
+		
+		dao.delete(m_no);		
+		return "checkMsg";
+	}
+	
+	
+	
 }
