@@ -11,9 +11,10 @@
 	<!-- Topbar Search -->
 	<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
 	  <div class="input-group">
-	    <input type="text" class="form-control bg-light border-0 small" placeholder="게임 닉네임을 입력해주세요" aria-label="Search" aria-describedby="basic-addon2" id="search_nic">
+	    <input type="text" class="form-control bg-light border-0 small" placeholder="게임 닉네임을 입력해주세요" aria-label="Search" aria-describedby="basic-addon2" id="search_nic" onkeypress="if(event.keyCode==13) {searching();}">
+	    <!-- form 안에 input:text 하나 있으면 submit으로 자동 전환되어 안보이는 input 태그 하나 더 추가 -->
+		<input type="text" style="display: none;" />
 	    <div class="input-group-append">
-	    
 	      <button class="btn btn-primary" id="search_nic" type="button" onclick="searching()">
 	        <i class="fas fa-search fa-sm"></i>
 	      </button>
