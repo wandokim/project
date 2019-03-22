@@ -10,6 +10,13 @@
 			<img src="./img/sol_logo.png" alt="sol.gg로고" style="height: 60px;" id="sol_img"/>
 		</li>
 	</ul>
+	<ul class="navbar-nav ml-auto">
+		<li>
+			<a href="lotation" class="btn btn-danger btn-icon-split"><span class="text">Champion Info</span></a>
+			<a href="RankINFO" class="btn btn-danger btn-icon-split"><span class="text">Ranking Info</span></a>
+			<a href="#" class="btn btn-danger btn-icon-split"><span class="text">User Board</span></a>
+		</li>
+	</ul>
 	
 	
 	<%

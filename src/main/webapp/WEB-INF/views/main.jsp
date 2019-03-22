@@ -43,7 +43,7 @@
 					<form name="frm">
 						<div class="form-row">
 							<div class="col-12 col-md-9 mb-2 mb-md-0">
-								<input type="text" id="search_nic" class="form-control form-control-lg" placeholder="게임 닉네임을 입력해주세요">
+								<input type="text" id="search_nic" class="form-control form-control-lg" placeholder="게임 닉네임을 입력해주세요" onkeypress="if(event.keyCode==13) {searching();}">
 								
 								<!-- form 안에 input:text 하나 있으면 submit으로 자동 전환되어 안보이는 input 태그 하나 더 추가 -->
 								<input type="text" style="display: none;" />
