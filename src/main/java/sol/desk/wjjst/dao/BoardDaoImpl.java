@@ -40,7 +40,7 @@ public class BoardDaoImpl implements BoardDAO{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+			
 	@Override
 	public List<BoardDTO> getList() {
 		// TODO Auto-generated method stub

@@ -35,7 +35,7 @@ public class UserDaoImpl implements UserDAO{
 
 	@Override
 	public void delete(int user_no) {
-		// TODO Auto-generated method stub
+		ss.delete("deleteUser", user_no);
 		
 	}
 

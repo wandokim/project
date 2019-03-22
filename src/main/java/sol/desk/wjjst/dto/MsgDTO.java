@@ -2,19 +2,22 @@ package sol.desk.wjjst.dto;
 
 public class MsgDTO{
 	private int m_no;
-	private int user_no;
-	private int rec_no;
+	private int send_user;
+	private int rec_user;
+	private String m_title;
 	private String m_contents;
 	private String write_date;
 	private int m_read;
 	
 	public MsgDTO() {}
 
-	public MsgDTO(int m_no, int user_no, int rec_no, String m_contents, String write_date, int m_read) {
+	public MsgDTO(int m_no, int send_user, int rec_user, String m_title, String m_contents, String write_date,
+			int m_read) {
 		super();
 		this.m_no = m_no;
-		this.user_no = user_no;
-		this.rec_no = rec_no;
+		this.send_user = send_user;
+		this.rec_user = rec_user;
+		this.m_title = m_title;
 		this.m_contents = m_contents;
 		this.write_date = write_date;
 		this.m_read = m_read;
@@ -28,20 +31,28 @@ public class MsgDTO{
 		this.m_no = m_no;
 	}
 
-	public int getUser_no() {
-		return user_no;
+	public int getSend_user() {
+		return send_user;
 	}
 
-	public void setUser_no(int user_no) {
-		this.user_no = user_no;
+	public void setSend_user(int send_user) {
+		this.send_user = send_user;
 	}
 
-	public int getRec_no() {
-		return rec_no;
+	public int getRec_user() {
+		return rec_user;
 	}
 
-	public void setRec_no(int rec_no) {
-		this.rec_no = rec_no;
+	public void setRec_user(int rec_user) {
+		this.rec_user = rec_user;
+	}
+
+	public String getM_title() {
+		return m_title;
+	}
+
+	public void setM_title(String m_title) {
+		this.m_title = m_title;
 	}
 
 	public String getM_contents() {
@@ -68,6 +79,7 @@ public class MsgDTO{
 		this.m_read = m_read;
 	}
 
+	
 	
 	
 }

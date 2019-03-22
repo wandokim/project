@@ -126,7 +126,7 @@
  	
  	<insert id="insertMsg" parameterType="MsgDto">
  		insert into message
- 		values(0, #{user_no}, #{rec_no}, #{m_contents}, now(), #{m_read})
+ 		values(0, #{send_user}, #{rec_user}, #{m_title}, #{m_contents}, now(), #{m_read})
  	</insert>
  	
  	<update id="updateMsg" parameterType="MsgDto">
