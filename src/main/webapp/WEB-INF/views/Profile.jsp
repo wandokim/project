@@ -77,7 +77,7 @@
 	                <div class="form-group">
 	                  <input class="form-control form-control-user" name="email" placeholder="이메일" <%-- value=<%dto.getemail %> --%>>
 	                </div>
-	                <div class="form-group row">
+	                <!-- <div class="form-group row">
 	                  <div class="col-sm-12">
 	                    <input class="form-control form-control-user" name="pwd" placeholder="Password">
 	                  </div>
@@ -87,7 +87,7 @@
 	                    <input class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()">
 	                    <div id="checkPwd"></div>
 	                  </div>
-	                </div>
+	                </div> -->
 	                	<a href="Modify" class="btn btn-primary btn-user btn-block">Modify Account</a>
 	                <hr>
 	              </form>

@@ -63,25 +63,41 @@
 	                <h1 class="h4 text-gray-900 mb-4">Modify an Account!</h1>
 	              </div>
 	              <form class="user" name="frm" action="ModifyOk">
-	                <div class="form-group row">
-	                  <div class="col-sm-12">	                  
-	                    <input class="form-control form-control-user" name="nicname" placeholder="닉네임" <%-- value=<%dto.getnicname %> --%>>
-	                  </div>	        
+	                <div class="form-group row" >	                
+	                 <div class="col-sm-12">                
+	                    닉네임 변경 <input class="form-control form-control-user" name="nicname" placeholder="닉네임" <%-- value=<%dto.getnicname %> --%>>           
+	                 </div>	               	       
 	                </div>
 	                <div class="form-group">
-	                    <input class="form-control form-control-user" name="email" placeholder="이메일" <%-- value=<%dto.getemail %> --%>>
+	                    이메일 변경<input class="form-control form-control-user" name="email" placeholder="이메일" <%-- value=<%dto.getemail %> --%>>
 	                </div>
 	                <div class="form-group row">
+	                
+	                <%
+	                	String id = (String) session.getAttribute("id");
+	                	
+	                	//System.out.println(id);
+	                	
+	                	//dao 들어가서 rout 구간의 숫자 추출
+	                	int rout = 1;
+	                	if(rout == 1){
+	                		
+	                %>
+	                <!-- pwd -->
 	                  <div class="col-sm-12">
-	                    <input type="password" class="form-control form-control-user" name="pwd" placeholder="Password">
+	                    비밀번호 변경<input type="password" class="form-control form-control-user" name="pwd" placeholder="Password">
 	                  </div>
 	                  </div>
 	                  <div class="form-group row">
-	                  <div class="col-sm-12">
-	                    <input type="password" class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()">
-	                    <div id="checkPwd"></div>
+	                   <div class="col-sm-12">
+	                    비밀번호 변경확인<input type="password" class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()">
+	                   <div id="checkPwd"></div>
 	                  </div>
 	                </div>
+	                <!-- pwd -->	                
+	                <%
+	                	}
+	                %>
 	                <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
 	                <hr>
 	              </form>

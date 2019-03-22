@@ -14,6 +14,6 @@
 	//session.setAttribute("id", "완도킴");
 	
 	// redirect
-	response.sendRedirect("ModifyOk");
+	response.sendRedirect("Profile");
 
 %>
