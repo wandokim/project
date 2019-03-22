@@ -206,7 +206,7 @@
         				<img src="./img/emblems1/<%=tier %>.png" alt="error" width="125" height="125"/>
         				<div >
 	        				<span style="font-size: 19px;">솔로랭크</span>
-			          		<div style="font-size: 24px; color: green;"><%=tier %></div>
+			          		<div style="font-size: 24px; color: green;"><%=tier %> <%=rank %></div>
 			          		<div style="font-size: 22px; color: red;"><%=leaguePoints %> LP</div>
 			          		<span style="font-size: 19px;"><%=wins %>승</span>
 			          		<input type="hidden" value="<%=wins %>" id="winCount"/>
