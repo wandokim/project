@@ -49,7 +49,13 @@
 		String champ3_id="값없음";
 		String champ3_level="값없음";
 		String champ3_point="값없음";
-		
+		String champ4_point="값없음";
+		String champ4_id="값없음";
+		String champ5_point="값없음";
+		String champ5_id="값없음";
+		String champ6_id="값없음";
+		String champ6_point="값없음";
+			
 		if(nic != "" || nic != null){
 			
 			SplitStr str = new SplitStr();
@@ -106,7 +112,6 @@
 				list.add(wan[18]);
 				list.add(wan[19]);
 				list.add(wan[20]);
-				
 				list.add(wan[27]);
 				list.add(wan[29]);
 				list.add(wan[36]);
@@ -115,7 +120,7 @@
 				list.add(wan[46]);
 				
 				
-				System.out.print(wan[28]);
+				
 				
 				String[] result = (String[]) list.toArray(new String[list.size()]);		
 				
@@ -129,7 +134,8 @@
 				
 				champ3_id = result[6].substring(result[6].indexOf(":")+1, result[6].length());
 				champ3_level = result[7].substring(result[7].indexOf(":")+1, result[7].length());
-				champ3_point = result[8].substring(result[8].indexOf(":")+1, result[8].length());				
+				champ3_point = result[8].substring(result[8].indexOf(":")+1, result[8].length());
+				champ4_point = result[10].substring(result[10].indexOf(":")+1, result[10].length());
 			}
 		}else{
 			
@@ -170,7 +176,7 @@
 
           
           <!-- DIV1 -->
-        <div class="row" style="background-color: black;">
+        <div class="row" style="">
         	<div class="col-lg-8" style="margin: auto;">
         		<div class="card shadow mb-4">
         			<div class="card-header py-3">
@@ -190,31 +196,31 @@
         </div>
         
 		<!-- DIV2 -->
-        <div class="row" style="background-color: yellow;">
-        	<div class="col-lg-4" style="margin: auto;">
+        <div class="row justify-content-center">
+        	<div class="col-lg-4">
         		<div class="card shadow mb-4">
         			<div class="card-header py-3">
         				<p style="margin: 0; text-align: center;">랭크 정보</p>
         			</div>
         			<div class="card-body" style="text-align: center; ">
-        				<img src="./img/emblems1/<%=tier %>.png" alt="error" width="120" height="120"/>
-        				<div style="display: inline-block;">
-	        				<span>솔로랭크</span>
-			          		<div id="tier_font"><%=tier %></div>
-			          		<div id="leaguepoint_font"><%=leaguePoints %> LP</div>
-			          		<span><%=wins %>승</span>
+        				<img src="./img/emblems1/<%=tier %>.png" alt="error" width="125" height="125"/>
+        				<div >
+	        				<span style="font-size: 19px;">솔로랭크</span>
+			          		<div style="font-size: 24px; color: green;"><%=tier %></div>
+			          		<div style="font-size: 22px; color: red;"><%=leaguePoints %> LP</div>
+			          		<span style="font-size: 19px;"><%=wins %>승</span>
 			          		<input type="hidden" value="<%=wins %>" id="winCount"/>
-			          		<span><%=losses %>패</span>
+			          		<span style="font-size: 19px;"><%=losses %>패</span>
 			          		<input type="hidden" value="<%=losses %>" id="loseCount"/>
-			          		<div>승률 : <%=total %>% </div>
+			          		<div style="font-size: 19px;">승률 : <%=total %>% </div>
         				</div>
         			</div>
         		</div>
         	</div>
-        	<div class="col-lg-4" style="margin: auto;">
+        	<div class="col-lg-4">
         		<div class="card shadow mb-4">
         			<div class="card-header py-3">
-        				<p style="margin: 0;">승률</p>
+        				<p style="margin: 0; text-align: center;">승률</p>
         			</div>
         			<div class="card-body">
         				<div class="chart-pie pt-4">
@@ -227,7 +233,7 @@
          
          
          <!-- DIV3 -->
-         <div class="row" style="background-color: blue;">
+         <div class="row" style="">
          	<div class="col-lg-8" style="margin: auto;">
         		<div class="card shadow mb-4" >
         			<div class="card-header py-3">
@@ -253,15 +259,18 @@
 			         		<div> [3위] 이름</div>
 			         		<div>Level : <%=champ3_level %></div>
 				         	<div>Point : <%=champ3_point %></div>
+				         	<input type="hidden" value="<%=champ1_point %>" id="champ1_point"/>
+				         	<input type="hidden" value="<%=champ2_point %>" id="champ2_point"/>
+				         	<input type="hidden" value="<%=champ3_point %>" id="champ3_point"/>
+				         	<input type="hidden" value="<%=champ4_point %>" id="champ4_point"/>
 			         	</div>
-			         	
         			</div>
         		</div>
         	</div>
          </div>
          
          <!-- DIV4 -->
-         <div class="row" style="background-color: black;">
+         <div class="row" style="">
          	<div class="col-lg-8" style="margin: auto;">
         		<div class="card shadow mb-4">
         			<div class="card-header py-3">
@@ -338,7 +347,7 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo2.js"></script>
-  <script src="js/demo/chart-bar-demo.js"></script>
+  <script src="js/demo/chart-bar-demo2.js"></script>
   <!-- search js -->
   <script src="js/search.js"></script>
 
