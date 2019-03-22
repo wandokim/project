@@ -27,7 +27,6 @@
   		update user_info set
   		nicname = #{nicname}, email = #{email}
   		where id = #{id}
-  		
   	</update>
   	
   	<delete id="deleteUser" parameterType="String">
@@ -59,6 +58,15 @@
   	</delete>
  
  <!-- user_password -->
+ 	<select id="selectAllPassword" resultType="PwDto">
+ 		select * from user_password
+ 	</select>
+ 	
+ 	<select id="selectOnePassword" parameterType="int" resultType="PwDto">
+ 		select * from user_password
+ 		where user_no = #{user_no}
+ 	</select>
+ 
  	<insert id="insertPassword" parameterType="PwDto" >
   		insert into user_password
   		values(#{user_no}, #{password})
@@ -75,6 +83,15 @@
  	</delete>	
  
  <!-- comments -->
+ 	<select id="selectAllComm" resultType="ComDto">
+ 		select * from comments
+ 	</select>
+ 	
+ 	<select id="selectOneComm" parameterType="int" resultType="ComDto">
+ 		select * from comments
+ 		where com_no = #{com_no}
+ 	</select>
+ 
  	<insert id="insertComm" parameterType="ComDto">
  		insert into comments
  		values(#{com_no}, #{b_no}, #{c_contents}, now())
@@ -91,6 +108,22 @@
  	</delete>
   	
  <!-- message --> 
+ 	<select id="selectMsg" resultType="MsgDto">
+ 		select * from message 
+ 		where m_read = 1
+ 		order by write_date desc limit 5 
+ 	</select>
+ 	
+ 	<select id="selectAllMsg" resultType="MsgDto">
+ 		select * from message
+ 		order by write_date desc
+ 	</select>
+ 	
+ 	<select id="selectOneMsg" parameterType="int" resultType="MsgDto">
+ 		select * from message
+ 		where m_no = #{m_no}
+ 	</select>
+ 	
  	<insert id="insertMsg" parameterType="MsgDto">
  		insert into message
  		values(0, #{user_no}, #{rec_no}, #{m_contents}, now(), #{m_read})
@@ -105,8 +138,40 @@
  	<delete id="deleteMsg" parameterType="int">
  		delete from message where m_no = #{m_no}
  	</delete>
+ 	
+ 	<!-- images -->
+ 	<select id="selectImg" resultType="ImgDto">
+ 		select image from images
+ 	</select>
+ 	
+ 	<insert id="insertImg" parameterType="ImgDto">
+ 		insert into images
+ 		values(#{b_no},#{image})
+ 	</insert>
  		
-  	
+	<update id="updateImg" parameterType="ImgDto">
+		update images set
+		image = #{image}
+		where b_no = #{b_no}
+	</update>  	
+ 	
+ 	<delete id="deleteImg" parameterType="int">
+ 		delete from images where b_no = #{b_no}
+ 	</delete>
+ 	
+ 	<!-- friend_list -->
+ 	<insert id="insertFriend" parameterType="FriDto">
+ 		insert into friend_list
+ 		values(0,#{user_no},#{friend_no},now())
+ 	</insert>
+ 	
+ 	<select id="selectAllFriend" resultType="FriDto">
+ 		select * from friend_list
+ 	</select>
+ 	
+ 	<delete id="deleteFriend" parameterType="int">
+ 		delete from friend_list where f_no = #{f_no}
+ 	</delete>
  	
   </mapper>
   
