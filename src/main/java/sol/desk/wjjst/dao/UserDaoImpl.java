@@ -1,5 +1,6 @@
 package sol.desk.wjjst.dao;
 
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -35,19 +36,29 @@ public class UserDaoImpl implements UserDAO{
 
 	@Override
 	public void delete(int user_no) {
-		ss.delete("deleteUser", user_no);
+		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public UserDTO getData(int user_no) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserDTO getData(String id) {
+		return ss.selectOne("selectOneUser", id);
 	}
 	
 	@Override
 	public List<UserDTO> getList() {
 		return ss.selectList("selectAllUser");
 	}
+
+	@Override
+	public boolean checkUser(String id) {
+		int check = ss.selectOne("selectUserNo", id);
+		if(check==-1) {
+			return false;
+		}else {
+			return true;
+		}
+	}
+
 	
 }

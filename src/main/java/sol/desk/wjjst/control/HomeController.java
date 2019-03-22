@@ -1,5 +1,6 @@
 package sol.desk.wjjst.control;
 
+
 import java.util.Locale;
 
 import org.slf4j.Logger;
@@ -61,12 +62,6 @@ public class HomeController {
 	@RequestMapping(value = "callback")
 	public String callback() {
 		return "callback";
-	}
-
-	// SOL 로그인 확인
-	@RequestMapping(value = "loginOk")
-	public String loginOk() {
-		return "loginOk";
 	}
 
 	// 로그아웃

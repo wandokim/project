@@ -1,5 +1,6 @@
 package sol.desk.wjjst.dao;
 
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -38,8 +39,7 @@ public class PwDaoImpl implements PwDAO {
 
 	@Override
 	public PwDTO getData(int user_no) {
-		// TODO Auto-generated method stub
-		return null;
+		return ss.selectOne("selectOnePassword", user_no);
 	}
 	
 	@Override

@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="sol.desk.wjjst.RandomChamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -59,6 +60,18 @@
 		});
 	});
 </script>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	Object obj = session.getAttribute("msg");
+	
+	if(obj!=null || obj!=""){
+		String msg = (String) obj;
+		
+		session.removeAttribute("msg");
+	}
+%>
 
 <title>SOL.GG - 로그인</title>
 </head>

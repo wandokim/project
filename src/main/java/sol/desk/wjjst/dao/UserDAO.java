@@ -1,5 +1,6 @@
 package sol.desk.wjjst.dao;
 
+
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -12,7 +13,8 @@ public interface UserDAO {
 	public int userNo(String id); 
 	public void update(UserDTO dto);
 	public void delete(int no);
-	public UserDTO getData(int no);
+	public UserDTO getData(String id);
 	public List<UserDTO> getList();
+	public boolean checkUser(String id);
 
 }

@@ -1,8 +1,10 @@
 package sol.desk.wjjst.control;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -62,6 +64,29 @@ public class UserController {
 		//return "pwOk?user_no="+user_no+"&pwd="+pwd;
 		
 	}
+	
+	@RequestMapping(value = "loginOk")
+	public String loginOk(@RequestParam("id") String id, @RequestParam("password") String pwd, HttpSession session) {
+		if(dao.checkUser(id)==true) {
+			PwDTO pwDTO = pdao.getData(dao.userNo(id));
+			System.out.println(pwDTO.getPassword());
+			if(pwDTO.getPassword().equals(pwd)) {
+				System.out.println("nicname 값 가져오기 전");
+				session.setAttribute("nicname", dao.getData(id).getNicname());
+				System.out.println("nicname 값 가져오기 후");
+				session.setAttribute("id", id);
+				session.setAttribute("user_no", dao.userNo(id));
+				return "main";				
+			}else {
+				session.setAttribute("msg", "패스워드를 다시 입력해주세요");				
+				return "login";
+			}
+		}else {
+			session.setAttribute("msg", "해당 아이디를 찾을 수 없습니다");
+			return "login";
+		}
+	}
+	
 	@RequestMapping(value = "ModifyOk")
 	public String ModifyOk(@RequestParam("nicname") String nicname,@RequestParam("pwd") String pwd,@RequestParam("email") String email) {
 		UserDTO userDto = new UserDTO(nicname, pwd, email, 1, 2);
