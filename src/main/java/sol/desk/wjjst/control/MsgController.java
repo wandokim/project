@@ -2,6 +2,8 @@ package sol.desk.wjjst.control;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -22,8 +24,13 @@ public class MsgController {
 	
 	
 	@RequestMapping(value = "sendMsg")
-	public String main() {
-		
+	public String main(HttpServletRequest req) {
+		String nic =req.getParameter("nic");
+		String title =req.getParameter("title");
+		String contents = req.getParameter("contents");
+		System.out.println(title);
+		System.out.println(contents);
+		System.out.println(nic);
 		return "sendMsg";
 	}
 	

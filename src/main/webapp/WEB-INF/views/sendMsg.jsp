@@ -25,6 +25,10 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <script type="text/javascript">
+  	
+  
+  </script>
 </head>
 <body>
 
@@ -43,15 +47,17 @@
         <!-- Topbar -->
         <jsp:include page="topbar.jsp" flush="true" />
         
+        <form action="sendMsg">
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-			보낼사람 닉네임<input type="text" name="" id="" /><br />
-			제목 <input type="text" name="" id="" /><br />
-			내용 <textarea name="" id="" cols="30" rows="10"></textarea><br />
-			
-			<input type="button" value="전송버튼" />
-         
-        </div>
+	        <div class="container-fluid">
+				보낼사람 닉네임<input type="text" name="nic" id="" /><br />
+				제목 <input type="text" name="title" id="" /><br />
+				내용 <textarea name="contents" id="contents" cols="30" rows="10"></textarea><br />
+				
+				<input type="submit" value="전송버튼" />
+	         
+	        </div>
+        </form>
       </div>
      </div>
 
