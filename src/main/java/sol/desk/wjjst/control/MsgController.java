@@ -3,6 +3,7 @@ package sol.desk.wjjst.control;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -34,34 +35,43 @@ public class MsgController {
 	}
 	
 	@RequestMapping(value = "sendMsgOk")
-	public String main(@RequestParam("nic") String nic,@RequestParam("title") String title,@RequestParam("contents") String contents ) {
-		//String nic =req.getParameter("nic");
-		//String title =req.getParameter("title");
-		//String contents = req.getParameter("contents");
-		System.out.println(title);
-		System.out.println(contents);
-		System.out.println(nic);
+	public String main(@RequestParam("nic") String nic,@RequestParam("title") String title,@RequestParam("contents") String contents,
+			HttpSession session) {		
+		String user_no = session.getAttribute("user_no").toString();
+		System.out.println(user_no);
+		int userNo = Integer.parseInt(user_no);
+		System.out.println(userNo);
 		
-		MsgDTO msgDto = new MsgDTO(1, 2, title, contents, 1);
+		int num = dao.recNo(nic);	
+		
+		MsgDTO msgDto = new MsgDTO(userNo, num, title, contents, 1);
 		
 		dao.insert(msgDto);
-		//req.setAttribute("nic", nic);
-		//req.setAttribute("title", title);
-		//req.setAttribute("contents", contents);
+		
 		return "sendMsgOk";
 	}
 	
 	@RequestMapping(value = "checkMsg")
-	public String checkMsg(Model model) {
-		List list = dao.getList();
+	public String checkMsg(Model model,HttpSession session,HttpServletRequest req) {
+		String user_no = session.getAttribute("user_no").toString();
+		System.out.println(user_no);
+		int userNo = Integer.parseInt(user_no);
+		System.out.println(userNo);
+		
+		List<MsgDTO> list = dao.getList(userNo);
 		
 		model.addAttribute("list", list);
+		
 		return "checkMsg";
 	}
 	
 	@RequestMapping(value = "detailMsg")
-	public String detailMsg(Model model) {
-		List list = dao.getList();
+	public String detailMsg(Model model,HttpSession session) {
+		String user_no = session.getAttribute("user_no").toString();
+		System.out.println(user_no);
+		int userNo = Integer.parseInt(user_no);
+		System.out.println(userNo);
+		List list = dao.getList(userNo);
 		
 		model.addAttribute("list", list);
 		return "detailMsg";

@@ -8,6 +8,7 @@ public class MsgDTO{
 	private String m_contents;
 	private String write_date;
 	private int m_read;
+	private String nicname;
 	
 	public MsgDTO() {}
 
@@ -23,9 +24,17 @@ public class MsgDTO{
 		this.m_read = m_read;
 	}
 	
-	
-
-	
+	public MsgDTO(int send_user, int rec_user, String m_title, String m_contents, String write_date, int m_read,
+			String nicname) {
+		super();
+		this.send_user = send_user;
+		this.rec_user = rec_user;
+		this.m_title = m_title;
+		this.m_contents = m_contents;
+		this.write_date = write_date;
+		this.m_read = m_read;
+		this.nicname = nicname;
+	}
 
 	public MsgDTO(int send_user, int rec_user, String m_title, String m_contents, int m_read) {
 		super();
@@ -34,6 +43,14 @@ public class MsgDTO{
 		this.m_title = m_title;
 		this.m_contents = m_contents;
 		this.m_read = m_read;
+	}
+
+	public String getNicname() {
+		return nicname;
+	}
+
+	public void setNicname(String nicname) {
+		this.nicname = nicname;
 	}
 
 	public int getM_no() {

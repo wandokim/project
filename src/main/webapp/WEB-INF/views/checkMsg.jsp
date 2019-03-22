@@ -25,6 +25,7 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+ 
 </head>
 <body>
 
@@ -50,7 +51,6 @@
 			<tr>
 				
 				<th>메세지보낸사람</th>	
-				<th>로그인한사람</th>			
 				<th>제목</th>
 				<th>보낸날짜</th>
 				<th>확인여부</th>
@@ -58,9 +58,8 @@
 			</tr>
 			<c:forEach var="wando" items="${list }">
 				<tr>					
-					<td>${wando.user_no }</td>	
-					<td>${wando.rec_no }</td>				
-					<td>${wando.m_contents }</td><!-- 제목으로 바꿀곳 -->
+					<td>${wando.nicname }</td>	
+					<td>${wando.m_title }</td>				
 					<td>${wando.write_date }</td>
 					<td>${wando.m_read }</td>
 					<td><a href="detailMsg"><input type="button" value="상세확인" /></a></td>

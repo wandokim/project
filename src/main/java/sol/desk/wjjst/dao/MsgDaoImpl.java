@@ -43,12 +43,19 @@ public class MsgDaoImpl implements MsgDAO {
 	}
 
 	@Override
-	public List<MsgDTO> getList() {
-		return ss.selectList("selectAllMsg");
+	public List<MsgDTO> getList(int num) {
+		return ss.selectList("selectAllMsg",num);
 	}
 	
 	public List<MsgDTO> limitMessage(){
 		return ss.selectList("selectMsg");
+	}
+	
+	public int recNo(String nic) {
+		return ss.selectOne("selectRecNo",nic);
+	}
+	public String recName(int num) {
+		return ss.selectOne("selectRecName",num);
 	}
 	
 	

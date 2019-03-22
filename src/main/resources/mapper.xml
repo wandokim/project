@@ -114,9 +114,15 @@
  		order by m_no desc limit 5 
  	</select>
  	
+ 	<!-- <select id="selectAllMsg" resultType="MsgDto">
+ 		select send_user, m_title, write_date, m_read from message
+ 		where rec_user = #{rec_user}
+ 	</select> -->
+ 	
  	<select id="selectAllMsg" resultType="MsgDto">
- 		select * from message
- 		order by m_no desc
+ 		select u.nicname, m.m_title, m.write_date, m.m_read 
+ 		from message m join user_info u on m.send_user = u.user_no
+ 		where rec_user = #{rec_user}
  	</select>
  	
  	<select id="selectOneMsg" parameterType="int" resultType="MsgDto">
@@ -124,6 +130,16 @@
  		where m_no = #{m_no}
  	</select>
  	
+ 	<select id="selectRecNo" parameterType="String" resultType="int">
+  		select user_no from user_info
+  		where nicname = #{nicname}
+  	</select> 	
+  	
+  	<select id="selectRecName" parameterType="int" resultType="String">
+  		select u.nicname from user_info u join message m on m.send_user = u.user_no
+  		where u.user_no = #{user_no}
+  	</select> 	
+  	
  	<insert id="insertMsg" parameterType="MsgDto">
  		insert into message
  		values(0, #{send_user}, #{rec_user}, #{m_title}, #{m_contents}, now(), #{m_read})

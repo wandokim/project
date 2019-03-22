@@ -12,5 +12,5 @@ public interface MsgDAO {
 	public void update(MsgDTO dto);
 	public void delete(int m_no);
 	public MsgDTO getData(int m_no);
-	public List<MsgDTO> getList(); 
+	public List<MsgDTO> getList(int num);
 }
