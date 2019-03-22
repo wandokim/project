@@ -22,6 +22,19 @@ public class MsgDTO{
 		this.write_date = write_date;
 		this.m_read = m_read;
 	}
+	
+	
+
+	
+
+	public MsgDTO(int send_user, int rec_user, String m_title, String m_contents, int m_read) {
+		super();
+		this.send_user = send_user;
+		this.rec_user = rec_user;
+		this.m_title = m_title;
+		this.m_contents = m_contents;
+		this.m_read = m_read;
+	}
 
 	public int getM_no() {
 		return m_no;

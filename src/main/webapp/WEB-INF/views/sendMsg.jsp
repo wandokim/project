@@ -47,15 +47,13 @@
         <!-- Topbar -->
         <jsp:include page="topbar.jsp" flush="true" />
         
-        <form action="sendMsg">
+        <form action="sendMsgOk" name="f">
         <!-- Begin Page Content -->
 	        <div class="container-fluid">
 				보낼사람 닉네임<input type="text" name="nic" id="" /><br />
 				제목 <input type="text" name="title" id="" /><br />
-				내용 <textarea name="contents" id="contents" cols="30" rows="10"></textarea><br />
-				
-				<input type="submit" value="전송버튼" />
-	         
+				내용 <textarea name="contents" id="contents" cols="30" rows="10"></textarea><br />				
+				<a href="sendMsgOk"><input type="submit" value="전송버튼" /></a>	         
 	        </div>
         </form>
       </div>
