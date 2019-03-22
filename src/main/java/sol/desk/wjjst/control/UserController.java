@@ -67,13 +67,12 @@ public class UserController {
 	
 	@RequestMapping(value = "loginOk")
 	public String loginOk(@RequestParam("id") String id, @RequestParam("password") String pwd, HttpSession session) {
+		//System.out.println(dao.checkUser(id));
 		if(dao.checkUser(id)==true) {
 			PwDTO pwDTO = pdao.getData(dao.userNo(id));
-			System.out.println(pwDTO.getPassword());
+			//System.out.println(pwDTO.getPassword());
 			if(pwDTO.getPassword().equals(pwd)) {
-				System.out.println("nicname 값 가져오기 전");
 				session.setAttribute("nicname", dao.getData(id).getNicname());
-				System.out.println("nicname 값 가져오기 후");
 				session.setAttribute("id", id);
 				session.setAttribute("user_no", dao.userNo(id));
 				return "main";				

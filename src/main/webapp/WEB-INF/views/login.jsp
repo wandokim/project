@@ -1,4 +1,3 @@
-<%@page import="java.io.PrintWriter"%>
 <%@page import="sol.desk.wjjst.RandomChamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -66,10 +65,17 @@
 
 	Object obj = session.getAttribute("msg");
 	
-	if(obj!=null || obj!=""){
+	if(obj!=null){
 		String msg = (String) obj;
-		
-		session.removeAttribute("msg");
+%>
+<script type="text/javascript">
+	var msg = "<%=msg %>";
+	if(msg!=null || msg!=""){
+		alert(msg);
+	}
+</script>
+<%
+		session.invalidate();
 	}
 %>
 

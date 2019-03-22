@@ -52,8 +52,7 @@ public class UserDaoImpl implements UserDAO{
 
 	@Override
 	public boolean checkUser(String id) {
-		int check = ss.selectOne("selectUserNo", id);
-		if(check==-1) {
+		if(ss.selectOne("selectUserNo", id)==null) {
 			return false;
 		}else {
 			return true;
