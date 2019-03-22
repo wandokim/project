@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>RankInfo</title>
+<title>Send Massage</title>
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -25,10 +25,31 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script type="text/javascript">
-  	
-  
-  </script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#sender").click(function(){
+			var nic = document.getElementById("nic").value;
+			var title = document.getElementById("title").value;
+			var contents = document.getElementById("contents").value;
+			
+			if(nic == "" || nic == null){
+				alert("닉네임을 입력해주세요");
+				document.getElementById("nic").focus();
+			}else if(title == "" || title == null){
+				alert("제목을 입력해주세요");
+				document.getElementById("title").focus();
+			}else if(contents == "" || contents == null){
+				alert("내용을 입력해주세요");
+				document.getElementById("contents").focus();
+			}else{
+				document.frm.action = "sendMsgOk"
+				document.frm.method = "post";
+				document.frm.submit();
+			}
+		});
+	});
+</script>
 </head>
 <body>
 
@@ -43,19 +64,38 @@
 
       <!-- Main Content -->
       <div id="content">
-
         <!-- Topbar -->
         <jsp:include page="topbar.jsp" flush="true" />
-        
-        <form action="sendMsgOk" name="f">
-        <!-- Begin Page Content -->
-	        <div class="container-fluid">
-				보낼사람 닉네임<input type="text" name="nic" id="" /><br />
-				제목 <input type="text" name="title" id="" /><br />
-				내용 <textarea name="contents" id="contents" cols="30" rows="10"></textarea><br />				
-				<a href="sendMsgOk"><input type="submit" value="전송버튼" /></a>	         
-	        </div>
-        </form>
+
+		<div class="container-fluid">
+	        
+	        <form name="frm">
+	        <!-- Begin Page Content -->
+		        <div class="container-fluid">
+		        	<div class="row justify-content-center">
+		        		<div class="col-lg-6 d-none d-lg-block">
+							<h4>받는사람</h4>
+							<input type="text" name="nic" class="form-control form-control-user" placeholder="닉네임을 입력해주세요" id="nic"/>
+							<br />
+							<h4>제목</h4>
+							<input type="text" name="title" class="form-control form-control-user" placeholder="제목을 입력해주세요" id="title"/>
+							<br />
+							<h4>내용</h4>
+							<textarea name="contents" id="contents" cols="30" rows="10" class="form-control form-control-user"></textarea><br />				
+							<!-- <a href="sendMsgOk"><input type="submit" value="전송버튼" /></a> -->
+							<a href="main" class="btn btn-primary btn-icon-split" style="margin-top: 10px;">
+								<span class="text">Back Home</span>
+							</a>
+							<div style="float: right;" id="sender">
+								<div class="btn btn-success btn-circle btn-lg">
+									<i class="fas fa-check"></i>
+								</div>
+							</div>
+						</div>
+					</div>	         
+		        </div>
+	        </form>
+		</div>
       </div>
      </div>
 
@@ -74,23 +114,7 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
+	<jsp:include page="logout_model.jsp" flush="true" />
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
