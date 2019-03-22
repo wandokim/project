@@ -1,4 +1,4 @@
-value// Set new default font family and font color to mimic Bootstrap's default styling
+// Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -29,16 +29,21 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 
 // Bar Chart Example
 var ctx = document.getElementById("myBarChart");
+var champ1_point= document.getElementById("champ1_point").value;
+var champ2_point= document.getElementById("champ2_point").value;
+var champ3_point= document.getElementById("champ3_point").value;
+var champ4_point= document.getElementById("champ4_point").value;
+
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["리신", "카직스", "이즈리얼", "넣을까말까"],
     datasets: [{
       label: "Revenue",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [champ1_point, champ2_point, champ3_point, champ4_point],
     }],
   },
   options: {
@@ -61,19 +66,19 @@ var myBarChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 6
+          maxTicksLimit: 4
         },
         maxBarThickness: 25,
       }],
       yAxes: [{
         ticks: {
           min: 0,
-          max: 15000,
+          max: 150000,
           maxTicksLimit: 5,
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return 'P' + number_format(value);
           }
         },
         gridLines: {

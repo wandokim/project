@@ -13,11 +13,11 @@ var myPieChart = new Chart(ctx, {
 	
   type: 'doughnut',
   data: {
-    labels: ["승리", "패배"],
+    labels: ["패배", "승리"],
     datasets: [{
-      data: [winCount, loseCount],
-      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+      data: [loseCount, winCount],
+      backgroundColor: ['#ee5a52', '#3d95e5', '#36b9cc'],
+      hoverBackgroundColor: ['#FF0000', '#0054FF', '#2c9faf'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],
   },
