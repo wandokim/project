@@ -75,26 +75,29 @@
 					<div class="font-weight-bold">
 						<div class="text-truncate">친구의 가장 최근 메세지 호출</div>
 						<div class="small text-gray-500">
-						친구이름호출 · 메세지가 온 시간으로 부터 현재까지 시간 시간
+			
+						<%String nic = request.getParameter("nic");%>	
 							<h2>메세지 목록</h2>
-							<table border="1">
-								<tr>
-									<th>메세지보낸사람</th>	
-									<th>제목</th>
-									<th>보낸날짜</th>
-									<th>확인여부</th>
-									<th>상세확인</th>
-								</tr>
-								<c:forEach var="wando" items="${list }">
-								<tr>					
-									<td>${wando.nicname }</td>	
-									<td>${wando.m_title }</td>				
-									<td>${wando.write_date }</td>
-									<td>${wando.m_read }</td>
-									<td><a href="detailMsg?nic=${wando.nicname }&num=${wando.m_no }"><input type="button" value="상세확인" /></a></td>
-								</tr>	
-								</c:forEach>	
-							</table>
+							<table width="100%" cellspacing="0">
+			                  <thead>
+			                    <tr>
+									<th width="15%">보낸 사람</th>
+									<th width="15%">제목</th>
+									<!-- <th width="15%">확인여부</th> -->
+									<th style="display: none;">메세지 번호</th>
+			                    </tr>
+			                  </thead>
+			                  <tbody>
+								<c:forEach var="list" items="${list }">
+									<tr class="table_row">
+										<td><%=nic %></td>	
+										<td>${list.m_title }</td>				
+										<td style="display: none;">${list.m_no}</td>
+									</tr>
+								</c:forEach>
+			                  </tbody>
+                			</table>
+							
 						</div>
 					</div>
 				</a>
