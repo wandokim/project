@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>RankInfo</title>
+<title>Read Message</title>
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -25,6 +25,30 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#replyMsg").click(function(){
+			var nic = document.getElementById("nic").value;
+			var title = document.getElementById("title").value;
+			var contents = document.getElementById("contents").value;
+			
+			console.log(nic);
+			console.log(title);
+			console.log(contents);
+			
+			if(title == "" || title == null){
+				alert("제목을 입력해주세요");
+				document.getElementById("title").focus();
+			}else if(contents == "" || contents == null){
+				alert("내용을 입력해주세요");
+				document.getElementById("contents").focus();
+			}else{
+				location.href = "sendMsgOk?nic="+nic+"&title="+title+"&contents="+contents;
+			}
+		});
+	});
+</script>
 </head>
 <body>
 <%
@@ -47,74 +71,90 @@
         
         <!-- Begin Page Content -->
         <div class="container-fluid">
-			<h2>상세메세지 페이지</h2>
-			<table border="1">
-			<tr>
-				
-				<th>메시지보낸사람</th>
-				<th>제목</th>
-				<th>내용</th>
-				<th>보낸날짜</th>
-				<th>삭제</th>
-				<th>목록으로 돌아가기</th>				
-			</tr>
-			<c:forEach var="wando" items="${list }">
-				<tr>					
-					<td><%=nic %></td>	
-					<td>${wando.m_title }</td>	
-					<td>${wando.m_contents }</td>
-					<td>${wando.write_date }</td>
-					<%-- <td>${wando.rec_no }</td> --%>	<!-- 제목은 만들고 추가 -->			
-					<td><a href="deleteMsg?num=${wando.m_no }"><input type="button" value="삭제" /></a></td>
-					<td><a href="checkMsg"><input type="button" value="목록으로 돌아가기" /></a></td>
-				</tr>	
-			</c:forEach>	
-		</table>
-         
-         <input type="button" value="답장" />
-         <div>
-         	받을사람<input type="text" name="" id="" /><br />
-         	제목 <input type="text" name="" id="" /><br />
-         	내용 <textarea name="" id="" cols="30" rows="10"></textarea><br />
-         	<input type="button" value="답장하기" />
-         </div>
-         
+        
+        	<!-- Msg Detail -->
+			<div class="row justify-content-center">
+				<div class="col-lg-6 d-none d-lg-block">
+		        	<div class="card shadow mb-4">
+			            <div class="card-header py-3">
+			              <h5 class="m-0 font-weight-bold text-primary" style="display: inline-block;">Messages Detail</h5>
+			              <div style="float: right;">
+			              	<a href="checkMsg" class="btn btn-info btn-icon-split" data-toggle="modal" data-target="#replyMsgModel">
+								<span class="text">답장</span>
+							</a>
+			              </div>
+			            </div>
+			            <div class="card-body">
+							<div class="d-none d-lg-block">
+								<c:forEach var="list" items="${list }">
+									<h4>보낸 사람</h4>
+									<input type="text" class="form-control form-control-user" disabled="disabled" value="<%=nic %>"/>
+									<br />
+									<h4>제목</h4>
+									<input type="text" class="form-control form-control-user" disabled="disabled" value="${list.m_title }"/>
+									<br />
+									<h4>내용</h4>
+									<textarea cols="25" rows="10" class="form-control form-control-user" disabled="disabled">${list.m_contents }</textarea>
+									<br />				
+								</c:forEach>
+								<a href="detailMsg" class="btn btn-danger btn-icon-split" style="margin-top: 10px;">
+									<span class="text">삭제</span>
+								</a>
+								<div style="float: right;" id="sender">
+									<a href="checkMsg" class="btn btn-primary btn-icon-split" style="margin-top: 10px;">
+										<span class="text">목록</span>
+									</a>
+								</div>
+							</div>
+						</div>
+		            </div>
+	            </div>
+          </div>   
         </div>
       </div>
-     </div>
-
-   </div>
-       
-
-     
-      <!-- End of Main Content -->
-
       <!-- Footer -->
       <jsp:include page="footer.jsp" flush="true" />  
+     </div>
+   </div>
+      <!-- End of Main Content -->
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
+  
+	<!-- replyMsg Modal-->
+	<div class="modal fade" id="replyMsgModel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="exampleModalLabel">답장하기</h5>
+	        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+	          <span aria-hidden="true">×</span>
+	        </button>
+	      </div>
+	      <div class="modal-body">
+	      	<div class="d-none d-lg-block">
+				<h4>받는 사람</h4>
+				<input type="text" name="nic" class="form-control form-control-user" id="nic" disabled="disabled" value="<%=nic %>"/>
+				<br />
+				<h4>제목</h4>
+				<input type="text" name="title" class="form-control form-control-user" id="title"/>
+				<br />
+				<h4>내용</h4>
+				<textarea name="contents" id="contents" cols="25" rows="10" class="form-control form-control-user"></textarea>
+			</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button class="btn btn-secondary" type="button" data-dismiss="modal">취소</button>
+	        <div class="btn btn-primary" id="replyMsg">보내기</div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
+	<jsp:include page="logout_model.jsp" flush="true"/>
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
