@@ -49,8 +49,7 @@ public class MsgController {
 		dao.insert(msgDto);
 		
 		
-		
-		return "sendMsg";
+		return "detailMsg";
 	}
 	
 	@RequestMapping(value = "checkMsg")

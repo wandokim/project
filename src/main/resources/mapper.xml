@@ -108,10 +108,17 @@
  	</delete>
   	
  <!-- message --> 
- 	<select id="selectMsg" resultType="MsgDto">
+ 	<!-- <select id="selectMsg" resultType="MsgDto">
  		select * from message 
  		where m_read = 1
  		order by m_no desc limit 5 
+ 	</select> -->
+ 	
+ 	<select id="sortMsg" parameterType="int" resultType="MsgDto">
+ 		select m.m_no, u.nicname, m.m_title
+ 		from message m join user_info u on m.send_user = u.user_no
+ 		where m.rec_user = #{rec_user} and m.m_read = 1
+ 		order by m.m_no desc limit 5;
  	</select>
  	
  	<!-- <select id="selectAllMsg" resultType="MsgDto">
