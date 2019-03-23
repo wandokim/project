@@ -58,12 +58,11 @@
 			</tr>
 			<c:forEach var="wando" items="${list }">
 				<tr>					
-					<input type="hidden" name="${wando.m_no[n] }" />
 					<td>${wando.nicname }</td>	
 					<td>${wando.m_title }</td>				
 					<td>${wando.write_date }</td>
 					<td>${wando.m_read }</td>
-					<td><a href="detailMsg"><input type="button" value="상세확인" /></a></td>
+					<td><a href="detailMsg?nic=${wando.nicname }&num=${wando.m_no }"><input type="button" value="상세확인" /></a></td>
 				</tr>	
 			</c:forEach>	
 		</table>

@@ -133,7 +133,7 @@
  	</select>
  	
  	<select id="selectOneOne" parameterType="int" resultType="MsgDto">
- 		slelect m_no, nicname, m_title, m_contents, write_date
+ 		select m_no, m_title, m_contents, write_date
  		from message
  		where m_no = #{m_no}
  	</select>

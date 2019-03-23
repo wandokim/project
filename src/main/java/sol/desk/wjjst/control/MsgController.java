@@ -82,8 +82,9 @@ public class MsgController {
 	}*/
 	
 	@RequestMapping(value = "detailMsg")
-	public String detailMsg(Model model,@RequestParam("m_no") int m_no) {
+	public String detailMsg(Model model,@RequestParam("num") int m_no, @RequestParam("nic") String nic) {
 		
+		System.out.println(nic);
 		System.out.println(m_no);
 		
 		List<MsgDTO> list = dao.getOneOne(m_no);
@@ -93,10 +94,11 @@ public class MsgController {
 	}
 	
 	@RequestMapping(value = "deleteMsg")
-	public String deleteMsg(@RequestParam("hide") int hide) {	
+	public String deleteMsg(@RequestParam("num") int m_no) {	
 		
-		System.out.println(hide);
-		dao.delete(hide);		
+		System.out.println(m_no);
+		dao.delete(m_no);		
+		
 		return "checkMsg";
 	}
 	
