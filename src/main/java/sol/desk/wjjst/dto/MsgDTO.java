@@ -11,6 +11,14 @@ public class MsgDTO{
 	private String nicname;
 	
 	public MsgDTO() {}
+	
+	
+
+	public MsgDTO(int m_no) {
+		super();
+		this.m_no = m_no;
+
+	}
 
 	public MsgDTO(int m_no, int send_user, int rec_user, String m_title, String m_contents, String write_date,
 			int m_read) {

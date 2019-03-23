@@ -74,7 +74,28 @@
 					</div>
 					<div class="font-weight-bold">
 						<div class="text-truncate">친구의 가장 최근 메세지 호출</div>
-						<div class="small text-gray-500">친구이름호출 · 메세지가 온 시간으로 부터 현재까지 시간</div>
+						<div class="small text-gray-500">
+						친구이름호출 · 메세지가 온 시간으로 부터 현재까지 시간 시간
+							<h2>메세지 목록</h2>
+							<table border="1">
+								<tr>
+									<th>메세지보낸사람</th>	
+									<th>제목</th>
+									<th>보낸날짜</th>
+									<th>확인여부</th>
+									<th>상세확인</th>
+								</tr>
+								<c:forEach var="wando" items="${list }">
+								<tr>					
+									<td>${wando.nicname }</td>	
+									<td>${wando.m_title }</td>				
+									<td>${wando.write_date }</td>
+									<td>${wando.m_read }</td>
+									<td><a href="detailMsg?nic=${wando.nicname }&num=${wando.m_no }"><input type="button" value="상세확인" /></a></td>
+								</tr>	
+								</c:forEach>	
+							</table>
+						</div>
 					</div>
 				</a>
 	    

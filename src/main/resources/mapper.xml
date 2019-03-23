@@ -158,9 +158,9 @@
  		values(0, #{send_user}, #{rec_user}, #{m_title}, #{m_contents}, now(), #{m_read})
  	</insert>
  	
- 	<update id="updateMsg" parameterType="MsgDto">
+ 	<update id="updateMsg" parameterType="int">
  		update message set
- 		m_read = #{m_read}
+ 		m_read = 0
  		where m_no = #{m_no}
  	</update>
  	

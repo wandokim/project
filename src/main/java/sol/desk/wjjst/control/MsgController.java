@@ -67,6 +67,20 @@ public class MsgController {
 		return "checkMsg";
 	}
 	
+	@RequestMapping(value = "topbar")
+	public String showTopbar(Model model,HttpSession session,HttpServletRequest req) {
+		String user_no = session.getAttribute("user_no").toString();
+		//System.out.println(user_no);
+		int userNo = Integer.parseInt(user_no);
+		//System.out.println(userNo);
+		
+		List<MsgDTO> list = dao.getList(userNo);
+		
+		model.addAttribute("list", list);
+		
+		return "checkMsg";
+	}
+	
 	/*@RequestMapping(value = "detailMsg")
 	public String detailMsg(Model model,HttpSession session) {
 		String user_no = session.getAttribute("user_no").toString();
@@ -90,6 +104,8 @@ public class MsgController {
 		List<MsgDTO> list = dao.getOneOne(m_no);
 		
 		model.addAttribute("list", list);
+		
+		dao.update(m_no);
 		return "detailMsg";
 	}
 	

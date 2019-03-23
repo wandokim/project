@@ -25,8 +25,8 @@ public class MsgDaoImpl implements MsgDAO {
 	}
 
 	@Override
-	public void update(MsgDTO dto) {
-		// TODO Auto-generated method stub
+	public void update(int m_no) {
+		ss.update("updateMsg", m_no);
 		
 	}
 
