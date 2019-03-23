@@ -58,6 +58,7 @@
 			</tr>
 			<c:forEach var="wando" items="${list }">
 				<tr>					
+					<input type="hidden" name="${wando.m_no[n] }" />
 					<td>${wando.nicname }</td>	
 					<td>${wando.m_title }</td>				
 					<td>${wando.write_date }</td>

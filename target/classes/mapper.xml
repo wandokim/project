@@ -120,15 +120,28 @@
  	</select> -->
  	
  	<select id="selectAllMsg" resultType="MsgDto">
- 		select u.nicname, m.m_title, m.write_date, m.m_read 
+ 		select m.m_no, u.nicname, m.m_title, m.write_date, m.m_read 
+ 		from message m join user_info u on m.send_user = u.user_no
+ 		where rec_user = #{rec_user}
+ 		order by m.m_no desc
+ 	</select>
+ 	
+ 	<select id="selectOneMsg" parameterType="int" resultType="MsgDto">
+ 		select m_no, u.nicname, m.m_title, m.m_contents, m.write_date 
  		from message m join user_info u on m.send_user = u.user_no
  		where rec_user = #{rec_user}
  	</select>
  	
- 	<select id="selectOneMsg" parameterType="int" resultType="MsgDto">
- 		select * from message
+ 	<select id="selectOneOne" parameterType="int" resultType="MsgDto">
+ 		slelect m_no, nicname, m_title, m_contents, write_date
+ 		from message
  		where m_no = #{m_no}
  	</select>
+ 	
+ 	<!-- <select id="selectOneMsg" parameterType="int" resultType="MsgDto">
+ 		select * from message
+ 		where m_no = #{m_no}
+ 	</select> -->
  	
  	<select id="selectRecNo" parameterType="String" resultType="int">
   		select user_no from user_info

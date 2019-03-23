@@ -49,7 +49,7 @@
 			<table border="1">
 			<tr>
 				
-				<th>보낸사람</th>
+				<th>메시지보낸사람</th>
 				<th>제목</th>
 				<th>내용</th>
 				<th>보낸날짜</th>
@@ -58,10 +58,12 @@
 			</tr>
 			<c:forEach var="wando" items="${list }">
 				<tr>					
-					<td>${wando.user_no }</td>	
-					<td>${wando.rec_no }</td>	<!-- 제목은 만들고 추가 -->			
+					<td>${wando.nicname }</td>	
+					<td>${wando.m_title }</td>	
 					<td>${wando.m_contents }</td>
 					<td>${wando.write_date }</td>
+					<%-- <td>${wando.rec_no }</td> --%>	<!-- 제목은 만들고 추가 -->			
+					<input type="hidden" name="hide" value="${wando.m_no }" />
 					<td><a href="deleteMsg"><input type="button" value="삭제" /></a></td>
 					<td><a href="checkMsg"><input type="button" value="목록으로 돌아가기" /></a></td>
 				</tr>	

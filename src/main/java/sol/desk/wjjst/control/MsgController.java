@@ -5,14 +5,14 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import sol.desk.wjjst.dao.MsgDAO;
+
 import sol.desk.wjjst.dao.MsgDaoImpl;
 import sol.desk.wjjst.dto.MsgDTO;
 
@@ -38,9 +38,9 @@ public class MsgController {
 	public String main(@RequestParam("nic") String nic,@RequestParam("title") String title,@RequestParam("contents") String contents,
 			HttpSession session) {		
 		String user_no = session.getAttribute("user_no").toString();
-		System.out.println(user_no);
+		//System.out.println(user_no);
 		int userNo = Integer.parseInt(user_no);
-		System.out.println(userNo);
+		//System.out.println(userNo);
 		
 		int num = dao.recNo(nic);	
 		
@@ -48,15 +48,17 @@ public class MsgController {
 		
 		dao.insert(msgDto);
 		
-		return "sendMsgOk";
+		
+		
+		return "sendMsg";
 	}
 	
 	@RequestMapping(value = "checkMsg")
 	public String checkMsg(Model model,HttpSession session,HttpServletRequest req) {
 		String user_no = session.getAttribute("user_no").toString();
-		System.out.println(user_no);
+		//System.out.println(user_no);
 		int userNo = Integer.parseInt(user_no);
-		System.out.println(userNo);
+		//System.out.println(userNo);
 		
 		List<MsgDTO> list = dao.getList(userNo);
 		
@@ -65,22 +67,36 @@ public class MsgController {
 		return "checkMsg";
 	}
 	
-	@RequestMapping(value = "detailMsg")
+	/*@RequestMapping(value = "detailMsg")
 	public String detailMsg(Model model,HttpSession session) {
 		String user_no = session.getAttribute("user_no").toString();
 		System.out.println(user_no);
 		int userNo = Integer.parseInt(user_no);
 		System.out.println(userNo);
-		List list = dao.getList(userNo);
+		
+		
+		List<MsgDTO> list = dao.getOneList(userNo);
+		
+		model.addAttribute("list", list);
+		return "detailMsg";
+	}*/
+	
+	@RequestMapping(value = "detailMsg")
+	public String detailMsg(Model model,@RequestParam("m_no") int m_no) {
+		
+		System.out.println(m_no);
+		
+		List<MsgDTO> list = dao.getOneOne(m_no);
 		
 		model.addAttribute("list", list);
 		return "detailMsg";
 	}
 	
 	@RequestMapping(value = "deleteMsg")
-	public String deleteMsg(int m_no) {	
+	public String deleteMsg(@RequestParam("hide") int hide) {	
 		
-		dao.delete(m_no);		
+		System.out.println(hide);
+		dao.delete(hide);		
 		return "checkMsg";
 	}
 	

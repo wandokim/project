@@ -47,6 +47,15 @@ public class MsgDaoImpl implements MsgDAO {
 		return ss.selectList("selectAllMsg",num);
 	}
 	
+	public List<MsgDTO> getOneList(int num) {
+		return ss.selectList("selectOneMsg",num);
+	}
+	
+	
+	public List<MsgDTO> getOneOne(int num) {
+		return ss.selectList("selectOneOne",num);
+	}
+	
 	public List<MsgDTO> limitMessage(){
 		return ss.selectList("selectMsg");
 	}
