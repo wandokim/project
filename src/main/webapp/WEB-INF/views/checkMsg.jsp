@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>RankInfo</title>
+<title>All Massages</title>
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -25,7 +25,16 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
- 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<style type="text/css">
+	.table_row {
+		cursor: pointer;
+	}
+	.table_row:hover {
+		background-color: #EAEAEA;
+	}
+</style>
 </head>
 <body>
 
@@ -46,27 +55,40 @@
         
         <!-- Begin Page Content -->
         <div class="container-fluid">
-			<h2>'어떤 사람이 '나'한테 보낸 메세지 목록</h2>
-			<table border="1">
-			<tr>
-				
-				<th>메세지보낸사람</th>	
-				<th>제목</th>
-				<th>보낸날짜</th>
-				<th>확인여부</th>
-				<th>상세확인</th>
-			</tr>
-			<c:forEach var="wando" items="${list }">
-				<tr>					
-					<td>${wando.nicname }</td>	
-					<td>${wando.m_title }</td>				
-					<td>${wando.write_date }</td>
-					<td>${wando.m_read }</td>
-					<td><a href="detailMsg?nic=${wando.nicname }&num=${wando.m_no }"><input type="button" value="상세확인" /></a></td>
-				</tr>	
-			</c:forEach>	
-		</table>
-         
+        
+        	<!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">Check All Massages</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+						<th width="15%">보낸 사람</th>
+						<th>제목</th>
+						<th width="15%">받은 날짜</th>
+						<th width="15%">확인여부</th>
+						<th style="display: none;">메세지 번호</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+					<c:forEach var="list" items="${list }">
+						<tr class="table_row">
+							<td>${list.nicname }</td>	
+							<td>${list.m_title }</td>				
+							<td>${list.write_date }</td>
+							<td>${list.m_read }</td>
+							<td style="display: none;">${list.m_no}</td>
+						</tr>
+					</c:forEach>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
         </div>
       </div>
      </div>
@@ -120,6 +142,19 @@
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
-	
+
+<script type="text/javascript">
+	$(".table_row").click(function(){
+		var tr = $(this);
+		var td = tr.children();
+		
+		var nicname = td.eq(0).text();
+		var m_no = td.eq(4).text();
+		console.log(nicname);
+		console.log(m_no);
+		
+		location.href = "detailMsg?nic="+nicname+"&num="+m_no;
+	});
+</script>
 </body>
 </html>
