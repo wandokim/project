@@ -115,11 +115,52 @@
 			         }
 			    }) 
 		     })
-		});
+		}); 
 	
 </script>
+<!-- 유효성 검사 -->
+<script type="text/javascript">
+	
+$(function(){	
+	
+	$("#register").click(function(){
+		
+		var getCheck= /[0-9]|[a-z]|[A-Z]|[가-힣]/;
+	    var getName= /[^a-zA-Z가-힣]/;
+	    
+		//아이디 공백 확인
+	      if($("#id").val() == ""){
+	        alert("아이디를 입력해주세요.");
+	        $("#id").focus();
+	        return false;
+	      }
+	 
+	      //이름의 유효성 검사
+	      if(!getCheck.test($("#id").val())){
+	        alert("영문 대소문자, 숫자로만 입력해주세요.");
+	        $("#id").val("");
+	        $("#id").focus();
+	        return false;
+	      }
 
-
+	      if($("#nicname").val() == ""){
+		        alert("닉네임을 입력해주세요.");
+		        $("#nicname").focus();
+		        return false;
+		      }
+	      
+	    //이름 유효성
+	      if (!getName.test($("#nicname").val())) {
+	        alert("한글로만 입력해주세요.");
+	        $("#nicname").val("");
+	        $("#nicname").focus();
+	        return false;
+	      }
+		
+	});
+});
+	    
+</script>
 
 <!-- 유효성 검사 -->
 <!-- <script type="text/javascript">
@@ -168,6 +209,7 @@ $(function(){
 
 </head>
 <body>
+
 
 	<!-- Topbar -->
 	<jsp:include page="main_topbar.jsp" flush="true"/>
