@@ -58,6 +58,14 @@ public class UserDaoImpl implements UserDAO{
 			return true;
 		}
 	}
+	
+	public boolean checkNic(String nic) {
+		if(ss.selectOne("selectUserNic", nic)==null) {
+			return false;
+		}else {
+			return true;
+		}
+	}
 
 	
 }

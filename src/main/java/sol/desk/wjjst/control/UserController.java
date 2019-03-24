@@ -9,24 +9,28 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import sol.desk.wjjst.dao.PwDAO;
 import sol.desk.wjjst.dao.PwDaoImpl;
 import sol.desk.wjjst.dao.UserDAO;
+import sol.desk.wjjst.dao.UserDaoImpl;
 import sol.desk.wjjst.dto.PwDTO;
 import sol.desk.wjjst.dto.UserDTO;
 
 @Controller
 public class UserController {
 	
-	UserDAO dao;
+	UserDaoImpl dao;
 	PwDaoImpl pdao;
 	
 	@Autowired
-	public void setDao(UserDAO dao) {
+	public void setDao(UserDaoImpl dao) {
 		this.dao = dao;
 	}
 	
@@ -100,6 +104,34 @@ public class UserController {
 		
 		return "Profile";
 	}
+	
+	
+	@RequestMapping(value = "registerId", method = RequestMethod.POST)
+	public @ResponseBody String checkId(@RequestParam("id") String id) {
+		String str = "";
+		boolean result = dao.checkUser(id);
+		
+		if(result == true) {
+			str = "NO";
+		}else {
+			str = "YES";
+		}
+		return str;
+	}
+	
+	@RequestMapping(value = "registerNic", method = RequestMethod.POST)
+	public @ResponseBody String checkNic(@RequestParam("nicname") String nicname) {
+		String str = "";
+		boolean result = dao.checkNic(nicname);
+		
+		if(result == true) {
+			str = "NO";
+		}else {
+			str = "YES";
+		}
+		return str;
+	}
+	
 	
 	
 }

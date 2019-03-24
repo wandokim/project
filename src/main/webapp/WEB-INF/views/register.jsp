@@ -52,6 +52,75 @@
   	}
 </script>
 
+<!-- id중복 검사 -->
+<script type="text/javascript">
+	
+	$(function(){
+		//아이디 중복체크
+		    $('#id').blur(function(){
+		        $.ajax({
+			     type:"POST",
+			     url:"registerId",
+			     data:{
+			            "id":$('#id').val()
+			     },
+			     success:function(data){	//data : registerOk에서 넘겨준 결과값
+			            if($.trim(data)=="YES"){
+			               if($('#id').val()!=''){ 
+			               	//alert("사용가능한 아이디입니다.");
+			               	document.getElementById('checkId').style.color = "blue";
+				  			document.getElementById('checkId').innerHTML = "사용 가능한 아이디입니다.";	
+			               	
+			               }
+			           	}else{
+			               if($('#id').val()!=''){
+			                  //alert("중복된 아이디입니다.");
+			                  document.getElementById('checkId').style.color = "red";
+					  		  document.getElementById('checkId').innerHTML = "중복된 아이디입니다.";
+			                  $('#id').val('');
+			                  $('#id').focus();
+			               }
+			            }
+			         }
+			    }) 
+		     })
+		});
+	
+	$(function(){
+		//닉네임 중복체크
+		    $('#nicname').blur(function(){
+		        $.ajax({
+			     type:"POST",
+			     url:"registerNic",
+			     data:{
+			            "nicname":$('#nicname').val()
+			     },
+			     success:function(data){	//data : registerOk에서 넘겨준 결과값
+			            if($.trim(data)=="YES"){
+			               if($('#nicname').val()!=''){ 
+			               	//alert("사용가능한 아이디입니다.");
+			               	document.getElementById('checkNic').style.color = "blue";
+				  			document.getElementById('checkNic').innerHTML = "사용 가능한 닉네임입니다.";	
+			               	
+			               }
+			           	}else{
+			               if($('#nicname').val()!=''){
+			                  //alert("중복된 아이디입니다.");
+			                  document.getElementById('checkNic').style.color = "red";
+					  		  document.getElementById('checkNic').innerHTML = "중복된 닉네임입니다.";
+			                  $('#nicname').val('');
+			                  $('#nicname').focus();
+			               }
+			            }
+			         }
+			    }) 
+		     })
+		});
+	
+</script>
+
+
+
 <!-- 유효성 검사 -->
 <!-- <script type="text/javascript">
 $(function(){
@@ -128,9 +197,11 @@ $(function(){
 	                <div class="form-group row">
 	                  <div class="col-sm-6 mb-3 mb-sm-0">
 	                    <input type="text" class="form-control form-control-user" name="id" placeholder="아이디" id="id">
+	                    <div id="checkId" style="padding: 10px 0 0 0"></div>
 	                  </div>
 	                  <div class="col-sm-6">
 	                    <input type="text" class="form-control form-control-user" name="nicname" placeholder="닉네임" id="nicname">
+	                  	<div id="checkNic" style="padding: 10px 0 0 0"></div>
 	                  </div>
 	                </div>
 	                <div class="form-group">

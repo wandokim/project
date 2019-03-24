@@ -18,6 +18,11 @@
   		where id = #{id}
   	</select>
   	
+  	<select id="selectUserNic" parameterType="String" resultType="int">
+  		select user_no from user_info
+  		where nicname = #{nicname}
+  	</select>
+  	
   	<insert id="insertUser" parameterType="UserDto" >
   		insert into user_info
   		values(0,#{nicname},#{id},#{email},now(),#{rout},#{grade})
