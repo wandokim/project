@@ -1,3 +1,6 @@
+<%@page import="java.util.Comparator"%>
+<%@page import="sol.desk.wjjst.RankVO"%>
+<%@page import="java.util.Collections"%>
 <%@page import="sol.desk.wjjst.MasterInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
@@ -24,6 +27,7 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -45,26 +49,22 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
-
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+              <h6 class="m-0 font-weight-bold text-primary">전체 랭킹 정보</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align: center;">
                   <thead>
                     <tr>
-                      <th>순위</th>
+                      <th width="10%">순위</th>
                       <th>소환사명</th>
                       <th>티어</th>
                       <th>LP</th>
-                      <th>승률</th>
-                      <th>모스트챔프</th>
+                      <th>승 / 패</th>
+                      <th>승률 (%)</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -119,23 +119,45 @@
 
 		String[] wando = (String[]) list.toArray(new String[list.size()]);
 
-		String[] f;		
+		String[] str1;
+		List<RankVO> result1 = new ArrayList();
+		RankVO vo;
 		for(int i=0; i<wando.length; i++) {
-			f = wando[i].split(",");
-			int total = (Integer.parseInt(f[2]))*100/(Integer.parseInt(f[2])+Integer.parseInt(f[3]));			
+			str1 = wando[i].split(",");
+			vo = new RankVO(str1[0],Integer.parseInt(str1[1]),Integer.parseInt(str1[2]),Integer.parseInt(str1[3]));
 			
+			result1.add(vo);
+		}
+			
+			Collections.sort(result1, new Comparator<RankVO>(){
+				public int compare(RankVO vo1, RankVO vo2){
+					int vo1Value = vo1.getLp();
+					int vo2Value = vo2.getLp();
+					
+					if(vo1Value > vo2Value){
+						return -1;
+					}else if(vo1Value < vo2Value){
+						return 1;
+					}else {
+						return 0;
+					}
+				}
+			});
+			int rankNo = 1;
+			for(RankVO vo_list : result1){
+				int total = vo_list.getWin()*100/(vo_list.getWin()+vo_list.getLose());
 	%>
 			<tr>
-                <td>LP가 높으면 순위가 높습니다.</td>
-                <td><%=f[0] %></td>
+                <td><%=rankNo %></td>
+                <td><%=vo_list.getName() %></td>
                 <td>Master</td>
-                <td><%=Integer.parseInt(f[1])%></td>
-                <td><%=f[2] %>승 <%=f[3] %>패 <%=total %>승률</td>
-                <td>챔피언 숙련도</td>
+                <td><%=vo_list.getLp() %></td>
+                <td><%=vo_list.getWin() %>승 / <%=vo_list.getLose() %>패</td>
+                <td><%=total %>%</td>
             </tr>
 	<%
-			
-		}
+			rankNo++;
+			}
 	%>
 	</tbody>
                 </table>
