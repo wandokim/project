@@ -43,8 +43,8 @@
   		select * from sol_board
   	</select>
   	
-  	<select id="selectOneBoard" parameterType="String" resultType="BoardDto">
-  		select * from sol_board where writer = #{writer}
+  	<select id="selectOneBoard" parameterType="int" resultType="BoardDto">
+  		select * from sol_board where b_no = #{b_no}
   	</select>
   	
   	<insert id="insertBoard" parameterType="BoardDto" >
@@ -53,13 +53,31 @@
   	</insert>
   	
   	<update id="updateBoard" parameterType="BoardDto">
-  		update board set
+  		update sol_board set
   		title = #{title}, contents = #{contents}
+  		where b_no = #{b_no}
+  	</update>
+  	
+  	<update id="riseHits" parameterType="int">
+  		update sol_board set
+  		b_hits = b_hits+1
+  		where b_no = #{b_no}
+  	</update>
+  	
+  	<update id="riseLike" parameterType="int">
+  		update sol_board set
+  		b_like = b_like+1
+  		where b_no = #{b_no}
+  	</update>
+
+  	<update id="downLike" parameterType="int">
+  		update sol_board set
+  		b_like = b_like-1
   		where b_no = #{b_no}
   	</update>
   
   	<delete id="deleteBoard" parameterType="int">
-  		delete from board where b_no = #{b_no}
+  		delete from sol_board where b_no = #{b_no}
   	</delete>
  
  <!-- user_password -->

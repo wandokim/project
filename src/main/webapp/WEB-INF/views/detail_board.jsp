@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Send Message</title>
+<title>자유 게시판</title>
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -26,11 +26,7 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <%
-  	
-  %>
-  
-  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -49,31 +45,61 @@
         <jsp:include page="topbar.jsp" flush="true" />
 
 		<div class="container-fluid">
-	     <h2>넘어감</h2>
-				
-				<table border="1">			
-					<tr>
-						<th>제목</th>
-						<th>작성일</th>
-						<th>작성자</th>
-						<th>좋아요</th>
-						<th>조회수</th>
-						<th>내용</th>
-					</tr>
-					
-					<c:forEach var="wando" items="${wando }">
-						<tr>
-							<td>${wando.title }</td>
-							<td>${wando.write_date }</td>
-							<td>${wando.writer }</td>
-							<td>${wando.b_like }</td>
-							<td>${wando.b_hits }</td>
-							<td>${wando.b_contents }</td>
-						</tr>
-					</c:forEach>					
-				</table>
-				
-				<a href="freeBoard"><input type="button" value="목록으로 돌아가기" /></a>	     
+	    <div class="row justify-content-center">
+				<div class="col-lg-6 d-none d-lg-block">
+		        	<div class="card shadow mb-4">
+			            <div class="card-header py-3">
+			              <h5 class="m-0 font-weight-bold text-primary" style="display: inline-block;">게시물</h5>
+							<div style="float: right;">
+								<img src="./img/pointer.png" alt="조회수" height="25px"/>
+								<span>${dto.b_hits }</span>
+							</div>
+							<div style="float: right; margin-right: 15px;">
+								<img src="./img/like1.png" alt="좋아요" height="20px"/>
+								<span>${dto.b_like }</span>
+							</div>
+			            </div>
+			            <div class="card-body">
+							<div class="d-none d-lg-block">
+								<h6>제목</h6>
+								<input type="text" class="form-control form-control-user" disabled="disabled" value="${dto.b_no }"/>
+								<br />
+								<div style="display: inline-block; width: 48%;">
+									<h6>작성자</h6>
+									<input type="text" class="form-control form-control-user" disabled="disabled" value="${dto.writer }"/>
+								</div>
+								<div style="float: right; width: 48%;">
+									<h6>작성일</h6>
+									<input type="text" class="form-control form-control-user" disabled="disabled" value="${dto.write_date }"/>
+								</div>
+								<br />
+								<br />
+								<textarea cols="25" rows="10" class="form-control form-control-user" disabled="disabled">${dto.b_contents}</textarea>
+								<br />
+								<hr />
+								<%
+									// 나의 user_no와 게시글의 writer_no가 같을 경우 표시
+									if(session.getAttribute("id") != null){
+										if(Integer.parseInt(session.getAttribute("user_no").toString())==Integer.parseInt(session.getAttribute("checkUserNo").toString())){
+								%>
+											<a href="deleteOk" class="btn btn-danger btn-icon-split" style="margin-top: 10px;">
+												<span class="text">삭제</span>
+											</a>
+								<%
+										}
+									}
+								%>
+								<div style="float: right;" id="sender">
+									<a href="freeBoard" class="btn btn-primary btn-icon-split" style="margin-top: 10px;">
+										<span class="text">목록</span>
+									</a>
+								</div>
+							</div>
+						</div>
+		            </div>
+	            </div>
+          </div>
+				     
 		</div>
       </div>
       <!-- Footer -->
