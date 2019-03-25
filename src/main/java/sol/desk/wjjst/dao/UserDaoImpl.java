@@ -66,6 +66,10 @@ public class UserDaoImpl implements UserDAO{
 			return true;
 		}
 	}
+	
+	public List<UserDTO> selectProfile(int user_no){
+		return ss.selectList("selectProfile",user_no);
+	}
 
 	
 }

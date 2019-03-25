@@ -11,6 +11,17 @@ public class UserDTO {
 	
 	public UserDTO() {}
 	
+	
+	
+	public UserDTO(String nicname, String email, String id) {
+		super();
+		this.nicname = nicname;
+		this.email = email;
+		this.id = id;
+	}
+
+
+
 	public UserDTO(int user_no, String nicname, String id, String email, String join_date, int rout, int grade) {
 		super();
 		this.user_no = user_no;

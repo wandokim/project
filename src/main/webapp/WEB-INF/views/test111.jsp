@@ -26,9 +26,14 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <%
-  	
-  %>
+  <script type="text/javascript">
+  	function saveContents(){
+  		f.action="boardOk";
+  		f.method="get";
+  		f.submit();
+  		
+  	}
+  </script>
   
   
 </head>
@@ -49,41 +54,19 @@
         <jsp:include page="topbar.jsp" flush="true" />
         
         
-        
-
+	<form name="f">
 		<div class="container-fluid">
-	     <h2>넘어감</h2>
-				
-				<table border="1">			
-					<tr>
-						<th>제목</th>
-						<th>작성일</th>
-						<th>작성자</th>
-						<th>좋아요</th>
-						<th>조회수</th>
-						<th>내용</th>
-					</tr>
-					
-					<c:forEach var="wando" items="${wando }">
-						<tr>
-							<td>${wando.title }</td>
-							<td>${wando.write_date }</td>
-							<td>${wando.writer }</td>
-							<td>${wando.b_like }</td>
-							<td>${wando.b_hits }</td>
-							<td>${wando.b_contents }</td>
-						</tr>
-					</c:forEach>					
-				</table>
-				
-				<a href="freeBoard"><input type="button" value="목록으로 돌아가기" /></a>	     
+	        <h2>넘어감</h2>
+			
+			제목 : <input type="text" name="title" id="title" /><br />
+				내용 : <br /><textarea name="contents" id="contents" cols="30" rows="10"></textarea><br />
+				<input type="button" value="글쓰기완료" onclick="saveContents()" />		     
 		</div>
+		</form>
       </div>
       <!-- Footer -->
       <jsp:include page="footer.jsp" flush="true" />  
      </div>
-
-
 
 
    </div>

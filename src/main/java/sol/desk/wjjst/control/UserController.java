@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -23,6 +24,7 @@ import sol.desk.wjjst.dao.PwDAO;
 import sol.desk.wjjst.dao.PwDaoImpl;
 import sol.desk.wjjst.dao.UserDAO;
 import sol.desk.wjjst.dao.UserDaoImpl;
+import sol.desk.wjjst.dto.BoardDTO;
 import sol.desk.wjjst.dto.MsgDTO;
 import sol.desk.wjjst.dto.PwDTO;
 import sol.desk.wjjst.dto.UserDTO;
@@ -109,14 +111,23 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "ModifyOk")
-	public String ModifyOk(@RequestParam("nicname") String nicname,@RequestParam("pwd") String pwd,@RequestParam("email") String email) {
-		UserDTO userDto = new UserDTO(nicname, pwd, email, 1, 2);
-		dao.update(userDto);
+	public String ModifyOk(HttpSession session,@RequestParam("nicname") String nicname,@RequestParam("pwd") String pwd,@RequestParam("email") String email) {
+		String id = session.getAttribute("id").toString();
 		
-		int user_no = dao.userNo(nicname);
+		UserDTO userDto = new UserDTO(nicname, email, id);
+		dao.update(userDto);
+
+		//int user_no = dao.userNo(nicname);
+		
+		int user_no = dao.userNo(id);
 		
 		
 		PwDTO pwdto = new PwDTO(user_no, pwd);
+		
+		pdao.update(pwdto);
+		
+		
+		
 		/*수정 더 해야함*/
 		
 		
@@ -148,6 +159,18 @@ public class UserController {
 			str = "YES";
 		}
 		return str;
+	}
+
+	@RequestMapping(value = "Profile")
+	   public String profile(HttpSession session, Model model) {			 	
+		
+		String id = session.getAttribute("id").toString();
+		
+		UserDTO dto = dao.getData(id);		 
+		 
+		 model.addAttribute("dto", dto);
+		 		 
+	     return "Profile";
 	}
 	
 	

@@ -53,10 +53,7 @@
 <body>
 <div class="row">
 <div class="col-lg-4">
-			<%-- <%
-				UserDaoImpl dao = new UserDaoImpl();
-				UserDTO dto = dao.getData(user_no);			
-			%>  --%>
+			
 				<div class="p-5" style="text-align: center;">
 	            	<div style="background-color: white;border-radius: 20px; padding: 15px; opacity: 0.95">
 	              <div class="text-center">
@@ -65,24 +62,14 @@
 	              <form class="user" name="frm" action="ModifyOk">
 	                <div class="form-group row" >	                
 	                 <div class="col-sm-12">                
-	                    닉네임 변경 <input class="form-control form-control-user" name="nicname" placeholder="닉네임" <%-- value=<%dto.getnicname %> --%>>           
+	                    닉네임 변경 <input class="form-control form-control-user" name="nicname" placeholder="닉네임" >           
 	                 </div>	               	       
 	                </div>
 	                <div class="form-group">
-	                    이메일 변경<input class="form-control form-control-user" name="email" placeholder="이메일" <%-- value=<%dto.getemail %> --%>>
+	                    이메일 변경<input class="form-control form-control-user" name="email" placeholder="이메일" >
 	                </div>
 	                <div class="form-group row">
 	                
-	                <%
-	                	String id = (String) session.getAttribute("id");
-	                	
-	                	//System.out.println(id);
-	                	
-	                	//dao 들어가서 rout 구간의 숫자 추출
-	                	int rout = 1;
-	                	if(rout == 1){
-	                		
-	                %>
 	                <!-- pwd -->
 	                  <div class="col-sm-12">
 	                    비밀번호 변경<input type="password" class="form-control form-control-user" name="pwd" placeholder="Password">
@@ -95,10 +82,8 @@
 	                  </div>
 	                </div>
 	                <!-- pwd -->	                
-	                <%
-	                	}
-	                %>
-	                <input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account">
+	                
+	                <a href="ModifyOk?nicname=nicname&email=email&pwd=pwd"><input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account"></a>
 	                <hr>
 	              </form>
 	              

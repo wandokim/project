@@ -18,6 +18,11 @@
   		where id = #{id}
   	</select>
   	
+  	<select id="selectProfile" parameterType="int" resultType="UserDto">
+  		select * from user_info
+  		where user_no = #{user_no}
+  	</select>
+  	
   	<select id="selectUserNic" parameterType="String" resultType="int">
   		select user_no from user_info
   		where nicname = #{nicname}
