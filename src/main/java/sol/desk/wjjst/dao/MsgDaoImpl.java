@@ -56,8 +56,8 @@ public class MsgDaoImpl implements MsgDAO {
 		return ss.selectList("selectOneOne",num);
 	}
 	
-	public List<MsgDTO> limitMessage(){
-		return ss.selectList("selectMsg");
+	public List<MsgDTO> limitMessage(int rec_user){
+		return ss.selectList("sortMsg", rec_user);
 	}
 	
 	public int recNo(String nic) {

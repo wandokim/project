@@ -1,3 +1,6 @@
+<%@page import="sol.desk.wjjst.dto.MsgDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,6 +41,8 @@
        }
        else
        {
+    	   ArrayList<MsgDTO> list = (ArrayList) session.getAttribute("msgList");
+    	   
 	%>
 	
 	<!-- Topbar Navbar -->
@@ -49,7 +54,7 @@
 				
 				<!-- 읽지않은 메세지 숫자 카운트해서 호출 -->
 				<!-- Counter - Messages -->
-				<span class="badge badge-danger badge-counter">7</span>
+				<span class="badge badge-danger badge-counter"><%=list.size() %></span>
 			</a>
 			
 			<!-- massages 클릭 이벤트 -->
@@ -59,20 +64,23 @@
 				<!-- Message Center -->
 				</h6>
 				
-				<!-- 친구와의 메세지 목록 반복문으로 출력해야함 -->
-				<a class="dropdown-item d-flex align-items-center" href="#">
-					<div class="dropdown-list-image mr-3">
-						<!-- 친구의 img (default 있어야함) -->
-						<img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-						<!-- 해당 친구 현재 로그인 중인지 확인 -->
-						<div class="status-indicator bg-success"></div>
-					</div>
-					<div class="font-weight-bold">
-						<div class="text-truncate">친구의 가장 최근 메세지 호출</div>
-						<div class="small text-gray-500">친구이름호출 · 메세지가 온 시간으로 부터 현재까지 시간</div>
-					</div>
-				</a>
-	    
+				<%
+					for(MsgDTO dto : list){
+				%>
+					<a class="dropdown-item d-flex align-items-center" href="detailMsg?nic=<%=dto.getNicname() %>&num=<%=dto.getM_no() %>">
+						<div class="dropdown-list-image mr-3">
+							<!-- 친구의 img (default 있어야함) -->
+							<img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+						</div>
+						<div class="font-weight-bold">
+							<div class="text-truncate"><%=dto.getM_title() %></div>
+							<div class="small text-gray-500"><%=dto.getNicname() %> · <%=dto.getWrite_date() %></div>
+						</div>
+					</a>
+
+	    		<%
+					}
+	    		%>
 				<!-- 모든 message 호출 -->
 				<a class="dropdown-item text-center small text-gray-500" href="checkMsg">Read More Messages</a>
 			</div>
@@ -91,10 +99,6 @@
 	        <a class="dropdown-item" href="Profile">
 	          <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
 	         	프로필
-	        </a>
-	        <a class="dropdown-item" href="#">
-	          <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-				세팅
 	        </a>
 	        <a class="dropdown-item" href="sendMsg">
 	          <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>

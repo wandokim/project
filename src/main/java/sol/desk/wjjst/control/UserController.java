@@ -1,6 +1,8 @@
 package sol.desk.wjjst.control;
 
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -16,10 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import sol.desk.wjjst.dao.MsgDaoImpl;
 import sol.desk.wjjst.dao.PwDAO;
 import sol.desk.wjjst.dao.PwDaoImpl;
 import sol.desk.wjjst.dao.UserDAO;
 import sol.desk.wjjst.dao.UserDaoImpl;
+import sol.desk.wjjst.dto.MsgDTO;
 import sol.desk.wjjst.dto.PwDTO;
 import sol.desk.wjjst.dto.UserDTO;
 
@@ -28,6 +32,7 @@ public class UserController {
 	
 	UserDaoImpl dao;
 	PwDaoImpl pdao;
+	MsgDaoImpl mdao;
 	
 	@Autowired
 	public void setDao(UserDaoImpl dao) {
@@ -38,7 +43,12 @@ public class UserController {
 	public void setPDad(PwDaoImpl pdao) {
 		this.pdao = pdao;
 	}
-	
+
+	@Autowired
+	public void setMdao(MsgDaoImpl mdao) {
+		this.mdao = mdao;
+	}
+
 	@RequestMapping(value = "test")
 	public String test(Model model) {
 		List<UserDTO> list = dao.getList();
@@ -79,7 +89,15 @@ public class UserController {
 				session.setAttribute("nicname", dao.getData(id).getNicname());
 				session.setAttribute("id", id);
 				session.setAttribute("user_no", dao.userNo(id));
-				return "main";				
+								
+				// 로그인 성공 시 해당 유저의 최근 읽지않은 5개의 메세지 호출
+				List<MsgDTO> msgList = mdao.limitMessage(dao.userNo(id));
+				
+				session.setAttribute("msgList", msgList);
+				
+				//ArrayList<MsgDTO> list = (ArrayList)session.getAttribute("test");
+				
+				return "main";
 			}else {
 				session.setAttribute("msg", "패스워드를 다시 입력해주세요");				
 				return "login";

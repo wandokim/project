@@ -28,6 +28,7 @@
 <body>
 	<!-- Topbar -->
 	<jsp:include page="main_topbar.jsp" flush="true"/>
+
 	<!-- End of Topbar -->
 
 	<!-- Main Content -->
