@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class MasterInfo {
 private final String User_AGENT = "Mozilla/5.0";
@@ -24,4 +28,22 @@ private final String User_AGENT = "Mozilla/5.0";
 		return lolApiJson;
 	}
 
+	public List<Integer> SortLP() throws IOException {
+		MasterInfo mi = new MasterInfo();
+		SplitStr ss = new SplitStr();
+		String[] x = ss.split(mi.masterinfo());
+		List<String> liststr = new ArrayList<String>();
+		for(int i=6;i<x.length;i+=10) {
+			liststr.add(x[i].replace("leaguePoints:", ""));
+		}
+		ArrayList<Integer> listint = new ArrayList<Integer>();
+		
+		for(String str : liststr) {
+			listint.add(Integer.parseInt(str));
+		}
+		
+		//Collections.sort(listint);
+		//Collections.reverse(listint);
+		return listint;
+	}
 }
