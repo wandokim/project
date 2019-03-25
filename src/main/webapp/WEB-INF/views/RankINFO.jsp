@@ -83,8 +83,6 @@
 		
 		List<String> result = new ArrayList<String>();
 		
-		
-		
 		String[] cham = str.split(c.masterinfo());
 		for(int i=0; i<300; i++){
 			summonerName = cham[5+(10*i)];
@@ -98,7 +96,6 @@
 			result.add(losses);
 		}
 		
-		//System.out.println(result);
 		String[] r_result = result.toArray(new String[result.size()]);
 		List kim = new ArrayList();		
 		for(int i =0; i<=1199; i++) {			
@@ -107,10 +104,6 @@
 		}
 				
 		String[] r_result1 = (String[]) kim.toArray(new String[kim.size()]);	
-		for(int i=0; i<100; i++) {
-			System.out.println(r_result1[i]);
-		}
-		
 		
 		List list = new ArrayList();
 
@@ -124,21 +117,14 @@
 			list.add(x);
 		}
 
-		System.out.println(list);
 		String[] wando = (String[]) list.toArray(new String[list.size()]);
-		System.out.println("---------");
-		for(int i=0; i<wando.length; i++) {
-			System.out.println(wando[i]);
-		}
+
 		String[] f;		
 		for(int i=0; i<wando.length; i++) {
 			f = wando[i].split(",");
 			int total = (Integer.parseInt(f[2]))*100/(Integer.parseInt(f[2])+Integer.parseInt(f[3]));			
 			
-			
 	%>
-	
-	
 			<tr>
                 <td>LP가 높으면 순위가 높습니다.</td>
                 <td><%=f[0] %></td>
@@ -178,24 +164,8 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
+	<jsp:include page="logout_model.jsp" flush="true"/>
+	
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
