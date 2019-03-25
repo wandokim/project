@@ -33,17 +33,26 @@ var champ1_point= document.getElementById("champ1_point").value;
 var champ2_point= document.getElementById("champ2_point").value;
 var champ3_point= document.getElementById("champ3_point").value;
 var champ4_point= document.getElementById("champ4_point").value;
+var champ5_point= document.getElementById("champ5_point").value;
+var champ6_point= document.getElementById("champ6_point").value;
+
+var champName1= document.getElementById("champName1").value;
+var champName2= document.getElementById("champName2").value;
+var champName3= document.getElementById("champName3").value;
+var champName4= document.getElementById("champName4").value;
+var champName5= document.getElementById("champName5").value;
+var champName6= document.getElementById("champName6").value;
 
 var myBarChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ["리신", "카직스", "이즈리얼", "넣을까말까"],
+    labels: [ champName1 ,champName2 , champName3, champName4, champName5, champName6 ],
     datasets: [{
       label: "Revenue",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [champ1_point, champ2_point, champ3_point, champ4_point],
+      data: [champ1_point, champ2_point, champ3_point, champ4_point, champ5_point, champ6_point ],
     }],
   },
   options: {
@@ -66,7 +75,7 @@ var myBarChart = new Chart(ctx, {
           drawBorder: false
         },
         ticks: {
-          maxTicksLimit: 4
+          maxTicksLimit: 6
         },
         maxBarThickness: 25,
       }],

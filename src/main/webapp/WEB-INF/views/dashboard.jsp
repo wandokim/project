@@ -1,3 +1,4 @@
+<%@page import="sol.desk.wjjst.AllChampionName"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="sol.desk.wjjst.User_AllChampINFO"%>
 <%@page import="sol.desk.wjjst.SplitKey"%>
@@ -50,11 +51,21 @@
 		String champ3_level="값없음";
 		String champ3_point="값없음";
 		String champ4_point="값없음";
+		String champ4_level="값없음";
 		String champ4_id="값없음";
 		String champ5_point="값없음";
+		String champ5_level="값없음";
 		String champ5_id="값없음";
 		String champ6_id="값없음";
+		String champ6_level="값없음";
 		String champ6_point="값없음";
+	
+		String champName1="";
+		String champName2="";
+		String champName3="";
+		String champName4="";
+		String champName5="";
+		String champName6="";
 			
 		if(nic != "" || nic != null){
 			
@@ -112,30 +123,48 @@
 				list.add(wan[18]);
 				list.add(wan[19]);
 				list.add(wan[20]);
+				
 				list.add(wan[27]);
+				list.add(wan[28]);
 				list.add(wan[29]);
+				
 				list.add(wan[36]);
 				list.add(wan[37]);
+				list.add(wan[38]);
+				
 				list.add(wan[45]);
 				list.add(wan[46]);
-				
-				
-				
-				
+				list.add(wan[47]);
+ 
+
 				String[] result = (String[]) list.toArray(new String[list.size()]);		
-				
 				champ1_id = result[0].substring(result[0].indexOf(":")+1, result[0].length());
 				champ1_level = result[1].substring(result[1].indexOf(":")+1, result[1].length());
 				champ1_point = result[2].substring(result[2].indexOf(":")+1, result[2].length());
-				
 				champ2_id = result[3].substring(result[3].indexOf(":")+1, result[3].length());
 				champ2_level = result[4].substring(result[4].indexOf(":")+1, result[4].length());
 				champ2_point = result[5].substring(result[5].indexOf(":")+1, result[5].length());
-				
 				champ3_id = result[6].substring(result[6].indexOf(":")+1, result[6].length());
 				champ3_level = result[7].substring(result[7].indexOf(":")+1, result[7].length());
 				champ3_point = result[8].substring(result[8].indexOf(":")+1, result[8].length());
-				champ4_point = result[10].substring(result[10].indexOf(":")+1, result[10].length());
+	
+				champ4_id = result[9].substring(result[9].indexOf(":")+1, result[9].length());
+				champ4_level = result[10].substring(result[10].indexOf(":")+1, result[10].length());
+				champ4_point = result[11].substring(result[11].indexOf(":")+1, result[11].length());
+			    champ5_id = result[12].substring(result[12].indexOf(":")+1, result[12].length());
+				champ5_level = result[13].substring(result[13].indexOf(":")+1, result[13].length());
+				champ5_point = result[14].substring(result[14].indexOf(":")+1, result[14].length());
+				champ6_id = result[15].substring(result[15].indexOf(":")+1, result[15].length());
+				champ6_level = result[16].substring(result[16].indexOf(":")+1, result[16].length());
+				champ6_point = result[17].substring(result[17].indexOf(":")+1, result[17].length());
+				
+				AllChampionName a = new AllChampionName();
+				champName1 = a.ChapName(Integer.parseInt(champ1_id));
+				champName2 = a.ChapName(Integer.parseInt(champ2_id));
+				champName3 = a.ChapName(Integer.parseInt(champ3_id));
+				champName4 = a.ChapName(Integer.parseInt(champ4_id));
+				champName5 = a.ChapName(Integer.parseInt(champ5_id));
+				champName6 = a.ChapName(Integer.parseInt(champ6_id));
 			}
 		}else{
 			
@@ -146,6 +175,7 @@
 			</script>
 	<%
 		}
+		
 	%>
 </head>
 <body id="page-top">
@@ -231,7 +261,6 @@
         	</div>
          </div>
          
-         
          <!-- DIV3 -->
          <div class="row" style="">
          	<div class="col-lg-8" style="margin: auto;">
@@ -242,27 +271,35 @@
         			<div class="card-body" style="text-align: center;">
         				<img src="./img/champion_number/<%=champ1_id %>.png" alt="" />
         				<div style="display: inline-block;">
-        					<div > [1위] 이름</div>
+        					<div > [1위] <%=champName1 %></div>
 				         	<div >Level : <%=champ1_level %></div>
 				         	<div>Point : <%=champ1_point %></div>
         				</div>
 			         	
 			         	<img src="./img/champion_number/<%=champ2_id %>.png" alt="" />
 			         	<div style="display: inline-block;">
-			         		<div> [2위] 이름</div>
+			         		<div> [2위] <%=champName2 %></div>
 				         	<div>Level : <%=champ2_level %></div>
 				         	<div>Point : <%=champ2_point %></div>
 			         	</div>
 			         	
 			         	<img src="./img/champion_number/<%=champ3_id %>.png" alt="" />
 			         	<div style="display: inline-block;">
-			         		<div> [3위] 이름</div>
+			         		<div> [3위] <%=champName3 %></div>
 			         		<div>Level : <%=champ3_level %></div>
 				         	<div>Point : <%=champ3_point %></div>
 				         	<input type="hidden" value="<%=champ1_point %>" id="champ1_point"/>
 				         	<input type="hidden" value="<%=champ2_point %>" id="champ2_point"/>
 				         	<input type="hidden" value="<%=champ3_point %>" id="champ3_point"/>
-				         	<input type="hidden" value="<%=champ4_point %>" id="champ4_point"/>
+				         	<input type="hidden" value="<%=champ4_point %>" id="champ4_point"/> 
+				         	<input type="hidden" value="<%=champ5_point %>" id="champ5_point"/> 
+				         	<input type="hidden" value="<%=champ6_point %>" id="champ6_point"/> 
+				         	<input type="hidden" value="<%=champName1 %>" id="champName1"/> 
+				         	<input type="hidden" value="<%=champName2 %>" id="champName2"/> 
+				         	<input type="hidden" value="<%=champName3 %>" id="champName3"/> 
+				         	<input type="hidden" value="<%=champName4 %>" id="champName4"/> 
+				         	<input type="hidden" value="<%=champName5 %>" id="champName5"/> 
+				         	<input type="hidden" value="<%=champName6 %>" id="champName6"/> 
 			         	</div>
         			</div>
         		</div>
@@ -292,30 +329,6 @@
       </div>
       <!-- End of Main Content -->
 
-         <!-- DIV예시 -->
-        <!--  <div class="row" style="background-color: green;">
-        	<div class="col-lg-6">
-        		<div class="card shadow mb-4">
-        			<div class="card-header py-3">
-        				<p>박스 머리부분</p>
-        			</div>
-        			<div class="card-body">
-        				<p>몸통 부분</p>
-        			</div>
-        		</div>
-        	</div>
-        	<div class="col-lg-6">
-        		<div class="card shadow mb-4">
-        			<div class="card-header py-3">
-        				<p>머리</p>
-        			</div>
-        			<div class="card-body">
-        				<p>몸통</p>
-        			</div>
-        		</div>
-        	</div>
-         </div> -->
-         
       <!-- Footer -->
 		<jsp:include page="footer.jsp" flush="true"/>
       <!-- End of Footer -->
