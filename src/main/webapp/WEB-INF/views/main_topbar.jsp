@@ -17,7 +17,7 @@
 		<li>
 			<a href="lotation" class="btn btn-danger btn-icon-split"><span class="text">Champion Info</span></a>
 			<a href="RankINFO" class="btn btn-danger btn-icon-split"><span class="text">Ranking Info</span></a>
-			<a href="#" class="btn btn-danger btn-icon-split"><span class="text">User Board</span></a>
+			<a href="freeBoard" class="btn btn-danger btn-icon-split"><span class="text">User Board</span></a>
 		</li>
 	</ul>
 	
