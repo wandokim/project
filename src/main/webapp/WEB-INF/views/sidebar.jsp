@@ -46,7 +46,7 @@
 
   <!-- Nav Item - Charts -->
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link" href="freeBoard">
     	<i class="fas fa-fw fa-folder"></i>
 		<span>자유 게시판</span>
 	</a>

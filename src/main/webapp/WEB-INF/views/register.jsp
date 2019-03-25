@@ -171,7 +171,7 @@ $(function(){
 		      }
 	      
 	      if(!getPw.test($("#pwd").val())){
-	    	  alert("숫자와 영문자 조합으로 10~15자리를 입력해주세요.");
+	    	  alert("숫자, 영문자, 특수문자 조합으로 10~15자리를 입력해주세요.");
 	    	  $("#pwd").val("");
 		      $("#pwd").focus();
 		      return false;

@@ -29,6 +29,12 @@ public class BoardController {
 		return "boardTest";
 	}
 	
+	
+	@RequestMapping(value = "freeBoard")
+	public String freeBoard() {
+		return "freeBoard";
+	}
+	
 	@RequestMapping(value = "boardOk")
 	public String registeOk(@RequestParam("title") String title,
 			@RequestParam("writer") String writer,@RequestParam("contents") String contents) {
