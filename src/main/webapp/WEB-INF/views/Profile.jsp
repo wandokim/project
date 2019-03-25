@@ -1,8 +1,10 @@
+<%@page import="java.util.List"%>
 <%@page import="sol.desk.wjjst.dto.UserDTO"%>
 <%@page import="sol.desk.wjjst.dao.UserDaoImpl"%>
 <%@page import="java.util.Random"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,13 +27,13 @@
   
 <style type="text/css">
   #checkPwd{
-  	color : red;
-  	font-size: 12px;
-  	padding-left: 50px;
+     color : red;
+     font-size: 12px;
+     padding-left: 50px;
   }  
   /*  .col-lg-5{
-  	margin: left;
-  	top: 50px;
+     margin: left;
+     top: 50px;
   } */
 </style>
   
@@ -39,10 +41,12 @@
 </head>
 <body>
 
-	<!-- Topbar -->
-	<jsp:include page="main_topbar.jsp" flush="true"/>
-	<!-- End of Topbar -->
-	
+   
+
+   <!-- Topbar -->
+   <jsp:include page="main_topbar.jsp" flush="true"/>
+   <!-- End of Topbar -->
+   
   <div class="container">
   
 
@@ -51,56 +55,56 @@
         <!-- Nested Row within Card Body -->
         <div class="row">
         <%
-        	Random rnd = new Random();
-        	int num = rnd.nextInt(10)+1;
+           Random rnd = new Random();
+           int num = rnd.nextInt(10)+1;
+           
+           
         %>
           <div class="col-lg-7 d-none d-lg-block">
-          	<img src="./img/ModifyBackground/modi<%=num %>.jpg" alt="ModifyBackground_img" />
+             <img src="./img/ModifyBackground/modi<%=num %>.jpg" alt="ModifyBackground_img" />
           </div>
-			<div class="col-lg-5">
-			<%-- <%
-				UserDaoImpl dao = new UserDaoImpl();
-				UserDTO dto = dao.getData(user_no);			
-			%>  --%>
-			
-				<div class="p-5" style="text-align: center;">
-	            	<div style="background-color: white;border-radius: 20px; padding: 15px; opacity: 0.95">
-	              <div class="text-center">
-	                <h1 class="h4 text-gray-900 mb-4">Profile</h1>
-	              </div>
-	              <form class="user" name="frm" action="registeOk">
-	                <div class="form-group row">
-	                  <div class="col-sm-12">
-	                    <input class="form-control form-control-user" name="nicname" placeholder="닉네임" <%-- value=<%dto.getnicname %> --%>>        	
-	                  </div>	                
-	                </div>
-	                <div class="form-group">
-	                  <input class="form-control form-control-user" name="email" placeholder="이메일" <%-- value=<%dto.getemail %> --%>>
-	                </div>
-	                <!-- <div class="form-group row">
-	                  <div class="col-sm-12">
-	                    <input class="form-control form-control-user" name="pwd" placeholder="Password">
-	                  </div>
-	                  </div>
-	                  <div class="form-group row">	                  
-	                  <div class="col-sm-12">
-	                    <input class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()">
-	                    <div id="checkPwd"></div>
-	                  </div>
-	                </div> -->
-	                	<a href="Modify" class="btn btn-primary btn-user btn-block">Modify Account</a>
-	                <hr>
-	              </form>
-	              
-	              <div class="text-center">
-	                <a class="small" href="forgot-password.html">Forgot Password?</a>
-	              </div>
-	              <div class="text-center">
-	                <a class="small" href="login.html">Already have an account? Login!</a>
-	              </div>
-	            </div>
-	          </div>
-			</div>
+         <div class="col-lg-5">
+         
+            <div class="p-5" style="text-align: center;">
+                  <div style="background-color: white;border-radius: 20px; padding: 15px; opacity: 0.95">
+                 <div class="text-center">
+                   <h1 class="h4 text-gray-900 mb-4">Profile</h1>
+                 </div>
+                 <form class="user" name="frm">
+                   <div class="form-group row">
+                     <div class="col-sm-12">
+                      <input class="form-control form-control-user" name="nicname" id="nicname" value="${dto.nicname }" >           
+                     </div>                   
+                   </div>
+                   <div class="form-group">
+                     <input class="form-control form-control-user" name="email" id="email" value="${dto.email } ">
+                   </div>
+                   
+                   <!-- <div class="form-group row">
+                     <div class="col-sm-12">
+                       <input class="form-control form-control-user" name="pwd" placeholder="Password">
+                     </div>
+                     </div>
+                     <div class="form-group row">                     
+                     <div class="col-sm-12">
+                       <input class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()">
+                       <div id="checkPwd"></div>
+                     </div>
+                   </div> -->
+                   
+                      <a href="Modify" class="btn btn-primary btn-user btn-block">Modify Account</a>
+                   <hr>
+                 </form>
+                 
+                 <div class="text-center">
+                   <a class="small" href="forgot-password.html">Forgot Password?</a>
+                 </div>
+                 <div class="text-center">
+                   <a class="small" href="login.html">Already have an account? Login!</a>
+                 </div>
+               </div>
+             </div>
+         </div>
         </div>
       </div>
     </div>
