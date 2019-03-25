@@ -76,7 +76,6 @@
 						<div class="text-truncate">친구의 가장 최근 메세지 호출</div>
 						<div class="small text-gray-500">
 			
-						<%String nic = request.getParameter("nic");%>	
 							<h2>메세지 목록</h2>
 							<table width="100%" cellspacing="0">
 			                  <thead>
@@ -88,13 +87,13 @@
 			                    </tr>
 			                  </thead>
 			                  <tbody>
-								<c:forEach var="list" items="${list }">
+								<%-- <c:forEach var="list" items="${list }">
 									<tr class="table_row">
-										<td><%=nic %></td>	
+										<td></td>	
 										<td>${list.m_title }</td>				
 										<td style="display: none;">${list.m_no}</td>
 									</tr>
-								</c:forEach>
+								</c:forEach> --%>
 			                  </tbody>
                 			</table>
 							

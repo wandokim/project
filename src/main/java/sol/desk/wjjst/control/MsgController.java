@@ -65,21 +65,6 @@ public class MsgController {
 		
 		return "checkMsg";
 	}
-	
-	@RequestMapping(value = "topbar")
-	public String showTopbar(Model model,HttpSession session,HttpServletRequest req) {
-		String user_no = session.getAttribute("user_no").toString();
-		//System.out.println(user_no);
-		int userNo = Integer.parseInt(user_no);
-		//System.out.println(userNo);
-		
-		List<MsgDTO> list = dao.getList(userNo);
-		
-		model.addAttribute("list", list);
-		
-		return "checkMsg";
-	}
-	
 
 	@RequestMapping(value = "detailMsg")
 	public String detailMsg(Model model,@RequestParam("num") int m_no, @RequestParam("nic") String nic) {
