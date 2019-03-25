@@ -88,4 +88,15 @@ public class BoardController {
 		model.addAttribute("list", list);
 		return "freeBoard";
 	}
+	
+	@RequestMapping(value = "bLike")
+	public String bLike(HttpSession session,Model model,@RequestParam("b_no") String b_no) {
+		dao.riseLike(Integer.parseInt(b_no));
+		
+		int bNo = Integer.parseInt(b_no);
+		BoardDTO dto = dao.getData(bNo);
+
+		model.addAttribute("dto", dto);
+		return "detail_board";
+	}
 }

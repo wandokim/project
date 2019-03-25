@@ -43,9 +43,6 @@
       <div id="content">
         <!-- Topbar -->
         <jsp:include page="topbar.jsp" flush="true" />
-        
-        
-        
 
 		<div class="container-fluid">
 	    <div class="row justify-content-center">
@@ -57,10 +54,25 @@
 								<img src="./img/pointer.png" alt="조회수" height="25px"/>
 								<span>${dto.b_hits }</span>
 							</div>
+							<%
+								// 나의 user_no와 게시글의 writer_no가 같을 경우 표시
+								if(session.getAttribute("id") != null){
+							%>
+							<div style="float: right; margin-right: 15px;">
+								<a href="bLike?b_no=${dto.b_no }"><img src="./img/like1.png" alt="좋아요" height="20px"/></a>
+								<span>${dto.b_like }</span>
+							</div>
+							<%
+								}else{
+									
+							%>
 							<div style="float: right; margin-right: 15px;">
 								<img src="./img/like1.png" alt="좋아요" height="20px"/>
 								<span>${dto.b_like }</span>
 							</div>
+							<%
+								}
+							%>
 			            </div>
 			            <div class="card-body">
 							<div class="d-none d-lg-block">
@@ -108,9 +120,6 @@
       <!-- Footer -->
       <jsp:include page="footer.jsp" flush="true" />  
      </div>
-
-
-
 
    </div>
       <!-- End of Main Content -->
