@@ -11,6 +11,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,9 +26,14 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  
-  
-  
+  <script type="text/javascript">
+  	function saveContents(){
+  		f.action="boardOk";
+  		f.method="get";
+  		f.submit();
+  		
+  	}
+  </script>
   
   
 </head>
@@ -46,13 +52,16 @@
       <div id="content">
         <!-- Topbar -->
         <jsp:include page="topbar.jsp" flush="true" />
-
+	<form name="f">
 		<div class="container-fluid">
-	   		제목 : <input type="text" name="title" id="title" /><br />
-			내용 : <br /><textarea name="contents" id="contents" cols="30" rows="10"></textarea><br />
-			<input type="button" value="글쓰기완료" />
+	        <h2>넘어감</h2>
+			
+			제목 : <input type="text" name="title" id="title" /><br />
+				내용 : <br /><textarea name="contents" id="contents" cols="30" rows="10"></textarea><br />
+				<input type="button" value="글쓰기완료" onclick="saveContents()" />	
 	     
 		</div>
+		</form>
       </div>
       <!-- Footer -->
       <jsp:include page="footer.jsp" flush="true" />  

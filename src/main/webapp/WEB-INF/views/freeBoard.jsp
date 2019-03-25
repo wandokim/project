@@ -11,6 +11,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,6 +26,11 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <%
+  	
+  %>
+  
+  
 </head>
 <body>
 
@@ -45,16 +51,29 @@
 		<div class="container-fluid">
 	        <h2>넘어감</h2>
 			
-			<table border="1">
+			<table border="1">			
 				<tr>
 					<th>제목</th>
 					<th>작성일</th>
 					<th>작성자</th>
 					<th>좋아요</th>
 					<th>조회수</th>
+					<th>상세보기</th>
 				</tr>
+				
+				<c:forEach var="wando" items="${wando }">
+					<tr>
+						<td>${wando.title }</td>
+						<td>${wando.write_date }</td>
+						<td>${wando.writer }</td>
+						<td>${wando.b_like }</td>
+						<td>${wando.b_hits }</td>
+						<td><a href="detail_board"><input type="button" value="상세보기" /></a></td>
+					</tr>
+				</c:forEach>
+				
 			</table>
-			<a href="boardOk"><input type="button" value="글쓰기" /></a>
+			<a href="writeFreeBoard"><input type="button" value="글쓰기" /></a>
 	     
 		</div>
       </div>

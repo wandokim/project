@@ -48,7 +48,7 @@
   	</select>
   	
   	<insert id="insertBoard" parameterType="BoardDto" >
-  		insert into board
+  		insert into sol_board
   		values(0,#{user_no},#{title},now(),#{writer},#{b_contents},#{b_like},#{b_hits})
   	</insert>
   	
@@ -120,7 +120,7 @@
  	</select> -->
  	
  	<select id="sortMsg" parameterType="int" resultType="MsgDto">
- 		select m.m_no, u.nicname, m.m_title, m.write_date
+ 		select m.m_no, u.nicname, m.m_title
  		from message m join user_info u on m.send_user = u.user_no
  		where m.rec_user = #{rec_user} and m.m_read = 1
  		order by m.m_no desc limit 5;
@@ -131,7 +131,7 @@
  		where rec_user = #{rec_user}
  	</select> -->
  	
- 	<select id="selectAllMsg" resultType="MsgDto" parameterType="int">
+ 	<select id="selectAllMsg" resultType="MsgDto">
  		select m.m_no, u.nicname, m.m_title, m.write_date, m.m_read 
  		from message m join user_info u on m.send_user = u.user_no
  		where rec_user = #{rec_user}
