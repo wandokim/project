@@ -23,8 +23,5 @@ private final String User_AGENT = "Mozilla/5.0";
 		
 		return lolApiJson;
 	}
-	public static void main(String[] args) throws Exception {
-		MasterInfo m = new MasterInfo();
-		System.out.println(m.masterinfo());
-	}
+
 }

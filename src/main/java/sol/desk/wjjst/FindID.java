@@ -34,10 +34,5 @@ public class FindID {
 	 * revisionDate
 	 * summonerLevel - 유저 레벨
 	 */
-	
-	public static void main(String[] args) throws IOException {
-		FindID fid = new FindID();
-		fid.find_id("건방진어린이");
-	}
- 
+
 }

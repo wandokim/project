@@ -25,8 +25,4 @@ private final String User_AGENT = "Mozilla/5.0";
 	}
 	
 	
-	public static void main(String[] args) throws IOException {
-		User_AllChampPOINT u = new User_AllChampPOINT();
-		System.out.println(u.user_allchamppoint("OG0Du0hiN3pkMVA6Z8BSvkl76N1heoOYabbD6EFRhJqiKw"));
-	}
 }

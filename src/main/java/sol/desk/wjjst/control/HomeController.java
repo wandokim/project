@@ -1,18 +1,18 @@
 package sol.desk.wjjst.control;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import sol.desk.wjjst.dao.UserDaoImpl;
-import sol.desk.wjjst.dto.UserDTO;
 
 /**
  * Handles requests for the application home page.
@@ -24,16 +24,6 @@ public class HomeController {
 	
 	@RequestMapping(value = "/")
 	public String home(Locale locale, Model model) {
-		/*
-		 * logger.info("Welcome home! The client locale is {}.", locale);
-		 * 
-		 * Date date = new Date(); DateFormat dateFormat =
-		 * DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		 * 
-		 * String formattedDate = dateFormat.format(date);
-		 * 
-		 * model.addAttribute("serverTime", formattedDate );
-		 */
 
 		return "main";
 	}
@@ -81,15 +71,32 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "lotation")
-	public String lotation() {
+	public String lotation(HttpServletRequest request, Model model) {
+		Set path = request.getSession().getServletContext().getResourcePaths("/WEB-INF/views/img/champion");
+		
+		System.out.println(path);
+		
+		List<String> list1 = new ArrayList<String>();
+		list1.addAll(path);
+		List<String> list2 = new ArrayList<String>();
+		
+		for(String str : list1) {
+			list2.add(str.replace("/WEB-INF/views/img/champion/", "").replace(".png", ""));
+		}
+		
+		model.addAttribute("imgList", list2);
+		
 		return "lotationChamp";
 	}
+	
 	@RequestMapping(value = "Modify")
 	public String Modify() {
 		return "Modify";
 	}
 	
-
-	
+	@RequestMapping(value = "teemo")
+	public String teemo() {
+		return "teemo";
+	}
 	
 }

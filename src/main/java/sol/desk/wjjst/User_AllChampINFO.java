@@ -27,8 +27,5 @@ private final String User_AGENT = "Mozilla/5.0";
 		return lolApiJson;
 	}
 	
-	public static void main(String[] args) throws IOException {
-		User_AllChampINFO u = new User_AllChampINFO();
-		System.out.println(u.user_allchampinfo("ldS9oZ7FZ1ogn9mlraXrDDum6o26GUTbkBhKuk7mTVrI3w"));		
-	}
+
 }

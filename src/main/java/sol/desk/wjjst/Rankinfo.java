@@ -24,18 +24,6 @@ public class Rankinfo {
 		return lolApiJson;
 	}
 	
-	public static void main(String[] args) throws IOException {
-		Rankinfo rfo = new Rankinfo();
-		// 건방진어린이 id
-		String x = rfo.contents("OG0Du0hiN3pkMVA6Z8BSvkl76N1heoOYabbD6EFRhJqiKw");
-		
-		if(x.equals("[]")) {
-			System.out.println("랭크전 기록이 없어");
-		}else {
-			System.out.println("랭크전 기록이 있어"+x);
-		}
-	}
-	
 }
 
 

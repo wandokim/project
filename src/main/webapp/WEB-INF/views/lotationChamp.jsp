@@ -1,4 +1,3 @@
-<%@page import="sol.desk.wjjst.FileRout"%>
 <%@page import="sol.desk.wjjst.LotationChamp"%>
 <%@page import="sol.desk.wjjst.MasterInfo"%>
 <%@page import="java.util.ArrayList"%>
@@ -12,6 +11,7 @@
 <%@page import="sol.desk.wjjst.SplitStr"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -90,21 +90,13 @@
        					<h4>All Champions</h4>
        				</div>
        				<div class="card-body">
-	       					<%
-	       						FileRout fr = new FileRout();
-	       						String source = "C:\\Users\\soldesk\\Desktop\\Project4\\project\\src\\main\\webapp\\WEB-INF\\views\\img\\champion";
-	       						List<String> list = fr.subDirList(source);
-	       						
-	       						for(String img : list){
-	       					%>
-       					<div style="display: inline-block;">
-				        	<img src="./img/champion/<%=img %>" alt="<%=img %>" />
-				        	<br />
-				        	<span><%=img.replace(".png", "") %></span>
-	       				</div>
-	       					<%
-	       						}
-	       					%>
+						<c:forEach var="img" items="${imgList }">
+	       					<div style="display: inline-block;">
+					        	<img src="./img/champion/${img }.png" alt="${img }" />
+					        	<br />
+					        	<span>${img }</span>
+		       				</div>
+						</c:forEach>
        				</div>
 				</div>
 			</div>
