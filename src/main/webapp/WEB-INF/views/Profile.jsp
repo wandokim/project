@@ -27,13 +27,13 @@
   
 <style type="text/css">
   #checkPwd{
-  	color : red;
-  	font-size: 12px;
-  	padding-left: 50px;
+     color : red;
+     font-size: 12px;
+     padding-left: 50px;
   }  
   /*  .col-lg-5{
-  	margin: left;
-  	top: 50px;
+     margin: left;
+     top: 50px;
   } */
 </style>
   
@@ -41,12 +41,11 @@
 </head>
 <body>
 
-	
-
 	<!-- Topbar -->
 	<jsp:include page="main_topbar.jsp" flush="true"/>
 	<!-- End of Topbar -->
-	
+
+
   <div class="container">
   
 
@@ -56,12 +55,11 @@
         <div class="row">
         <%
         	Random rnd = new Random();
-        	int num = rnd.nextInt(10)+1;
-        	
-        	
+        	int num = rnd.nextInt(10)+1;              
+           
         %>
           <div class="col-lg-7 d-none d-lg-block">
-          	<img src="./img/ModifyBackground/modi<%=num %>.jpg" alt="ModifyBackground_img" />
+             <img src="./img/ModifyBackground/modi<%=num %>.jpg" alt="ModifyBackground_img" />
           </div>
 			<div class="col-lg-5">
 			

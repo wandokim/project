@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Send Message</title>
+<title>자유 게시판</title>
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -26,11 +26,14 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <%
-  	
-  %>
-  
-  
+<style type="text/css">
+	.table_row {
+		cursor: pointer;
+	}
+	.table_row:hover {
+		background-color: #EAEAEA;
+	}
+</style>
 </head>
 <body>
 
@@ -49,32 +52,54 @@
         <jsp:include page="topbar.jsp" flush="true" />
 
 		<div class="container-fluid">
-	        <h2>넘어감</h2>
+	        
+	        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h5 class="m-0 font-weight-bold text-primary" style="display: inline-block;">자유 게시판</h5>
+              <div style="float: right;">
+              
+				<% 
+					if(session.getAttribute("id")!=null){
+				%>
+              	<a href="writeFreeBoard" class="btn btn-primary btn-icon-split">
+					<span class="text">글쓰기</span>
+				</a>
+				<%
+					}
+				%>
+				
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="text-align: center;">
+                  <thead>
+                    <tr>
+                    	<th width="10%">게시판 No</th>
+						<th>제목</th>
+						<th width="15%">작성자</th>
+						<th width="15%">작성일</th>
+						<th width="10%">좋아요</th>
+						<th width="10%">조회수</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+					<c:forEach var="list" items="${list }">
+						<tr class="table_row">
+							<td>${list.b_no }</td>
+							<td>${list.title }</td>	
+							<td>${list.writer }</td>
+							<td>${list.write_date }</td>				
+							<td>${list.b_like }</td>
+							<td>${list.b_hits }</td>
+						</tr>
+					</c:forEach>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
 			
-			<table border="1">			
-				<tr>
-					<th>제목</th>
-					<th>작성일</th>
-					<th>작성자</th>
-					<th>좋아요</th>
-					<th>조회수</th>
-					<th>상세보기</th>
-				</tr>
-				
-				<c:forEach var="wando" items="${wando }">
-					<tr>
-						<td>${wando.title }</td>
-						<td>${wando.write_date }</td>
-						<td>${wando.writer }</td>
-						<td>${wando.b_like }</td>
-						<td>${wando.b_hits }</td>
-						<td><a href="detail_board"><input type="button" value="상세보기" /></a></td>
-					</tr>
-				</c:forEach>
-				
-			</table>
-			<a href="writeFreeBoard"><input type="button" value="글쓰기" /></a>
-	     
 		</div>
       </div>
       <!-- Footer -->
@@ -108,6 +133,16 @@
 
   <!-- Page level custom scripts -->
   <script src="js/demo/datatables-demo.js"></script>
-	
+<script type="text/javascript">
+	$(".table_row").click(function(){
+		var tr = $(this);
+		var td = tr.children();
+		
+		var b_no = td.eq(0).text();
+		console.log(b_no);
+		
+		location.href = "detail_board?b_no="+b_no;
+	});
+</script>
 </body>
 </html>

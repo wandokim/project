@@ -40,24 +40,35 @@ public class BoardController {
 		
 		List<BoardDTO> list = dao.getList();
 		
-		model.addAttribute("wando", list);
+		model.addAttribute("list", list);
 		return "freeBoard";
 	}
 		
 	@RequestMapping(value = "detail_board")
-	public String detail_board(Model model) {
+	public String detail_board(Model model,@RequestParam("b_no") String b_no,HttpSession session) {
+		int bNo = Integer.parseInt(b_no);
 		
-		List<BoardDTO> list = dao.getList();
+		BoardDTO dto = dao.getData(bNo);
+		dao.riseHits(bNo);
 		
-		model.addAttribute("wando", list);
+		model.addAttribute("dto", dto);
+		session.setAttribute("checkUserNo", dto.getUser_no());
 		return "detail_board";
 	}
-	
-	
 	
 	@RequestMapping(value = "writeFreeBoard")
 	public String writeFreeBoard() {
 		return "writeFreeBoard";
+	}
+	
+	@RequestMapping(value = "deleteOk")
+	public String deleteOk(HttpSession session,Model model) {
+		dao.delete(Integer.parseInt(session.getAttribute("user_no").toString()));
+		
+		List<BoardDTO> list = dao.getList();
+		
+		model.addAttribute("list", list);
+		return "freeBoard";
 	}
 	
 	@RequestMapping(value = "boardOk")
@@ -67,16 +78,14 @@ public class BoardController {
 		
 		String name = session.getAttribute("nicname").toString();		 	
 		
-		String no =session.getAttribute("user_no").toString();
-		 int user_no = Integer.parseInt(no);
+		String no = session.getAttribute("user_no").toString();
+		int user_no = Integer.parseInt(no);
 		
-	      
-	     BoardDTO boardDto = new BoardDTO(user_no, title, name, contents, 1, 2);
-	     dao.insert(boardDto);
+		BoardDTO boardDto = new BoardDTO(user_no, title, name, contents, 0, 0);
+		dao.insert(boardDto);
 	     
-	     List<BoardDTO> list = dao.getList();
-			
-			model.addAttribute("wando", list);
-	      return "freeBoard";
+		List<BoardDTO> list = dao.getList();
+		model.addAttribute("list", list);
+		return "freeBoard";
 	}
 }

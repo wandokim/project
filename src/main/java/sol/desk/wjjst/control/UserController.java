@@ -111,7 +111,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "ModifyOk")
-	public String ModifyOk(HttpSession session,@RequestParam("nicname") String nicname,@RequestParam("pwd") String pwd,@RequestParam("email") String email) {
+	public String ModifyOk(HttpSession session,@RequestParam("nicname") String nicname,@RequestParam("pwd") String pwd,@RequestParam("email") String email, Model model) {
 		String id = session.getAttribute("id").toString();
 		
 		UserDTO userDto = new UserDTO(nicname, email, id);
@@ -119,17 +119,16 @@ public class UserController {
 
 		//int user_no = dao.userNo(nicname);
 		
-		int user_no = dao.userNo(id);
-		
+		int user_no = dao.userNo(id);		
 		
 		PwDTO pwdto = new PwDTO(user_no, pwd);
 		
 		pdao.update(pwdto);
 		
+		UserDTO dto = dao.getData(id);		 
 		
-		
-		/*수정 더 해야함*/
-		
+		session.setAttribute("nicname", dto.getNicname());		
+		model.addAttribute("dto", dto);		
 		
 		return "Profile";
 	}
@@ -172,7 +171,6 @@ public class UserController {
 		 		 
 	     return "Profile";
 	}
-	
 	
 	
 }

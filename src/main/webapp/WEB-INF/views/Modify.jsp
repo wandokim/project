@@ -82,7 +82,6 @@
 	                  </div>
 	                </div>
 	                <!-- pwd -->	                
-	                
 	                <a href="ModifyOk?nicname=nicname&email=email&pwd=pwd"><input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account"></a>
 	                <hr>
 	              </form>

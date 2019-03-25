@@ -16,7 +16,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Send Message</title>
+<title>게시글 작성</title>
 
 <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -26,15 +26,27 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-  <script type="text/javascript">
-  	function saveContents(){
-  		f.action="boardOk";
-  		f.method="get";
-  		f.submit();
-  		
-  	}
-  </script>
-  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#sender").click(function(){
+			var title = document.getElementById("title").value;
+			var contents = document.getElementById("contents").value;
+			
+			if(title == "" || title == null){
+				alert("제목을 입력해주세요");
+				document.getElementById("title").focus();
+			}else if(contents == "" || contents == null){
+				alert("내용을 입력해주세요");
+				document.getElementById("contents").focus();
+			}else{
+				document.frm.action = "boardOk"
+				document.frm.method = "post";
+				document.frm.submit();
+			}
+		});
+	});
+</script>
   
 </head>
 <body>
@@ -52,16 +64,34 @@
       <div id="content">
         <!-- Topbar -->
         <jsp:include page="topbar.jsp" flush="true" />
-	<form name="f">
+        
 		<div class="container-fluid">
-	        <h2>넘어감</h2>
-			
-			제목 : <input type="text" name="title" id="title" /><br />
-				내용 : <br /><textarea name="contents" id="contents" cols="30" rows="10"></textarea><br />
-				<input type="button" value="글쓰기완료" onclick="saveContents()" />	
-	     
+		
+			<form name="frm">
+	        <!-- Begin Page Content -->
+		        <div class="container-fluid">
+		        	<div class="row justify-content-center">
+		        		<div class="col-lg-6 d-none d-lg-block">
+							<h4>제목</h4>
+							<input type="text" name="title" class="form-control form-control-user" placeholder="제목을 입력해주세요" id="title"/>
+							<br />
+							<h4>내용</h4>
+							<textarea name="contents" id="contents" cols="30" rows="10" class="form-control form-control-user"></textarea><br />				
+							<!-- <a href="sendMsgOk"><input type="submit" value="전송버튼" /></a> -->
+							<a href="freeBoard" class="btn btn-primary btn-icon-split" style="margin-top: 10px;">
+								<span class="text">목록</span>
+							</a>
+							<div style="float: right;" id="sender">
+								<div class="btn btn-success btn-circle btn-lg">
+									<i class="fas fa-check"></i>
+								</div>
+							</div>
+						</div>
+					</div>	         
+		        </div>
+	        </form> 
 		</div>
-		</form>
+		
       </div>
       <!-- Footer -->
       <jsp:include page="footer.jsp" flush="true" />  

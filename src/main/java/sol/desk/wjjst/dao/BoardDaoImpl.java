@@ -37,8 +37,7 @@ public class BoardDaoImpl implements BoardDAO{
 
 	@Override
 	public BoardDTO getData(int b_no) {
-		// TODO Auto-generated method stub
-		return null;
+		return ss.selectOne("selectOneBoard", b_no);
 	}
 			
 	@Override
@@ -46,6 +45,15 @@ public class BoardDaoImpl implements BoardDAO{
 		return ss.selectList("selectAllBoard");
 	}
 
+	@Override
+	public void riseHits(int b_no) {
+		ss.update("riseHits", b_no);
+	}
+	
+	@Override
+	public void riseLike(int b_no) {
+		ss.update("riseLike", b_no);
+	}
 	
 	
 }

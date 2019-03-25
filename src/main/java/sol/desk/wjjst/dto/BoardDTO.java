@@ -12,8 +12,6 @@ public class BoardDTO{
 	
 	BoardDTO(){}
 
-	
-	
 	public BoardDTO(int user_no, String title, String writer, String b_contents, int b_like, int b_hits) {
 		super();
 		this.user_no = user_no;
@@ -24,8 +22,6 @@ public class BoardDTO{
 		this.b_hits = b_hits;
 	}
 
-
-	
 	public BoardDTO(int b_no, int user_no, String title, String write_date, String writer, String b_contents,
 			int b_like, int b_hits) {
 		super();

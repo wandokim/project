@@ -65,10 +65,9 @@ public class HomeController {
 		return "RankINFO";
 	}
 
-	/*@RequestMapping(value = "Profile")
-	public String Profile() {
-		return "Profile";
-	}*/
+
+
+
 	
 	@RequestMapping(value = "lotation")
 	public String lotation(HttpServletRequest request, Model model) {
