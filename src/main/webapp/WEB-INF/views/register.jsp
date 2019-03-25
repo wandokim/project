@@ -126,7 +126,8 @@ $(function(){
 	$("#register").click(function(){
 		
 		var getCheck= /[0-9]|[a-z]|[A-Z]|[가-힣]/;
-	    var getName= /[^a-zA-Z가-힣]/;
+	    var getName= /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,6}$/;
+	    var getPw= /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
 	    
 		//아이디 공백 확인
 	      if($("#id").val() == ""){
@@ -148,15 +149,33 @@ $(function(){
 		        $("#nicname").focus();
 		        return false;
 		      }
+	 	     
+	      if($("#email").val() == ""){
+		        alert("이메일을 입력해주세요.");
+		        $("#email").focus();
+		        return false;
+		      }
 	      
 	    //이름 유효성
 	      if (!getName.test($("#nicname").val())) {
-	        alert("한글로만 입력해주세요.");
+	        alert("특수문자 제외 2~6자까지 입력해주세요.");
 	        $("#nicname").val("");
 	        $("#nicname").focus();
 	        return false;
 	      }
-		
+	      
+	      if($("#pwd").val() == ""){
+		        alert("비밀번호를 입력해주세요.");
+		        $("#pwd").focus();
+		        return false;
+		      }
+	      
+	      if(!getPw.test($("#pwd").val())){
+	    	  alert("숫자와 영문자 조합으로 10~15자리를 입력해주세요.");
+	    	  $("#pwd").val("");
+		      $("#pwd").focus();
+		      return false;
+	      }
 	});
 });
 	    
