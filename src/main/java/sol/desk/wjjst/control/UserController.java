@@ -92,13 +92,19 @@ public class UserController {
 				session.setAttribute("id", id);
 				session.setAttribute("user_no", dao.userNo(id));
 								
+				System.out.println("로그인은 성공");
 				// 로그인 성공 시 해당 유저의 최근 읽지않은 5개의 메세지 호출
 				List<MsgDTO> msgList = mdao.limitMessage(dao.userNo(id));
 				
 				session.setAttribute("msgList", msgList);
+				ArrayList<MsgDTO> list = (ArrayList) session.getAttribute("msgList");
+				
+				for(MsgDTO dto : list) {
+					System.out.println(dto.getM_title());
+				}
 				
 				//ArrayList<MsgDTO> list = (ArrayList)session.getAttribute("test");
-				
+				 
 				return "main";
 			}else {
 				session.setAttribute("msg", "패스워드를 다시 입력해주세요");				
