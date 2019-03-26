@@ -172,5 +172,19 @@ public class UserController {
 	     return "Profile";
 	}
 	
+	@RequestMapping(value = "ModifyNic", method = RequestMethod.POST)
+	public @ResponseBody String checknic(@RequestParam("nicname") String nicname) {
+		String str = "";
+		boolean result = dao.checkNic(nicname);
+		//System.out.println("출력");
+		
+		if(result == true) {
+			str = "NO";
+		}else {
+			str = "YES";
+		}
+		return str;
+	}
+	
 	
 }

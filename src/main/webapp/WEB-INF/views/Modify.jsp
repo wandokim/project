@@ -14,7 +14,7 @@
 
 <!-- 커스텀 css-->
 <link href="css/custom.css" rel="stylesheet">
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <title>Modify.jsp</title>
 <style type="text/css">
   #checkPwd{
@@ -49,6 +49,76 @@
   	}  
 </script>
 
+<script type="text/javascript">	
+	$(function(){
+		//닉네임 중복체크
+		    $('#nicname').blur(function(){
+		        $.ajax({
+			     type:"POST",
+			     url:"ModifyNic",
+			     data:{
+			            "nicname":$('#nicname').val()
+			     },
+			     success:function(data){	
+			            if($.trim(data)=="YES"){
+			               if($('#nicname').val()!=''){ 
+			               	//alert("사용가능한 닉네임입니다.");
+			               	document.getElementById('checkNic').style.color = "blue";
+				  			document.getElementById('checkNic').innerHTML = "사용 가능한 닉네임입니다.";	
+			               	
+			               }
+			           	}else{
+			               if($('#nicname').val()!=''){
+			                  //alert("중복된 닉네임입니다.");
+			                  document.getElementById('checkNic').style.color = "red";
+					  		  document.getElementById('checkNic').innerHTML = "중복된 닉네임입니다.";
+			                  $('#nicname').val('');
+			                  $('#nicname').focus();
+			               }
+			            }
+			         }
+			    }) 
+		     })
+		}); 
+	
+</script>
+<script type="text/javascript">	
+$(function(){		
+	$("#Modify").click(function(){
+		
+		var getCheck= /[0-9]|[a-z]|[A-Z]|[가-힣]/;
+	    var getName= /^[\w\Wㄱ-ㅎㅏ-ㅣ가-힣]{2,6}$/;
+	    var getPw= /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+
+	      if($("#nicname").val() == ""){
+		        alert("닉네임을 입력해주세요.");
+		        $("#nicname").focus();
+		        return false;
+		      }
+	 	     
+	      if($("#email").val() == ""){
+		        alert("이메일을 입력해주세요.");
+		        $("#email").focus();
+		        return false;
+		      }
+	      
+	    //닉네임 유효성	      
+	      if($("#pwd").val() == ""){
+		        alert("비밀번호를 입력해주세요.");
+		        $("#pwd").focus();
+		        return false;
+		      }
+	      
+	      if(!getPw.test($("#pwd").val())){
+	    	  alert("숫자, 영문자, 특수문자 조합으로 10~15자리를 입력해주세요.");
+	    	  $("#pwd").val("");
+		      $("#pwd").focus();
+		      return false;
+	      }
+	});
+});	    
+</script>
+
 </head>
 <body>
 <div class="row">
@@ -62,27 +132,28 @@
 	              <form class="user" name="frm" action="ModifyOk">
 	                <div class="form-group row" >	                
 	                 <div class="col-sm-12">                
-	                    닉네임 변경 <input class="form-control form-control-user" name="nicname" placeholder="닉네임" >           
-	                 </div>	               	       
+	                    닉네임 변경 <input class="form-control form-control-user" name="nicname" placeholder="닉네임" id="nicname" >  
+	                    <div id="checkNic" style="padding: 10px 0 0 0"></div>         
+	                 </div>	                 	               	       
 	                </div>
 	                <div class="form-group">
-	                    이메일 변경<input class="form-control form-control-user" name="email" placeholder="이메일" >
+	                    이메일 변경<input class="form-control form-control-user" name="email" placeholder="이메일" id="email" >
 	                </div>
 	                <div class="form-group row">
 	                
 	                <!-- pwd -->
 	                  <div class="col-sm-12">
-	                    비밀번호 변경<input type="password" class="form-control form-control-user" name="pwd" placeholder="Password">
+	                    비밀번호 변경<input type="password" class="form-control form-control-user" name="pwd" placeholder="Password" id="pwd">
 	                  </div>
 	                  </div>
 	                  <div class="form-group row">
 	                   <div class="col-sm-12">
-	                    비밀번호 변경확인<input type="password" class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()">
+	                    비밀번호 변경확인<input type="password" class="form-control form-control-user" name="pwd_check" placeholder="Repeat Password" onkeyup="checkPwd()" onkeyup="checkPwd()">
 	                   <div id="checkPwd"></div>
 	                  </div>
 	                </div>
 	                <!-- pwd -->	                
-	                <a href="ModifyOk?nicname=nicname&email=email&pwd=pwd"><input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account"></a>
+	                <a href="ModifyOk?nicname=nicname&email=email&pwd=pwd"><input type="submit" class="btn btn-primary btn-user btn-block" value="Register Account" id="Modify"></a>
 	                <hr>
 	              </form>
 	              

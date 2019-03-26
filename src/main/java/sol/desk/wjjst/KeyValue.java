@@ -2,7 +2,7 @@ package sol.desk.wjjst;
 
 public class KeyValue {
 	public String keyvalue() {
-		String key = "RGAPI-30247a34-bb53-4e4c-8a42-88606f15c7b8";
+		String key = "RGAPI-06e61689-2b9b-49e0-97b6-f6107ee0fd59";
 		
 		return key;
 	}
